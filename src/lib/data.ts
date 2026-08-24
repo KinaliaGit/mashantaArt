@@ -271,7 +271,7 @@ export const artistInfo = {
     "Hoy mi estudio hace tres cosas a la vez: pinta, repara y enseña. No las separo porque no se sienten separadas — restaurar me enseña a pintar, enseñar me enseña a mirar.",
     "Trabajo con niñas, niños y adultos por igual, con la misma seriedad. El arte no es un premio de consolación para quien no sabe qué más hacer un domingo: es una técnica que se aprende, se practica y se hereda.",
   ],
-  studio: "Estudio Mashanta, Ciudad de México",
+  studio: "Estudio Mashanta",
   email: "hola@mashanta.art",
   whatsapp: "+52 55 0000 0000",
   instagram: "@mashanta.art",
