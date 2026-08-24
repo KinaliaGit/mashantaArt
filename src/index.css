@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bone: #f2ead9;
+  --color-bone-shade: #e4d8c0;
+  --color-bone-shade-2: #d9caa9;
+  --color-ink: #17140e;
+  --color-ink-soft: #2a251c;
+  --color-graphite: #6e6555;
+  --color-graphite-soft: #948a76;
+  --color-terracota: #c1502e;
+  --color-ocre: #c98a22;
+  --color-verde: #45624a;
+  --color-ultramar: #2e4a82;
+  --color-tierra-rosa: #a8546a;
+
+  --font-display: "Anton", "Arial Narrow", sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "Space Mono", "Courier New", monospace;
+
+  --breakpoint-xs: 30rem;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-bone);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--color-terracota);
+    color: var(--color-bone);
+  }
+
+  a {
+    color: inherit;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-terracota);
+    outline-offset: 3px;
+  }
+
+  .no-cursor {
+    cursor: none;
+  }
+
+  @media (hover: none) {
+    .no-cursor {
+      cursor: auto;
+    }
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-group:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+  .font-body {
+    font-family: var(--font-body);
+  }
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+
+  .paper-grain {
+    background-image: radial-gradient(rgba(23, 20, 14, 0.06) 0.6px, transparent 0.6px);
+    background-size: 3px 3px;
+  }
+}
