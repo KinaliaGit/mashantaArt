@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom"
-import { artworks } from "../lib/data"
+import { artworks, currentCollection } from "../lib/data"
 import { ArtVisual } from "../components/ArtVisual"
 import { Reveal } from "../components/Reveal"
 import { NotFound } from "./NotFound"
@@ -54,6 +54,12 @@ export function ObraDetalle() {
           <p className="mt-6 max-w-md text-ink-soft">{art.description}</p>
 
           {art.price && <p className="mt-6 font-display text-3xl uppercase">{art.price}</p>}
+
+          {art.status === "disponible" && (
+            <p className="mt-2 font-mono text-[0.66rem] uppercase tracking-wide text-terracota">
+              Colección {currentCollection.name} en cierre — {currentCollection.discount}
+            </p>
+          )}
 
           <div className="mt-7 flex flex-wrap gap-3">
             {art.status === "disponible" ? (

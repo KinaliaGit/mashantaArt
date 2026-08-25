@@ -60,11 +60,11 @@ export function LaArtista() {
         </div>
 
         <Reveal variant="rise" delay={0.1} className="mt-12 flex flex-wrap gap-3">
-          <Link to="/obras" data-cursor="VER" className="border border-ink px-5 py-2.5 font-mono text-xs uppercase tracking-widest transition-colors hover:bg-ink hover:text-bone">
-            Ver obras
+          <Link to="/obras" data-cursor="VER" className="border border-terracota bg-terracota px-5 py-2.5 font-mono text-xs uppercase tracking-widest text-bone transition-colors hover:bg-ink hover:border-ink">
+            Ver colección
           </Link>
-          <Link to="/cursos" data-cursor="RESERVAR" className="border border-terracota bg-terracota px-5 py-2.5 font-mono text-xs uppercase tracking-widest text-bone transition-colors hover:bg-ink hover:border-ink">
-            Ver talleres
+          <Link to="/cursos" data-cursor="VER" className="border border-ink px-5 py-2.5 font-mono text-xs uppercase tracking-widest transition-colors hover:bg-ink hover:text-bone">
+            Talleres
           </Link>
         </Reveal>
       </div>

@@ -13,6 +13,46 @@ export const accentHex: Record<ArtAccent, string> = {
   "tierra-rosa": "#A8546A",
 }
 
+export type Collection = {
+  slug: string
+  name: string
+  year: number
+  status: "en-liquidacion" | "activa"
+  description: string
+  closingNote: string
+  discount: string
+}
+
+export const currentCollection: Collection = {
+  slug: "aguas-quietas",
+  name: "Aguas Quietas",
+  year: 2026,
+  status: "en-liquidacion",
+  description:
+    "Un año de trabajo alrededor del agua, la memoria y lo que se queda quieto cuando todo lo demás se mueve. Óleo, acuarela y restauración conviven en esta colección — la primera en reunir tres años de práctica bajo un solo nombre.",
+  closingNote:
+    "Colección en cierre. Cuando se agoten estas piezas no vuelven — dan paso a la siguiente colección del estudio.",
+  discount: "15% en piezas disponibles, aplicado directamente en el private viewing.",
+}
+
+export type NextCollection = {
+  slug: string
+  name: string
+  expected: string
+  teaser: string
+  accent: ArtAccent
+  image: string
+}
+
+export const nextCollection: NextCollection = {
+  slug: "tierra-nueva",
+  name: "Tierra Nueva",
+  expected: "Primavera 2027",
+  teaser: "Después del agua, la tierra. Una colección sobre lo que se planta y lo que tarda en crecer — en proceso en el estudio ahora mismo.",
+  accent: "verde",
+  image: unsplash("1517133741870-7b4e3de342d7"),
+}
+
 export type Artwork = {
   slug: string
   title: string

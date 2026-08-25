@@ -2,8 +2,8 @@ import { useEffect, useState } from "react"
 import { NavLink, useLocation } from "react-router-dom"
 
 const links = [
-  { to: "/obras", label: "Obras" },
-  { to: "/cursos", label: "Cursos" },
+  { to: "/obras", label: "Colección" },
+  { to: "/cursos", label: "Talleres" },
   { to: "/la-artista", label: "La artista" },
   { to: "/contacto", label: "Contacto" },
 ]
@@ -49,16 +49,9 @@ export function Nav() {
             <NavLink
               to="/adquirir"
               data-cursor="VER"
-              className="border border-ink px-3 py-1.5 font-mono text-[0.68rem] uppercase tracking-widest text-ink transition-colors hover:bg-ink hover:text-bone"
-            >
-              Adquirir obra
-            </NavLink>
-            <NavLink
-              to="/cursos"
-              data-cursor="RESERVAR"
               className="border border-terracota bg-terracota px-3 py-1.5 font-mono text-[0.68rem] uppercase tracking-widest text-bone transition-colors hover:bg-ink hover:border-ink"
             >
-              Reservar taller
+              Adquirir obra
             </NavLink>
           </div>
 
@@ -107,14 +100,11 @@ export function Nav() {
               ))}
             </nav>
             <div className="mt-8 flex flex-col gap-3">
-              <NavLink to="/adquirir" className="border border-ink px-4 py-3 text-center font-mono text-xs uppercase tracking-widest">
-                Adquirir obra
-              </NavLink>
               <NavLink
-                to="/cursos"
+                to="/adquirir"
                 className="border border-terracota bg-terracota px-4 py-3 text-center font-mono text-xs uppercase tracking-widest text-bone"
               >
-                Reservar taller
+                Adquirir obra
               </NavLink>
             </div>
           </div>

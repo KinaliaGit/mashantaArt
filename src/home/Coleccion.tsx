@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { artworks } from "../lib/data"
+import { artworks, currentCollection } from "../lib/data"
 import { ArtVisual } from "../components/ArtVisual"
 import { Reveal } from "../components/Reveal"
 
@@ -14,19 +14,27 @@ const layout = [
   { art: artworks[4], top: "40%", left: "34%", w: "30%", rotate: -1.5, z: 5 },
 ]
 
-export function ObrasPreview() {
+export function Coleccion() {
   return (
     <section className="border-b border-bone-shade-2 py-16 sm:py-24">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8">
-        <Reveal variant="rise" className="mb-10 flex flex-col justify-between gap-3 sm:mb-14 sm:flex-row sm:items-end">
-          <h2 className="font-display text-[clamp(2.2rem,6vw,4.5rem)] uppercase leading-[0.9]">
-            Pared de
-            <br />
-            estudio
+        <Reveal className="mb-8 flex flex-wrap items-center gap-3">
+          <span className="border border-terracota px-2.5 py-1 font-mono text-[0.62rem] uppercase tracking-widest text-terracota">
+            Colección en cierre
+          </span>
+          <span className="font-mono text-[0.62rem] uppercase tracking-widest text-graphite">{currentCollection.year}</span>
+        </Reveal>
+
+        <Reveal className="mb-10 flex flex-col justify-between gap-5 sm:mb-14 lg:flex-row lg:items-end">
+          <h2 className="font-display text-[clamp(2.4rem,6.5vw,4.8rem)] uppercase leading-[0.9]">
+            {currentCollection.name}
           </h2>
-          <p className="max-w-sm text-ink-soft">
-            Óleo, restauración e ilustración conviven en la misma mesa de trabajo. Cada pieza guarda su técnica, año y medidas — como una ficha de museo.
-          </p>
+          <p className="max-w-sm text-ink-soft">{currentCollection.description}</p>
+        </Reveal>
+
+        <Reveal className="mb-10 border border-terracota bg-terracota/5 p-5 sm:mb-14 sm:p-6">
+          <p className="font-display text-lg uppercase leading-snug text-ink sm:text-xl">{currentCollection.closingNote}</p>
+          <p className="mt-2 font-mono text-[0.68rem] uppercase tracking-wide text-terracota">{currentCollection.discount}</p>
         </Reveal>
 
         <div className="relative hidden aspect-[4/3] md:block">
@@ -52,13 +60,20 @@ export function ObrasPreview() {
           ))}
         </div>
 
-        <Reveal variant="rise" delay={0.15} className="mt-10 sm:mt-16">
+        <Reveal delay={0.15} className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 sm:mt-16">
           <Link
             to="/obras"
             data-cursor="VER"
             className="inline-flex items-center gap-3 border-b border-ink pb-1 font-mono text-xs uppercase tracking-widest transition-colors hover:text-terracota hover:border-terracota"
           >
-            Ver todas las obras →
+            Ver colección completa →
+          </Link>
+          <Link
+            to="/adquirir"
+            data-cursor="VER"
+            className="inline-flex items-center gap-3 border-b border-terracota pb-1 font-mono text-xs uppercase tracking-widest text-terracota transition-colors hover:text-ink hover:border-ink"
+          >
+            Adquirir con descuento de cierre →
           </Link>
         </Reveal>
       </div>

@@ -82,22 +82,23 @@ export function CursoDetalle() {
           </ol>
         </div>
 
-        <div className="mt-8">
+        <div className="mt-8 border-t border-bone-shade-2 pt-6">
+          <p className="text-sm text-ink-soft">
+            ¿Dudas sobre el nivel o el material? Escríbenos por{" "}
+            <Link to="/contacto" className="underline hover:text-ink">
+              WhatsApp o correo
+            </Link>{" "}
+            antes de apartar tu lugar.
+          </p>
           {soldOut ? (
-            <button
-              type="button"
-              disabled
-              className="w-full cursor-not-allowed border border-bone-shade-2 px-5 py-3.5 text-center font-mono text-xs uppercase tracking-widest text-graphite sm:w-auto"
-            >
-              Sold out — únete a la lista de espera
-            </button>
+            <p className="mt-3 font-mono text-xs uppercase tracking-widest text-graphite">Sin cupo por ahora — pregunta por la lista de espera.</p>
           ) : (
             <Link
               to={`/cursos/${course.slug}/reservar`}
-              data-cursor="RESERVAR"
-              className="block w-full border border-terracota bg-terracota px-5 py-3.5 text-center font-mono text-xs uppercase tracking-widest text-bone transition-colors hover:bg-ink hover:border-ink sm:inline-block sm:w-auto"
+              data-cursor="VER"
+              className="mt-3 inline-flex items-center gap-2 border-b border-terracota pb-0.5 font-mono text-xs uppercase tracking-widest text-terracota transition-colors hover:text-ink hover:border-ink"
             >
-              Reservar lugar
+              Apartar lugar →
             </Link>
           )}
         </div>

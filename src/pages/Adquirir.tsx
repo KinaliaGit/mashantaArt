@@ -1,11 +1,13 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import { currentCollection } from "../lib/data"
 import { StepProgress } from "../components/StepProgress"
 import { StepTransition } from "../components/StepTransition"
 
 const steps = ["Tipo de obra", "Dimensiones", "Referencias", "Presupuesto", "Datos", "Confirmación"]
 
 const tipos = [
+  { id: "liquidacion", label: `Pieza de ${currentCollection.name}`, detail: `Colección en cierre — ${currentCollection.discount}` },
   { id: "comision", label: "Comisión nueva", detail: "Una pieza original, pensada desde cero para ti." },
   { id: "existente", label: "Obra existente", detail: "Adquirir una pieza ya terminada del catálogo." },
   { id: "restauracion", label: "Restauración", detail: "Recuperar una obra familiar o de colección." },

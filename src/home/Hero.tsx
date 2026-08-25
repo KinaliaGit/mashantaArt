@@ -1,7 +1,7 @@
 import { useRef } from "react"
 import { Link } from "react-router-dom"
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion"
-import { artworks } from "../lib/data"
+import { artworks, currentCollection } from "../lib/data"
 import { ArtVisual } from "../components/ArtVisual"
 
 type FloatingPieceData = {
@@ -36,8 +36,8 @@ export function Hero() {
       ))}
 
       <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center px-5 text-center">
-        <p className="mb-4 font-mono text-[0.7rem] uppercase tracking-[0.2em] text-graphite">
-          Estudio de pintura, restauración y talleres
+        <p className="mb-4 font-mono text-[0.7rem] uppercase tracking-[0.2em] text-terracota">
+          Colección {currentCollection.name} — en cierre
         </p>
         <h1
           className="font-display uppercase leading-[0.82] text-ink"
@@ -51,16 +51,16 @@ export function Hero() {
           <Link
             to="/obras"
             data-cursor="VER"
-            className="border border-ink px-5 py-2.5 font-mono text-xs uppercase tracking-widest transition-colors hover:bg-ink hover:text-bone"
+            className="border border-terracota bg-terracota px-5 py-2.5 font-mono text-xs uppercase tracking-widest text-bone transition-colors hover:bg-ink hover:border-ink"
           >
-            Ver obras
+            Ver colección
           </Link>
           <Link
             to="/cursos"
-            data-cursor="RESERVAR"
-            className="border border-terracota bg-terracota px-5 py-2.5 font-mono text-xs uppercase tracking-widest text-bone transition-colors hover:bg-ink hover:border-ink"
+            data-cursor="VER"
+            className="border border-ink px-5 py-2.5 font-mono text-xs uppercase tracking-widest transition-colors hover:bg-ink hover:text-bone"
           >
-            Ver talleres
+            Talleres
           </Link>
         </div>
       </div>

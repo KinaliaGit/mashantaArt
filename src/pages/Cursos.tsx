@@ -14,14 +14,14 @@ export function Cursos() {
     <div>
       <header className="border-b border-ink bg-ink px-5 pb-10 pt-12 text-bone sm:px-8 sm:pt-16">
         <div className="mx-auto max-w-[1440px]">
-          <span className="font-mono text-[0.68rem] uppercase tracking-widest text-bone-shade-2">Cursos</span>
+          <span className="font-mono text-[0.68rem] uppercase tracking-widest text-bone-shade-2">Talleres</span>
           <h1 className="mt-3 font-display text-[clamp(2.6rem,9vw,6rem)] uppercase leading-[0.86] text-balance">
-            Agenda del
+            Además del
             <br />
-            taller
+            estudio
           </h1>
           <p className="mt-4 max-w-md text-bone-shade-2">
-            Clases permanentes para todas las edades, visitas guiadas y el campamento de verano. Cupo limitado — reserva tu lugar con anticipación.
+            Clases permanentes de pintura, restauración e ilustración para todas las edades, y visitas guiadas a museos. Esta página es informativa — escríbenos para conocer el cupo actual de cada sesión.
           </p>
         </div>
       </header>

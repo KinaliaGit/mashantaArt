@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react"
 import { Link } from "react-router-dom"
-import { artworks } from "../lib/data"
+import { artworks, currentCollection } from "../lib/data"
 import { ArtVisual } from "../components/ArtVisual"
 
 const series = ["Todas", ...Array.from(new Set(artworks.map((a) => a.series)))]
@@ -27,15 +27,17 @@ export function Obras() {
     <div className="paper-grain">
       <header className="border-b border-ink px-5 pb-10 pt-12 sm:px-8 sm:pt-16">
         <div className="mx-auto max-w-[1440px]">
-          <span className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite">Obras</span>
+          <span className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite">Colección</span>
           <h1 className="mt-3 font-display text-[clamp(2.6rem,9vw,6rem)] uppercase leading-[0.86] text-balance">
-            Cada pieza,
-            <br />
-            catalogada
+            {currentCollection.name}
           </h1>
-          <p className="mt-4 max-w-md text-ink-soft">
-            Óleo, acuarela, restauración e ilustración. Técnica, año y medidas de cada obra, como en la pared de un estudio real.
-          </p>
+          <p className="mt-4 max-w-md text-ink-soft">{currentCollection.description}</p>
+
+          <div className="mt-6 flex max-w-lg flex-col gap-2 border border-terracota bg-terracota/5 p-4">
+            <p className="font-mono text-[0.66rem] uppercase tracking-widest text-terracota">Colección en cierre — {currentCollection.year}</p>
+            <p className="text-sm text-ink">{currentCollection.closingNote}</p>
+            <p className="font-mono text-[0.66rem] uppercase tracking-wide text-graphite">{currentCollection.discount}</p>
+          </div>
 
           <div className="mt-8 flex flex-wrap gap-2">
             {series.map((s) => (
