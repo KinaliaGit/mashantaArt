@@ -41,8 +41,8 @@ export function Hero() {
           Colección {currentCollection.name} — en cierre
         </p>
         <h1 className="flex flex-col items-center text-bone" aria-label="Mashanta Art">
-          <Wordmark animate className="w-[min(86vw,760px)]" />
-          <span className="mt-4 font-mono text-[0.75rem] uppercase tracking-[0.55em] text-rosa">Art</span>
+          <Wordmark animate className="w-[min(80vw,660px)]" />
+          <span className="mt-3 pl-[0.55em] font-mono text-[0.72rem] uppercase tracking-[0.55em] text-rosa">Art</span>
         </h1>
         <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
           <Link
