@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { NavLink, useLocation } from "react-router-dom"
 import { waLink } from "../lib/data"
+import { Wordmark } from "./Wordmark"
 
 const links = [
   { to: "/colecciones", label: "Colecciones" },
@@ -31,8 +32,8 @@ export function Nav() {
     <>
       <header className="sticky top-0 z-50 border-b border-white/10 bg-ink/90 text-bone backdrop-blur-md">
         <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-5 py-3 sm:px-8">
-          <NavLink to="/" className="font-display text-2xl uppercase tracking-wide sm:text-3xl" data-cursor="INICIO">
-            Mashanta
+          <NavLink to="/" data-cursor="INICIO" className="block shrink-0">
+            <Wordmark className="w-[118px] sm:w-[146px]" />
           </NavLink>
 
           <nav className="hidden items-center gap-7 font-mono text-[0.72rem] uppercase tracking-widest text-bone-shade-2 lg:flex">
@@ -84,8 +85,8 @@ export function Nav() {
       {open && (
         <div className="fixed inset-0 z-[100] flex flex-col bg-ink text-bone lg:hidden">
           <div className="flex items-center justify-between border-b border-white/10 px-5 py-3">
-            <NavLink to="/" className="font-display text-2xl uppercase tracking-wide" data-cursor="INICIO">
-              Mashanta
+            <NavLink to="/" data-cursor="INICIO" className="block">
+              <Wordmark className="w-[118px]" />
             </NavLink>
             <button
               type="button"

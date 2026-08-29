@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { artistInfo } from "../lib/data"
+import { Wordmark } from "./Wordmark"
 
 export function Footer() {
   return (
@@ -38,11 +39,9 @@ export function Footer() {
       <Link
         to="/"
         data-cursor="INICIO"
-        className="block w-full overflow-hidden border-t border-white/10 py-4 leading-[0.9]"
+        className="block w-full overflow-hidden border-t border-white/10 px-5 py-10 sm:py-14"
       >
-        <span className="block whitespace-nowrap font-display text-center uppercase tracking-[0.02em] text-[clamp(3.5rem,16vw,12rem)] text-bone">
-          Mashanta
-        </span>
+        <Wordmark className="mx-auto w-[min(90%,1000px)]" />
       </Link>
       <div className="border-t border-white/10 px-5 py-3 text-center font-mono text-[0.62rem] uppercase tracking-widest text-graphite-soft sm:px-8">
         © {new Date().getFullYear()} Mashanta — obra, comisiones y talleres

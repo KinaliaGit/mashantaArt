@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion"
 import { artworks, currentCollection } from "../lib/data"
 import { ArtVisual } from "../components/ArtVisual"
+import { Wordmark } from "../components/Wordmark"
 
 type FloatingPieceData = {
   art: (typeof artworks)[number]
@@ -39,13 +40,9 @@ export function Hero() {
         <p className="mb-5 font-mono text-[0.7rem] uppercase tracking-[0.25em] text-rosa">
           Colección {currentCollection.name} — en cierre
         </p>
-        <h1
-          className="font-display uppercase leading-[0.9] tracking-[0.01em] text-bone"
-          style={{ fontSize: "clamp(3rem, 12vw, 9.5rem)" }}
-        >
-          Mashanta
-          <br />
-          Art
+        <h1 className="flex flex-col items-center text-bone" aria-label="Mashanta Art">
+          <Wordmark animate className="w-[min(86vw,760px)]" />
+          <span className="mt-4 font-mono text-[0.75rem] uppercase tracking-[0.55em] text-rosa">Art</span>
         </h1>
         <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
           <Link
