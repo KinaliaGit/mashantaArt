@@ -49,7 +49,7 @@ export function Coleccion() {
               key={item.art.slug}
               delay={i * 0.08}
               className="absolute"
-              style={{ top: item.top, left: item.left, width: item.w, zIndex: item.z, transform: `rotate(${item.rotate}deg)` }}
+              style={{ top: item.top, left: item.left, width: item.w, zIndex: item.z }}
             >
               <ArtworkCard art={item.art} />
             </Reveal>
@@ -59,9 +59,7 @@ export function Coleccion() {
         <div className="flex flex-col gap-6 md:hidden">
           {layout.slice(0, 4).map((item, i) => (
             <Reveal key={item.art.slug} delay={i * 0.06}>
-              <div style={{ transform: `rotate(${item.rotate / 2}deg)` }}>
-                <ArtworkCard art={item.art} />
-              </div>
+              <ArtworkCard art={item.art} />
             </Reveal>
           ))}
         </div>
@@ -92,7 +90,7 @@ export function Coleccion() {
 function ArtworkCard({ art }: { art: (typeof artworks)[number] }) {
   return (
     <Link to={`/colecciones/${art.slug}`} data-cursor="VER" className="group block">
-      <div className="aspect-[4/5] w-full overflow-hidden border border-ink/70 shadow-[4px_4px_0_rgba(23,20,14,0.14)] transition-transform duration-300 group-hover:-translate-y-1.5 group-hover:-rotate-1">
+      <div className="aspect-[4/5] w-full overflow-hidden border border-ink/15 shadow-soft transition-transform duration-300 group-hover:-translate-y-1.5">
         <ArtVisual image={art.image} seed={art.slug} accent={art.accent} alt={art.title} className="h-full w-full" />
       </div>
       <div className="mt-2 font-mono text-[0.62rem] uppercase tracking-wide text-graphite">

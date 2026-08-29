@@ -38,13 +38,13 @@ export function Footer() {
       <Link
         to="/"
         data-cursor="INICIO"
-        className="block w-full overflow-hidden border-t border-graphite py-2 leading-[0.8]"
+        className="block w-full overflow-hidden border-t border-white/10 py-4 leading-[0.9]"
       >
-        <span className="block whitespace-nowrap font-display text-center uppercase text-[clamp(3.5rem,17vw,13rem)] text-bone">
+        <span className="block whitespace-nowrap font-display text-center uppercase tracking-[0.02em] text-[clamp(3.5rem,16vw,12rem)] text-bone">
           Mashanta
         </span>
       </Link>
-      <div className="border-t border-graphite px-5 py-3 text-center font-mono text-[0.62rem] uppercase tracking-widest text-bone-shade-2 sm:px-8">
+      <div className="border-t border-white/10 px-5 py-3 text-center font-mono text-[0.62rem] uppercase tracking-widest text-graphite-soft sm:px-8">
         © {new Date().getFullYear()} Mashanta — obra, comisiones y talleres
       </div>
     </footer>

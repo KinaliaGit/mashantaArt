@@ -29,19 +29,19 @@ export function Nav() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-ink bg-bone/95 backdrop-blur-sm">
+      <header className="sticky top-0 z-50 border-b border-white/10 bg-ink/90 text-bone backdrop-blur-md">
         <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-5 py-3 sm:px-8">
-          <NavLink to="/" className="font-display text-2xl uppercase tracking-tight sm:text-3xl" data-cursor="INICIO">
+          <NavLink to="/" className="font-display text-2xl uppercase tracking-wide sm:text-3xl" data-cursor="INICIO">
             Mashanta
           </NavLink>
 
-          <nav className="hidden items-center gap-7 font-mono text-[0.72rem] uppercase tracking-widest text-ink-soft lg:flex">
+          <nav className="hidden items-center gap-7 font-mono text-[0.72rem] uppercase tracking-widest text-bone-shade-2 lg:flex">
             {links.map((l) => (
               <NavLink
                 key={l.to}
                 to={l.to}
                 className={({ isActive }) =>
-                  `border-b border-transparent pb-0.5 transition-colors hover:text-ink ${isActive ? "border-terracota text-ink" : ""}`
+                  `border-b border-transparent pb-0.5 transition-colors hover:text-bone ${isActive ? "border-terracota text-bone" : ""}`
                 }
               >
                 {l.label}
@@ -55,7 +55,7 @@ export function Nav() {
               target="_blank"
               rel="noreferrer"
               data-cursor="VER"
-              className="border border-terracota bg-terracota px-3 py-1.5 font-mono text-[0.68rem] uppercase tracking-widest text-bone transition-colors hover:bg-ink hover:border-ink"
+              className="border border-terracota bg-terracota px-3.5 py-1.5 font-mono text-[0.68rem] uppercase tracking-widest text-bone transition-colors hover:bg-bone hover:text-ink hover:border-bone"
             >
               WhatsApp
             </a>
@@ -68,8 +68,8 @@ export function Nav() {
             onClick={() => setOpen((v) => !v)}
             className="relative z-[101] flex h-9 w-9 flex-col items-center justify-center gap-1.5 lg:hidden"
           >
-            <span className={`block h-px w-6 bg-ink transition-transform ${open ? "translate-y-[3.5px] rotate-45" : ""}`} />
-            <span className={`block h-px w-6 bg-ink transition-transform ${open ? "-translate-y-[3.5px] -rotate-45" : ""}`} />
+            <span className={`block h-px w-6 bg-bone transition-transform ${open ? "translate-y-[3.5px] rotate-45" : ""}`} />
+            <span className={`block h-px w-6 bg-bone transition-transform ${open ? "-translate-y-[3.5px] -rotate-45" : ""}`} />
           </button>
         </div>
       </header>
@@ -82,9 +82,9 @@ export function Nav() {
         also means it never depends on the real header's measured height.
       */}
       {open && (
-        <div className="fixed inset-0 z-[100] flex flex-col bg-bone lg:hidden">
-          <div className="flex items-center justify-between border-b border-ink px-5 py-3">
-            <NavLink to="/" className="font-display text-2xl uppercase tracking-tight" data-cursor="INICIO">
+        <div className="fixed inset-0 z-[100] flex flex-col bg-ink text-bone lg:hidden">
+          <div className="flex items-center justify-between border-b border-white/10 px-5 py-3">
+            <NavLink to="/" className="font-display text-2xl uppercase tracking-wide" data-cursor="INICIO">
               Mashanta
             </NavLink>
             <button
@@ -100,7 +100,7 @@ export function Nav() {
           <div className="flex flex-1 flex-col justify-between overflow-y-auto px-5 py-8">
             <nav className="flex flex-col gap-1">
               {links.map((l) => (
-                <NavLink key={l.to} to={l.to} className="border-b border-bone-shade-2 py-4 font-display text-3xl uppercase">
+                <NavLink key={l.to} to={l.to} className="border-b border-white/10 py-4 font-display text-3xl uppercase">
                   {l.label}
                 </NavLink>
               ))}

@@ -14,24 +14,26 @@ const practicas = [
 export function MiHistoria() {
   return (
     <div>
-      <div className="mx-auto grid max-w-[1440px] gap-10 px-5 py-12 sm:px-8 sm:py-16 md:grid-cols-[1.1fr_1fr] md:gap-16 md:py-24">
-        <Reveal variant="rise">
-          <span className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite">Mi historia</span>
-          <h1 className="mt-3 font-display text-[clamp(2.8rem,10vw,7rem)] uppercase leading-[0.84] text-balance">
-            {artistInfo.name}
-          </h1>
-          <p className="mt-3 font-mono text-sm uppercase tracking-wide text-graphite">{artistInfo.role}</p>
-        </Reveal>
+      <div className="bg-ink text-bone">
+        <div className="mx-auto grid max-w-[1440px] items-center gap-10 px-5 py-14 sm:px-8 md:grid-cols-[1.1fr_1fr] md:gap-16 md:py-24">
+          <Reveal variant="rise">
+            <span className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite-soft">Mi historia</span>
+            <h1 className="mt-4 font-display text-[clamp(2.8rem,10vw,7rem)] uppercase leading-[0.95] text-balance">
+              {artistInfo.name}
+            </h1>
+            <p className="mt-4 font-mono text-sm uppercase tracking-wide text-graphite-soft">{artistInfo.role}</p>
+          </Reveal>
 
-        <Reveal variant="wipe" delay={0.1} className="aspect-[4/5] w-full overflow-hidden border border-ink/70 shadow-[6px_6px_0_rgba(23,20,14,0.14)]">
-          <ArtVisual
-            image={artistInfo.handsImage}
-            seed="artista-retrato"
-            accent="terracota"
-            alt="Manos de Mashanta trabajando en el caballete del estudio"
-            className="h-full w-full"
-          />
-        </Reveal>
+          <Reveal variant="wipe" delay={0.1} className="aspect-[4/5] w-full overflow-hidden border border-white/10 shadow-soft">
+            <ArtVisual
+              image={artistInfo.handsImage}
+              seed="artista-retrato"
+              accent="terracota"
+              alt="Manos de Mashanta trabajando en el caballete del estudio"
+              className="h-full w-full"
+            />
+          </Reveal>
+        </div>
       </div>
 
       <div className="border-t border-ink bg-bone-shade py-14 sm:py-20">

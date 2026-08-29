@@ -20,7 +20,7 @@ export function CursoDetalle() {
 
   return (
     <div className="mx-auto grid max-w-[1440px] gap-10 px-5 py-12 sm:px-8 sm:py-16 md:grid-cols-[1fr_1.15fr] md:gap-16">
-      <Reveal variant="wipe" className="border border-ink/70 shadow-[6px_6px_0_rgba(23,20,14,0.14)] md:order-2">
+      <Reveal variant="wipe" className="border border-ink/15 shadow-soft md:order-2">
         <ArtVisual image={course.image} seed={course.slug} accent={course.accent} alt={course.title} className="aspect-[4/3] w-full" />
       </Reveal>
 

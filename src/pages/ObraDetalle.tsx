@@ -30,7 +30,7 @@ export function ObraDetalle() {
   return (
     <div>
       <div className="mx-auto grid max-w-[1440px] gap-10 px-5 py-12 sm:px-8 sm:py-16 md:grid-cols-[1.2fr_1fr] md:gap-16">
-        <Reveal variant="wipe" className="border border-ink/70 shadow-[6px_6px_0_rgba(23,20,14,0.14)]">
+        <Reveal variant="wipe" className="border border-ink/15 shadow-soft">
           <ArtVisual image={art.image} seed={art.slug} accent={art.accent} alt={art.title} className="aspect-[4/5] w-full" />
         </Reveal>
 
@@ -106,7 +106,7 @@ export function ObraDetalle() {
             <div className="mt-6 grid gap-8 sm:grid-cols-3">
               {related.map((r) => (
                 <Link key={r.slug} to={`/colecciones/${r.slug}`} data-cursor="VER" className="group block">
-                  <div className="aspect-[4/5] overflow-hidden border border-ink/70 transition-transform group-hover:-translate-y-1">
+                  <div className="aspect-[4/5] overflow-hidden border border-ink/15 transition-transform group-hover:-translate-y-1">
                     <ArtVisual image={r.image} seed={r.slug} accent={r.accent} alt={r.title} className="h-full w-full" />
                   </div>
                   <div className="mt-2 font-mono text-[0.62rem] uppercase tracking-wide text-graphite">{r.title}</div>

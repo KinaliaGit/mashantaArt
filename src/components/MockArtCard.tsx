@@ -18,7 +18,7 @@ export function MockArtCard({ accent, label, className = "" }: MockArtCardProps)
     <div className={`relative flex items-end overflow-hidden bg-ink ${className}`}>
       <div
         className="absolute inset-0 opacity-[0.07]"
-        style={{ backgroundImage: "repeating-linear-gradient(135deg, #F2EAD9 0, #F2EAD9 1px, transparent 1px, transparent 7px)" }}
+        style={{ backgroundImage: "repeating-linear-gradient(135deg, #F5F2EE 0, #F5F2EE 1px, transparent 1px, transparent 7px)" }}
       />
       <span className="absolute left-4 top-4 h-2 w-2 rounded-full" style={{ background: hex }} />
       {label && (

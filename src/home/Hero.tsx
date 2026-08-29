@@ -17,11 +17,11 @@ type FloatingPieceData = {
 }
 
 const floating: FloatingPieceData[] = [
-  { art: artworks[0], top: "8%", left: "4%", w: "w-28 sm:w-40 md:w-52", rotate: -7, parallax: 60 },
-  { art: artworks[2], top: "12%", right: "5%", w: "w-24 sm:w-36 md:w-44", rotate: 5, parallax: 90 },
-  { art: artworks[5], bottom: "16%", left: "9%", w: "w-20 sm:w-28 md:w-36", rotate: 4, parallax: 40 },
-  { art: artworks[6], bottom: "8%", right: "12%", w: "w-24 sm:w-32 md:w-40", rotate: -5, parallax: 70 },
-  { art: artworks[3], top: "42%", left: "1%", w: "w-16 sm:w-24 md:w-28", rotate: 8, parallax: 110, hideOnMobile: true },
+  { art: artworks[0], top: "8%", left: "4%", w: "w-28 sm:w-40 md:w-52", rotate: 0, parallax: 60 },
+  { art: artworks[2], top: "12%", right: "5%", w: "w-24 sm:w-36 md:w-44", rotate: 0, parallax: 90 },
+  { art: artworks[5], bottom: "16%", left: "9%", w: "w-20 sm:w-28 md:w-36", rotate: 0, parallax: 40 },
+  { art: artworks[6], bottom: "8%", right: "12%", w: "w-24 sm:w-32 md:w-40", rotate: 0, parallax: 70 },
+  { art: artworks[3], top: "42%", left: "1%", w: "w-16 sm:w-24 md:w-28", rotate: 0, parallax: 110, hideOnMobile: true },
 ]
 
 export function Hero() {
@@ -30,42 +30,42 @@ export function Hero() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] })
 
   return (
-    <section ref={ref} className="relative min-h-[100svh] overflow-hidden paper-grain">
+    <section ref={ref} className="relative min-h-[100svh] overflow-hidden bg-ink text-bone">
       {floating.map((f) => (
         <FloatingPiece key={f.art.slug} f={f} progress={scrollYProgress} reduce={!!reduce} />
       ))}
 
       <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center px-5 text-center">
-        <p className="mb-4 font-mono text-[0.7rem] uppercase tracking-[0.2em] text-terracota">
+        <p className="mb-5 font-mono text-[0.7rem] uppercase tracking-[0.25em] text-rosa">
           Colección {currentCollection.name} — en cierre
         </p>
         <h1
-          className="font-display uppercase leading-[0.82] text-ink"
-          style={{ fontSize: "clamp(3.4rem, 14vw, 11rem)" }}
+          className="font-display uppercase leading-[0.9] tracking-[0.01em] text-bone"
+          style={{ fontSize: "clamp(3rem, 12vw, 9.5rem)" }}
         >
           Mashanta
           <br />
           Art
         </h1>
-        <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
+        <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
           <Link
             to="/colecciones"
             data-cursor="VER"
-            className="border border-terracota bg-terracota px-5 py-2.5 font-mono text-xs uppercase tracking-widest text-bone transition-colors hover:bg-ink hover:border-ink"
+            className="border border-terracota bg-terracota px-6 py-3 font-mono text-xs uppercase tracking-widest text-bone transition-colors hover:bg-bone hover:text-ink hover:border-bone"
           >
             Ver colección
           </Link>
           <Link
             to="/pedidos"
             data-cursor="VER"
-            className="border border-ink px-5 py-2.5 font-mono text-xs uppercase tracking-widest transition-colors hover:bg-ink hover:text-bone"
+            className="border border-bone/50 px-6 py-3 font-mono text-xs uppercase tracking-widest transition-colors hover:border-bone hover:bg-bone hover:text-ink"
           >
             Pedidos o comisiones
           </Link>
         </div>
       </div>
 
-      <div className="absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 font-mono text-[0.65rem] uppercase tracking-widest text-graphite sm:block">
+      <div className="absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 font-mono text-[0.65rem] uppercase tracking-widest text-graphite-soft sm:block">
         Desliza para recorrer el estudio ↓
       </div>
     </section>
@@ -96,7 +96,7 @@ function FloatingPiece({
       }}
     >
       <Link to={`/colecciones/${f.art.slug}`} data-cursor="VER" className="group block">
-        <div className="aspect-[4/5] w-full overflow-hidden border border-ink/70 shadow-[3px_3px_0_rgba(23,20,14,0.15)] transition-transform duration-300 group-hover:-translate-y-1 group-hover:-rotate-1">
+        <div className="aspect-[4/5] w-full overflow-hidden border border-bone/25 shadow-soft transition-transform duration-300 group-hover:-translate-y-1">
           <ArtVisual image={f.art.image} seed={f.art.slug} accent={f.art.accent} alt={f.art.title} className="h-full w-full" />
         </div>
         {/* Anchored to the same edge as the piece itself (left vs right) so the

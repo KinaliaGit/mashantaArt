@@ -18,15 +18,15 @@ const waRestauracion = waLink(
 export function Otros() {
   return (
     <div>
-      <header className="border-b border-ink bg-ink px-5 pb-10 pt-12 text-bone sm:px-8 sm:pt-16">
+      <header className="bg-ink px-5 pb-14 pt-14 text-bone sm:px-8 sm:pt-20">
         <div className="mx-auto max-w-[1440px]">
-          <span className="font-mono text-[0.68rem] uppercase tracking-widest text-bone-shade-2">Otros</span>
-          <h1 className="mt-3 font-display text-[clamp(2.6rem,9vw,6rem)] uppercase leading-[0.86] text-balance">
+          <span className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite-soft">Otros</span>
+          <h1 className="mt-4 font-display text-[clamp(2.6rem,9vw,6rem)] uppercase leading-[0.95] text-balance">
             Cursos y
             <br />
             restauración
           </h1>
-          <p className="mt-4 max-w-md text-bone-shade-2">
+          <p className="mt-6 max-w-md text-bone-shade-2">
             Además de la obra de colección y las comisiones, el estudio enseña y repara. Clases permanentes para todas las edades y restauración de piezas familiares o de colección.
           </p>
           <nav className="mt-6 flex flex-wrap gap-2 font-mono text-[0.66rem] uppercase tracking-widest">
@@ -58,7 +58,7 @@ export function Otros() {
                 data-cursor="VER"
                 className="group grid grid-cols-[auto_1fr] items-center gap-5 border-b border-bone-shade-2 py-6 sm:grid-cols-[120px_auto_1fr_auto] sm:gap-8"
               >
-                <div className="row-span-2 aspect-square w-16 overflow-hidden border border-ink/60 sm:row-span-1 sm:w-[120px]">
+                <div className="row-span-2 aspect-square w-16 overflow-hidden border border-ink/15 sm:row-span-1 sm:w-[120px]">
                   <ArtVisual image={c.image} seed={c.slug} accent={c.accent} alt={c.title} className="h-full w-full" />
                 </div>
 
@@ -115,7 +115,7 @@ export function Otros() {
               <div className="mt-4 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
                 {restauraciones.map((r) => (
                   <div key={r.slug}>
-                    <div className="aspect-[4/5] overflow-hidden border border-ink/70">
+                    <div className="aspect-[4/5] overflow-hidden border border-ink/15">
                       <ArtVisual image={r.image} seed={r.slug} accent={r.accent} alt={r.title} className="h-full w-full" />
                     </div>
                     <div className="mt-2 font-mono text-[0.66rem] uppercase tracking-wide text-ink">{r.title}</div>

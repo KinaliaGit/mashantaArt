@@ -56,7 +56,7 @@ export function Reservar() {
       <div className="py-8">
        <StepTransition step={step}>
         {step === 0 && (
-          <div className="border border-ink/70 p-5">
+          <div className="border border-ink/15 p-5">
             <span className="font-mono text-[0.62rem] uppercase tracking-widest text-graphite">{course.date} — {course.time}</span>
             <h2 className="mt-1 font-display text-2xl uppercase">{course.title}</h2>
             <p className="mt-2 font-mono text-[0.68rem] uppercase tracking-wide text-graphite-soft">
@@ -103,7 +103,7 @@ export function Reservar() {
         )}
 
         {step === 3 && submitted && (
-          <div className="border border-ink/70 p-6 text-center">
+          <div className="border border-ink/15 p-6 text-center">
             <p className="font-mono text-[0.62rem] uppercase tracking-widest text-verde">Lugar apartado</p>
             <h2 className="mt-2 font-display text-2xl uppercase">Te esperamos, {form.nombre.split(" ")[0] || "por aquí"}</h2>
             <p className="mt-3 text-ink-soft">

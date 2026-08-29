@@ -26,13 +26,11 @@ export function PedidosTeaser() {
         <div className="grid gap-8 sm:grid-cols-3">
           {preview.map((c, i) => (
             <Reveal key={c.title} delay={i * 0.08}>
-              <div style={{ transform: `rotate(${i % 2 === 0 ? -1.2 : 1}deg)` }}>
-                <div className="aspect-[4/5] overflow-hidden border border-ink/70 shadow-[4px_4px_0_rgba(23,20,14,0.14)]">
-                  <ArtVisual image={c.image} seed={`teaser-comision-${i}`} accent={c.accent} alt={c.title} className="h-full w-full" />
-                </div>
-                <div className="mt-2 font-mono text-[0.62rem] uppercase tracking-wide text-ink">{c.title}</div>
-                <div className="font-mono text-[0.6rem] uppercase tracking-wide text-terracota">→ {c.destination}</div>
+              <div className="aspect-[4/5] overflow-hidden border border-ink/15 shadow-soft">
+                <ArtVisual image={c.image} seed={`teaser-comision-${i}`} accent={c.accent} alt={c.title} className="h-full w-full" />
               </div>
+              <div className="mt-3 font-mono text-[0.62rem] uppercase tracking-wide text-ink">{c.title}</div>
+              <div className="font-mono text-[0.6rem] uppercase tracking-wide text-terracota">→ {c.destination}</div>
             </Reveal>
           ))}
         </div>

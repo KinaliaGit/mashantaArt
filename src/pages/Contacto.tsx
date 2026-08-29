@@ -7,10 +7,10 @@ const waContacto = waLink(mensaje)
 export function Contacto() {
   return (
     <div>
-      <header className="border-b border-ink px-5 pb-10 pt-12 sm:px-8 sm:pt-16">
+      <header className="bg-ink px-5 pb-14 pt-14 text-bone sm:px-8 sm:pt-20">
         <div className="mx-auto max-w-[1440px]">
-          <span className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite">Contacto</span>
-          <h1 className="mt-3 font-display text-[clamp(2.6rem,9vw,6rem)] uppercase leading-[0.86] text-balance">
+          <span className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite-soft">Contacto</span>
+          <h1 className="mt-4 font-display text-[clamp(2.6rem,9vw,6rem)] uppercase leading-[0.95] text-balance">
             Hablemos por
             <br />
             WhatsApp

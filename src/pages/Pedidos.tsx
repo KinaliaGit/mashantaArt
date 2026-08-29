@@ -9,15 +9,15 @@ const waComision = waLink(
 export function Pedidos() {
   return (
     <div className="paper-grain">
-      <header className="border-b border-ink px-5 pb-10 pt-12 sm:px-8 sm:pt-16">
+      <header className="bg-ink px-5 pb-14 pt-14 text-bone sm:px-8 sm:pt-20">
         <div className="mx-auto max-w-[1440px]">
-          <span className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite">Pedidos o comisiones</span>
-          <h1 className="mt-3 font-display text-[clamp(2.6rem,9vw,6rem)] uppercase leading-[0.86] text-balance">
+          <span className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite-soft">Pedidos o comisiones</span>
+          <h1 className="mt-4 font-display text-[clamp(2.6rem,9vw,6rem)] uppercase leading-[0.95] text-balance">
             Una obra
             <br />
             hecha para ti
           </h1>
-          <p className="mt-4 max-w-xl text-ink-soft">
+          <p className="mt-6 max-w-xl text-bone-shade-2">
             Una comisión es una pieza original pensada desde cero: un retrato, un paisaje, un díptico para un muro específico. No hay un formato único — la técnica, el tamaño, los tiempos y el envío se definen contigo, caso por caso.
           </p>
           <a
@@ -25,7 +25,7 @@ export function Pedidos() {
             target="_blank"
             rel="noreferrer"
             data-cursor="VER"
-            className="mt-6 inline-flex items-center gap-2 border border-terracota bg-terracota px-5 py-3 font-mono text-xs uppercase tracking-widest text-bone transition-colors hover:bg-ink hover:border-ink"
+            className="mt-7 inline-flex items-center gap-2 border border-terracota bg-terracota px-5 py-3 font-mono text-xs uppercase tracking-widest text-bone transition-colors hover:bg-bone hover:text-ink hover:border-bone"
           >
             Solicitar una comisión · WhatsApp →
           </a>
@@ -70,17 +70,15 @@ export function Pedidos() {
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {commissions.map((c, i) => (
               <Reveal key={c.title} variant="rise" delay={i * 0.05}>
-                <div style={{ transform: `rotate(${i % 2 === 0 ? -1 : 1}deg)` }}>
-                  <div className="aspect-[4/5] overflow-hidden border border-ink/70 shadow-[4px_4px_0_rgba(23,20,14,0.14)]">
-                    <ArtVisual image={c.image} seed={`comision-${i}`} accent={c.accent} alt={c.title} className="h-full w-full" />
-                  </div>
-                  <div className="mt-3 font-mono text-[0.68rem] uppercase tracking-wide text-ink">{c.title}</div>
-                  <div className="font-mono text-[0.62rem] uppercase tracking-wide text-graphite-soft">
-                    {c.technique} — {c.year} — {c.dimensions}
-                  </div>
-                  <div className="mt-1 font-mono text-[0.62rem] uppercase tracking-wide text-terracota">→ {c.destination}</div>
-                  <p className="mt-2 text-sm text-ink-soft">{c.shippingNote}</p>
+                <div className="aspect-[4/5] overflow-hidden border border-ink/15 shadow-soft">
+                  <ArtVisual image={c.image} seed={`comision-${i}`} accent={c.accent} alt={c.title} className="h-full w-full" />
                 </div>
+                <div className="mt-3 font-mono text-[0.68rem] uppercase tracking-wide text-ink">{c.title}</div>
+                <div className="font-mono text-[0.62rem] uppercase tracking-wide text-graphite-soft">
+                  {c.technique} — {c.year} — {c.dimensions}
+                </div>
+                <div className="mt-1 font-mono text-[0.62rem] uppercase tracking-wide text-terracota">→ {c.destination}</div>
+                <p className="mt-2 text-sm text-ink-soft">{c.shippingNote}</p>
               </Reveal>
             ))}
           </div>

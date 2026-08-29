@@ -26,10 +26,7 @@ export function EstudioSocial() {
               CSS multi-column container never reliably settle in some browsers. */}
           {studioPhotos.map((p, i) => (
             <div key={p.alt} className="mb-4 break-inside-avoid">
-              <div
-                className={`overflow-hidden border border-ink/60 ${ratios[i % ratios.length]}`}
-                style={{ transform: `rotate(${i % 2 === 0 ? -1 : 1}deg)` }}
-              >
+              <div className={`overflow-hidden border border-ink/15 ${ratios[i % ratios.length]}`}>
                 <ArtVisual image={p.image} seed={`social-${i}`} accent={p.accent} alt={p.alt} className="h-full w-full" />
               </div>
             </div>
