@@ -3,6 +3,18 @@ function unsplash(id: string, w = 1200) {
   return `https://images.unsplash.com/photo-${id}?w=${w}&q=80&auto=format&fit=crop`
 }
 
+/**
+ * WhatsApp — front-only for now. Replace with the real number in international
+ * format, digits only (country code + number, no "+", spaces or dashes).
+ * Example for MX: "5215512345678".
+ */
+export const WHATSAPP_NUMBER = "5255XXXXXXXX"
+
+/** Builds a wa.me link with a pre-filled message. */
+export function waLink(message: string) {
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`
+}
+
 export type ArtAccent = "terracota" | "ocre" | "verde" | "ultramar" | "tierra-rosa"
 
 export const accentHex: Record<ArtAccent, string> = {
@@ -19,6 +31,7 @@ export type Collection = {
   year: number
   status: "en-liquidacion" | "activa"
   description: string
+  descriptionLong: string
   closingNote: string
   discount: string
 }
@@ -30,9 +43,11 @@ export const currentCollection: Collection = {
   status: "en-liquidacion",
   description:
     "Un año de trabajo alrededor del agua, la memoria y lo que se queda quieto cuando todo lo demás se mueve. Óleo, acuarela y restauración conviven en esta colección — la primera en reunir tres años de práctica bajo un solo nombre.",
+  descriptionLong:
+    "Aguas Quietas reúne piezas pintadas entre estaciones de lluvia, retratos recuperados y bocetos elevados a obra terminada. No hay un tema único: hay una manera de mirar. El agua aparece como color, como memoria y como el tiempo que tarda cada capa en secar antes de la siguiente. Es la primera colección del estudio que se presenta bajo un solo nombre, y también la última de este ciclo — al agotarse da paso a Tierra Nueva.",
   closingNote:
     "Colección en cierre. Cuando se agoten estas piezas no vuelven — dan paso a la siguiente colección del estudio.",
-  discount: "15% en piezas disponibles, aplicado directamente en el private viewing.",
+  discount: "",
 }
 
 export type NextCollection = {
@@ -170,6 +185,120 @@ export const artworks: Artwork[] = [
     series: "Restauración",
     description: "Ocho semanas de limpieza, consolidación y reintegración cromática para una colección privada.",
     image: unsplash("1579009721337-cec3c69778e4"),
+  },
+]
+
+/* ---------------------------------------------------------------------------
+ * Pedidos o comisiones — portafolio de obra hecha por encargo y enviada.
+ * Solo exhibición: da una idea de qué se ha hecho, a dónde ha llegado y cómo.
+ * ------------------------------------------------------------------------- */
+
+export type Commission = {
+  title: string
+  year: number
+  technique: string
+  dimensions: string
+  /** Ciudad / país a donde se entregó o envió la pieza. */
+  destination: string
+  /** Nota sobre marco, embalaje o forma de envío. */
+  shippingNote: string
+  accent: ArtAccent
+  image: string
+}
+
+export const commissions: Commission[] = [
+  {
+    title: "Retrato — Familia Ríos",
+    year: 2026,
+    technique: "Óleo sobre tela",
+    dimensions: "70 × 90 cm",
+    destination: "Guadalajara, MX",
+    shippingNote: "Entregada en marco hecho a mano por el estudio. Embalaje rígido y entrega en mano.",
+    accent: "terracota",
+    image: unsplash("1541512416146-3cf58d6b27cc"),
+  },
+  {
+    title: "Restauración — óleo c. 1940",
+    year: 2026,
+    technique: "Limpieza, consolidación e inpainting reversible",
+    dimensions: "60 × 80 cm",
+    destination: "Colección privada, CDMX",
+    shippingNote: "Ocho semanas de trabajo. Devuelta con informe de intervención y recomendaciones de conservación.",
+    accent: "verde",
+    image: unsplash("1579009721337-cec3c69778e4"),
+  },
+  {
+    title: "Díptico para consultorio",
+    year: 2025,
+    technique: "Acrílico y pigmento seco sobre tela",
+    dimensions: "2 piezas de 90 × 120 cm",
+    destination: "Monterrey, MX",
+    shippingNote: "Enviado por paquetería especializada en obra, en cajas de madera a medida.",
+    accent: "ultramar",
+    image: unsplash("1530100914167-73e7602b004c"),
+  },
+  {
+    title: "Retrato de aniversario",
+    year: 2025,
+    technique: "Óleo sobre lino",
+    dimensions: "50 × 60 cm",
+    destination: "Austin, TX (EE. UU.)",
+    shippingNote: "Envío internacional con seguro. Sin marco, enrollada en tubo rígido para bastidor local.",
+    accent: "tierra-rosa",
+    image: unsplash("1562785072-c65ab858fcbc"),
+  },
+]
+
+export type ProcessStep = { title: string; detail: string }
+
+/** Paso a paso de una comisión — informativo, flexible según cada caso. */
+export const commissionSteps: ProcessStep[] = [
+  {
+    title: "Conversación inicial",
+    detail:
+      "Me cuentas la idea, mandas referencias y me dices dónde va a vivir la obra: luz, muro, medidas del espacio. Sin costo y sin compromiso.",
+  },
+  {
+    title: "Propuesta",
+    detail:
+      "Te devuelvo una propuesta con técnica, dimensiones, tiempo estimado y un rango de presupuesto. Todo es flexible y se ajusta a cada caso.",
+  },
+  {
+    title: "Anticipo y calendario",
+    detail:
+      "Con un anticipo se aparta tu lugar en el calendario del estudio y se compran los materiales. La fecha de entrega queda por escrito.",
+  },
+  {
+    title: "Proceso",
+    detail:
+      "Te comparto avances por foto en los puntos clave: boceto, bloqueo de color y capas finales. Hay margen para ajustes antes de cerrar.",
+  },
+  {
+    title: "Entrega y envío",
+    detail:
+      "Marco hecho a mano opcional. El embalaje y el envío se definen según el destino: entrega en mano local, paquetería nacional en caja rígida o envío internacional con seguro.",
+  },
+]
+
+/** Paso a paso de una restauración. */
+export const restorationSteps: ProcessStep[] = [
+  {
+    title: "Diagnóstico",
+    detail:
+      "Lectura del daño: humedad, craquelado, pérdida de capa pictórica, barnices oxidados. Se documenta con fotografía antes de tocar nada.",
+  },
+  {
+    title: "Limpieza",
+    detail: "Pruebas de sensibilidad y solventes seguros para retirar suciedad y barniz sin afectar la obra original.",
+  },
+  {
+    title: "Consolidación",
+    detail: "Se fija la capa pictórica y se estabiliza el soporte — tela, tabla o papel — donde haya riesgo de pérdida.",
+  },
+  {
+    title: "Reintegración cromática",
+    detail:
+      "Inpainting reversible solo en las zonas perdidas, respetando el trazo original. Se cierra con barniz de protección e informe de intervención.",
   },
 ]
 
@@ -315,6 +444,12 @@ export const artistInfo = {
   email: "hola@mashanta.art",
   whatsapp: "+52 55 0000 0000",
   instagram: "@mashanta.art",
+  /** URL del perfil de Instagram — reemplázala por la real. */
+  instagramUrl: "https://instagram.com/mashanta.art",
+  /** Enlace a Google Maps del estudio — reemplázalo por el real. */
+  mapsUrl: "https://maps.google.com/?q=Estudio+Mashanta",
+  /** Dirección visible del estudio — opcional. */
+  address: "",
   studioImage: unsplash("1752649935691-ac99478aaa56"),
   handsImage: unsplash("1644375391877-0ae77eeed8fc"),
 }

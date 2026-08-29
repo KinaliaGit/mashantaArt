@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom"
-import { artworks, currentCollection } from "../lib/data"
+import { artworks, currentCollection, waLink } from "../lib/data"
+
+const waColeccion = waLink(
+  `Hola Mashanta, me interesa la colección ${currentCollection.name}. ¿Me compartes disponibilidad y precios?`,
+)
 import { ArtVisual } from "../components/ArtVisual"
 import { Reveal } from "../components/Reveal"
 
@@ -34,7 +38,9 @@ export function Coleccion() {
 
         <Reveal className="mb-10 border border-terracota bg-terracota/5 p-5 sm:mb-14 sm:p-6">
           <p className="font-display text-lg uppercase leading-snug text-ink sm:text-xl">{currentCollection.closingNote}</p>
-          <p className="mt-2 font-mono text-[0.68rem] uppercase tracking-wide text-terracota">{currentCollection.discount}</p>
+          {currentCollection.discount && (
+            <p className="mt-2 font-mono text-[0.68rem] uppercase tracking-wide text-terracota">{currentCollection.discount}</p>
+          )}
         </Reveal>
 
         <div className="relative hidden aspect-[4/3] md:block">
@@ -62,19 +68,21 @@ export function Coleccion() {
 
         <Reveal delay={0.15} className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 sm:mt-16">
           <Link
-            to="/obras"
+            to="/colecciones"
             data-cursor="VER"
             className="inline-flex items-center gap-3 border-b border-ink pb-1 font-mono text-xs uppercase tracking-widest transition-colors hover:text-terracota hover:border-terracota"
           >
             Ver colección completa →
           </Link>
-          <Link
-            to="/adquirir"
+          <a
+            href={waColeccion}
+            target="_blank"
+            rel="noreferrer"
             data-cursor="VER"
             className="inline-flex items-center gap-3 border-b border-terracota pb-1 font-mono text-xs uppercase tracking-widest text-terracota transition-colors hover:text-ink hover:border-ink"
           >
-            Adquirir con descuento de cierre →
-          </Link>
+            Preguntar por WhatsApp →
+          </a>
         </Reveal>
       </div>
     </section>
@@ -83,7 +91,7 @@ export function Coleccion() {
 
 function ArtworkCard({ art }: { art: (typeof artworks)[number] }) {
   return (
-    <Link to={`/obras/${art.slug}`} data-cursor="VER" className="group block">
+    <Link to={`/colecciones/${art.slug}`} data-cursor="VER" className="group block">
       <div className="aspect-[4/5] w-full overflow-hidden border border-ink/70 shadow-[4px_4px_0_rgba(23,20,14,0.14)] transition-transform duration-300 group-hover:-translate-y-1.5 group-hover:-rotate-1">
         <ArtVisual image={art.image} seed={art.slug} accent={art.accent} alt={art.title} className="h-full w-full" />
       </div>

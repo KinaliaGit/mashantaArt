@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import { artistInfo } from "../lib/data"
 import { ArtVisual } from "../components/ArtVisual"
 import { Reveal } from "../components/Reveal"
+import { Comunidad } from "../home/Comunidad"
 
 const practicas = [
   { title: "Pintura", detail: "Óleo, acrílico y acuarela — obra propia y por comisión, para colección privada." },
@@ -10,12 +11,12 @@ const practicas = [
   { title: "Enseñanza", detail: "Clases permanentes para todas las edades y visitas guiadas a museos de la ciudad." },
 ]
 
-export function LaArtista() {
+export function MiHistoria() {
   return (
     <div>
       <div className="mx-auto grid max-w-[1440px] gap-10 px-5 py-12 sm:px-8 sm:py-16 md:grid-cols-[1.1fr_1fr] md:gap-16 md:py-24">
         <Reveal variant="rise">
-          <span className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite">La artista</span>
+          <span className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite">Mi historia</span>
           <h1 className="mt-3 font-display text-[clamp(2.8rem,10vw,7rem)] uppercase leading-[0.84] text-balance">
             {artistInfo.name}
           </h1>
@@ -60,14 +61,16 @@ export function LaArtista() {
         </div>
 
         <Reveal variant="rise" delay={0.1} className="mt-12 flex flex-wrap gap-3">
-          <Link to="/obras" data-cursor="VER" className="border border-terracota bg-terracota px-5 py-2.5 font-mono text-xs uppercase tracking-widest text-bone transition-colors hover:bg-ink hover:border-ink">
+          <Link to="/colecciones" data-cursor="VER" className="border border-terracota bg-terracota px-5 py-2.5 font-mono text-xs uppercase tracking-widest text-bone transition-colors hover:bg-ink hover:border-ink">
             Ver colección
           </Link>
-          <Link to="/cursos" data-cursor="VER" className="border border-ink px-5 py-2.5 font-mono text-xs uppercase tracking-widest transition-colors hover:bg-ink hover:text-bone">
-            Talleres
+          <Link to="/otros" data-cursor="VER" className="border border-ink px-5 py-2.5 font-mono text-xs uppercase tracking-widest transition-colors hover:bg-ink hover:text-bone">
+            Otros
           </Link>
         </Reveal>
       </div>
+
+      <Comunidad />
     </div>
   )
 }

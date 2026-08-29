@@ -49,18 +49,18 @@ export function Hero() {
         </h1>
         <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
           <Link
-            to="/obras"
+            to="/colecciones"
             data-cursor="VER"
             className="border border-terracota bg-terracota px-5 py-2.5 font-mono text-xs uppercase tracking-widest text-bone transition-colors hover:bg-ink hover:border-ink"
           >
             Ver colección
           </Link>
           <Link
-            to="/cursos"
+            to="/pedidos"
             data-cursor="VER"
             className="border border-ink px-5 py-2.5 font-mono text-xs uppercase tracking-widest transition-colors hover:bg-ink hover:text-bone"
           >
-            Talleres
+            Pedidos o comisiones
           </Link>
         </div>
       </div>
@@ -95,7 +95,7 @@ function FloatingPiece({
         y: reduce ? 0 : y,
       }}
     >
-      <Link to={`/obras/${f.art.slug}`} data-cursor="VER" className="group block">
+      <Link to={`/colecciones/${f.art.slug}`} data-cursor="VER" className="group block">
         <div className="aspect-[4/5] w-full overflow-hidden border border-ink/70 shadow-[3px_3px_0_rgba(23,20,14,0.15)] transition-transform duration-300 group-hover:-translate-y-1 group-hover:-rotate-1">
           <ArtVisual image={f.art.image} seed={f.art.slug} accent={f.art.accent} alt={f.art.title} className="h-full w-full" />
         </div>

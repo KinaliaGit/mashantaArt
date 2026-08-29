@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom"
-import { artworks, currentCollection } from "../lib/data"
+import { artworks, currentCollection, waLink } from "../lib/data"
 import { ArtVisual } from "../components/ArtVisual"
 import { Reveal } from "../components/Reveal"
 import { NotFound } from "./NotFound"
@@ -18,6 +18,15 @@ export function ObraDetalle() {
 
   const related = artworks.filter((a) => a.series === art.series && a.slug !== art.slug).slice(0, 3)
 
+  const waObra =
+    art.status === "disponible"
+      ? waLink(
+          `Hola Mashanta, me interesa "${art.title}" (${art.technique}, ${art.dimensions}${
+            art.price ? `, ${art.price}` : ""
+          }) de la colección ${currentCollection.name}.`,
+        )
+      : waLink(`Hola Mashanta, me gustaría comisionar una pieza similar a "${art.title}" (${art.technique}, ${art.dimensions}).`)
+
   return (
     <div>
       <div className="mx-auto grid max-w-[1440px] gap-10 px-5 py-12 sm:px-8 sm:py-16 md:grid-cols-[1.2fr_1fr] md:gap-16">
@@ -26,8 +35,8 @@ export function ObraDetalle() {
         </Reveal>
 
         <Reveal variant="rise" delay={0.1}>
-          <Link to="/obras" className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite hover:text-ink">
-            ← Obras
+          <Link to="/colecciones" className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite hover:text-ink">
+            ← Colección
           </Link>
           <span className="mt-6 block font-mono text-[0.68rem] uppercase tracking-widest text-graphite">{art.series}</span>
           <h1 className="mt-2 font-display text-[clamp(2.2rem,6vw,4rem)] uppercase leading-[0.9] text-balance">{art.title}</h1>
@@ -57,27 +66,32 @@ export function ObraDetalle() {
 
           {art.status === "disponible" && (
             <p className="mt-2 font-mono text-[0.66rem] uppercase tracking-wide text-terracota">
-              Colección {currentCollection.name} en cierre — {currentCollection.discount}
+              Colección {currentCollection.name} en cierre
+              {currentCollection.discount ? ` — ${currentCollection.discount}` : ""}
             </p>
           )}
 
           <div className="mt-7 flex flex-wrap gap-3">
             {art.status === "disponible" ? (
-              <Link
-                to="/adquirir"
+              <a
+                href={waObra}
+                target="_blank"
+                rel="noreferrer"
                 data-cursor="VER"
                 className="border border-terracota bg-terracota px-5 py-2.5 font-mono text-xs uppercase tracking-widest text-bone transition-colors hover:bg-ink hover:border-ink"
               >
-                Adquirir esta obra
-              </Link>
+                Preguntar por esta obra · WhatsApp
+              </a>
             ) : (
-              <Link
-                to="/adquirir"
+              <a
+                href={waObra}
+                target="_blank"
+                rel="noreferrer"
                 data-cursor="VER"
                 className="border border-ink px-5 py-2.5 font-mono text-xs uppercase tracking-widest text-ink transition-colors hover:bg-ink hover:text-bone"
               >
-                Comisionar una pieza similar
-              </Link>
+                Comisionar una pieza similar · WhatsApp
+              </a>
             )}
           </div>
         </Reveal>
@@ -91,7 +105,7 @@ export function ObraDetalle() {
             </span>
             <div className="mt-6 grid gap-8 sm:grid-cols-3">
               {related.map((r) => (
-                <Link key={r.slug} to={`/obras/${r.slug}`} data-cursor="VER" className="group block">
+                <Link key={r.slug} to={`/colecciones/${r.slug}`} data-cursor="VER" className="group block">
                   <div className="aspect-[4/5] overflow-hidden border border-ink/70 transition-transform group-hover:-translate-y-1">
                     <ArtVisual image={r.image} seed={r.slug} accent={r.accent} alt={r.title} className="h-full w-full" />
                   </div>

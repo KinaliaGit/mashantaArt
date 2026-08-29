@@ -1,4 +1,4 @@
-import { studioPhotos } from "../lib/data"
+import { artistInfo, studioPhotos } from "../lib/data"
 import { ArtVisual } from "../components/ArtVisual"
 import { Reveal } from "../components/Reveal"
 
@@ -11,13 +11,13 @@ export function EstudioSocial() {
         <Reveal variant="rise" className="mb-10 flex flex-col justify-between gap-3 sm:mb-14 sm:flex-row sm:items-end">
           <h2 className="font-display text-[clamp(2.2rem,6vw,4.5rem)] uppercase leading-[0.9]">Del estudio</h2>
           <a
-            href="https://instagram.com/mashanta.art"
+            href={artistInfo.instagramUrl}
             target="_blank"
             rel="noreferrer"
             data-cursor="VER"
             className="border-b border-ink pb-1 font-mono text-xs uppercase tracking-widest transition-colors hover:text-terracota hover:border-terracota"
           >
-            @mashanta.art →
+            {artistInfo.instagram} →
           </a>
         </Reveal>
 

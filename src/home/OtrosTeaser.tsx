@@ -4,23 +4,23 @@ import { Reveal } from "../components/Reveal"
 
 const upcoming = courses.filter((c) => c.slug !== "verano-2026").slice(0, 3)
 
-export function TalleresTeaser() {
+export function OtrosTeaser() {
   return (
     <section className="border-b border-bone-shade-2 bg-bone-shade py-14 sm:py-20">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8">
         <Reveal className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
           <div className="max-w-md">
             <span className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite">También en el estudio</span>
-            <h2 className="mt-2 font-display text-2xl uppercase sm:text-3xl">Talleres</h2>
+            <h2 className="mt-2 font-display text-2xl uppercase sm:text-3xl">Otros</h2>
             <p className="mt-2 text-sm text-ink-soft">
-              Clases permanentes de pintura, restauración e ilustración para todas las edades. Información completa, sin compromiso de reserva.
+              Cursos permanentes de pintura, restauración e ilustración para todas las edades, y restauración de piezas familiares o de colección.
             </p>
             <Link
-              to="/cursos"
+              to="/otros"
               data-cursor="VER"
               className="mt-4 inline-flex items-center gap-2 border-b border-ink pb-0.5 font-mono text-xs uppercase tracking-widest transition-colors hover:text-terracota hover:border-terracota"
             >
-              Conocer los talleres →
+              Ver cursos y restauración →
             </Link>
           </div>
 

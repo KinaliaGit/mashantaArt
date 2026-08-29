@@ -25,8 +25,8 @@ export function CursoDetalle() {
       </Reveal>
 
       <Reveal variant="rise" delay={0.1} className="md:order-1">
-        <Link to="/cursos" className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite hover:text-ink">
-          ← Cursos
+        <Link to="/otros" className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite hover:text-ink">
+          ← Otros
         </Link>
 
         <div className="mt-6 flex items-start justify-between gap-4">
@@ -94,7 +94,7 @@ export function CursoDetalle() {
             <p className="mt-3 font-mono text-xs uppercase tracking-widest text-graphite">Sin cupo por ahora — pregunta por la lista de espera.</p>
           ) : (
             <Link
-              to={`/cursos/${course.slug}/reservar`}
+              to={`/otros/cursos/${course.slug}/reservar`}
               data-cursor="VER"
               className="mt-3 inline-flex items-center gap-2 border-b border-terracota pb-0.5 font-mono text-xs uppercase tracking-widest text-terracota transition-colors hover:text-ink hover:border-ink"
             >

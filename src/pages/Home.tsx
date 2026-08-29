@@ -1,10 +1,9 @@
 import { Hero } from "../home/Hero"
 import { MarqueeBand } from "../home/MarqueeBand"
 import { Coleccion } from "../home/Coleccion"
-import { NextCollectionTeaser } from "../home/NextCollectionTeaser"
+import { PedidosTeaser } from "../home/PedidosTeaser"
 import { ArtistaSection } from "../home/ArtistaSection"
-import { Comunidad } from "../home/Comunidad"
-import { TalleresTeaser } from "../home/TalleresTeaser"
+import { OtrosTeaser } from "../home/OtrosTeaser"
 import { EstudioSocial } from "../home/EstudioSocial"
 import { ContactoBlock } from "../home/ContactoBlock"
 
@@ -14,10 +13,9 @@ export function Home() {
       <Hero />
       <MarqueeBand />
       <Coleccion />
-      <NextCollectionTeaser />
+      <PedidosTeaser />
       <ArtistaSection />
-      <Comunidad />
-      <TalleresTeaser />
+      <OtrosTeaser />
       <EstudioSocial />
       <ContactoBlock />
     </>

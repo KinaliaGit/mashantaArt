@@ -1,7 +1,8 @@
 import { useMemo, useState } from "react"
 import { Link } from "react-router-dom"
-import { artworks, currentCollection } from "../lib/data"
+import { artworks, currentCollection, waLink } from "../lib/data"
 import { ArtVisual } from "../components/ArtVisual"
+import { NextCollectionTeaser } from "../home/NextCollectionTeaser"
 
 const series = ["Todas", ...Array.from(new Set(artworks.map((a) => a.series)))]
 
@@ -19,7 +20,11 @@ const statusTone: Record<string, string> = {
   coleccion: "text-ultramar",
 }
 
-export function Obras() {
+const waColeccion = waLink(
+  `Hola Mashanta, me interesa la colección ${currentCollection.name}. ¿Me compartes disponibilidad y precios?`,
+)
+
+export function Colecciones() {
   const [filter, setFilter] = useState("Todas")
   const list = useMemo(() => (filter === "Todas" ? artworks : artworks.filter((a) => a.series === filter)), [filter])
 
@@ -27,17 +32,30 @@ export function Obras() {
     <div className="paper-grain">
       <header className="border-b border-ink px-5 pb-10 pt-12 sm:px-8 sm:pt-16">
         <div className="mx-auto max-w-[1440px]">
-          <span className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite">Colección</span>
+          <span className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite">Colección actual</span>
           <h1 className="mt-3 font-display text-[clamp(2.6rem,9vw,6rem)] uppercase leading-[0.86] text-balance">
             {currentCollection.name}
           </h1>
           <p className="mt-4 max-w-md text-ink-soft">{currentCollection.description}</p>
+          <p className="mt-4 max-w-xl text-sm text-ink-soft">{currentCollection.descriptionLong}</p>
 
           <div className="mt-6 flex max-w-lg flex-col gap-2 border border-terracota bg-terracota/5 p-4">
             <p className="font-mono text-[0.66rem] uppercase tracking-widest text-terracota">Colección en cierre — {currentCollection.year}</p>
             <p className="text-sm text-ink">{currentCollection.closingNote}</p>
-            <p className="font-mono text-[0.66rem] uppercase tracking-wide text-graphite">{currentCollection.discount}</p>
+            {currentCollection.discount && (
+              <p className="font-mono text-[0.66rem] uppercase tracking-wide text-graphite">{currentCollection.discount}</p>
+            )}
           </div>
+
+          <a
+            href={waColeccion}
+            target="_blank"
+            rel="noreferrer"
+            data-cursor="VER"
+            className="mt-6 inline-flex items-center gap-2 border border-terracota bg-terracota px-5 py-3 font-mono text-xs uppercase tracking-widest text-bone transition-colors hover:bg-ink hover:border-ink"
+          >
+            Preguntar por la colección · WhatsApp →
+          </a>
 
           <div className="mt-8 flex flex-wrap gap-2">
             {series.map((s) => (
@@ -63,7 +81,7 @@ export function Obras() {
             // CSS multi-column container (columns-*) never settle in some browsers —
             // reproduced independently of scroll position or tab focus. Not worth the risk here.
             <div key={art.slug} className="mb-8 break-inside-avoid">
-              <Link to={`/obras/${art.slug}`} data-cursor="VER" className="group block" style={{ transform: `rotate(${i % 2 === 0 ? -1.4 : 1.2}deg)` }}>
+              <Link to={`/colecciones/${art.slug}`} data-cursor="VER" className="group block" style={{ transform: `rotate(${i % 2 === 0 ? -1.4 : 1.2}deg)` }}>
                 <div
                   className={`relative overflow-hidden border border-ink/70 shadow-[4px_4px_0_rgba(23,20,14,0.14)] transition-transform duration-300 group-hover:-translate-y-1.5 ${
                     i % 2 === 0 ? "group-hover:-rotate-1" : "group-hover:rotate-1"
@@ -86,6 +104,8 @@ export function Obras() {
           ))}
         </div>
       </div>
+
+      <NextCollectionTeaser />
     </div>
   )
 }

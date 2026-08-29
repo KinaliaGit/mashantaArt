@@ -8,34 +8,29 @@ export function Footer() {
         <div className="flex flex-col gap-2 font-mono text-[0.72rem] uppercase tracking-widest text-bone-shade-2">
           <span className="text-bone">Estudio</span>
           <span>{artistInfo.studio}</span>
-          <a href={`mailto:${artistInfo.email}`} className="hover:text-bone">
-            {artistInfo.email}
+          <a href={artistInfo.mapsUrl} target="_blank" rel="noreferrer" className="hover:text-bone">
+            Ver en Maps
           </a>
-          <a
-            href="https://instagram.com/mashanta.art"
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-bone"
-          >
+          <a href={artistInfo.instagramUrl} target="_blank" rel="noreferrer" className="hover:text-bone">
             {artistInfo.instagram}
           </a>
         </div>
 
         <nav className="flex flex-wrap gap-x-6 gap-y-2 font-mono text-[0.72rem] uppercase tracking-widest text-bone-shade-2">
-          <Link to="/obras" className="hover:text-bone">
-            Obras
+          <Link to="/colecciones" className="hover:text-bone">
+            Colecciones
           </Link>
-          <Link to="/cursos" className="hover:text-bone">
-            Cursos
+          <Link to="/pedidos" className="hover:text-bone">
+            Pedidos o comisiones
           </Link>
-          <Link to="/la-artista" className="hover:text-bone">
-            La artista
+          <Link to="/mi-historia" className="hover:text-bone">
+            Mi historia
+          </Link>
+          <Link to="/otros" className="hover:text-bone">
+            Otros
           </Link>
           <Link to="/contacto" className="hover:text-bone">
             Contacto
-          </Link>
-          <Link to="/adquirir" className="hover:text-bone">
-            Adquirir obra
           </Link>
         </nav>
       </div>

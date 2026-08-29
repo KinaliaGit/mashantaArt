@@ -20,7 +20,7 @@ export function Reservar() {
       <div className="mx-auto max-w-xl px-5 py-24 text-center sm:px-8">
         <h1 className="font-display text-3xl uppercase">Este taller está agotado</h1>
         <p className="mt-4 text-ink-soft">Escríbenos y te avisamos en cuanto se libere un lugar.</p>
-        <Link to={`/cursos/${course.slug}`} className="mt-6 inline-block border border-ink px-5 py-2.5 font-mono text-xs uppercase tracking-widest">
+        <Link to={`/otros/cursos/${course.slug}`} className="mt-6 inline-block border border-ink px-5 py-2.5 font-mono text-xs uppercase tracking-widest">
           Volver al curso
         </Link>
       </div>
@@ -46,7 +46,7 @@ export function Reservar() {
 
   return (
     <div className="mx-auto max-w-2xl px-5 py-12 sm:px-8 sm:py-16">
-      <Link to={`/cursos/${course.slug}`} className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite hover:text-ink">
+      <Link to={`/otros/cursos/${course.slug}`} className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite hover:text-ink">
         ← {course.title}
       </Link>
       <h1 className="mt-3 mb-8 font-display text-[clamp(2rem,5.6vw,3.2rem)] uppercase leading-[0.9]">Reservar lugar</h1>

@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react"
 import { NavLink, useLocation } from "react-router-dom"
+import { waLink } from "../lib/data"
 
 const links = [
-  { to: "/obras", label: "Colección" },
-  { to: "/cursos", label: "Talleres" },
-  { to: "/la-artista", label: "La artista" },
+  { to: "/colecciones", label: "Colecciones" },
+  { to: "/pedidos", label: "Pedidos o comisiones" },
+  { to: "/mi-historia", label: "Mi historia" },
+  { to: "/otros", label: "Otros" },
   { to: "/contacto", label: "Contacto" },
 ]
+
+const waNav = waLink("Hola Mashanta, te escribo desde tu sitio.")
 
 export function Nav() {
   const [open, setOpen] = useState(false)
@@ -46,13 +50,15 @@ export function Nav() {
           </nav>
 
           <div className="hidden items-center gap-2 lg:flex">
-            <NavLink
-              to="/adquirir"
+            <a
+              href={waNav}
+              target="_blank"
+              rel="noreferrer"
               data-cursor="VER"
               className="border border-terracota bg-terracota px-3 py-1.5 font-mono text-[0.68rem] uppercase tracking-widest text-bone transition-colors hover:bg-ink hover:border-ink"
             >
-              Adquirir obra
-            </NavLink>
+              WhatsApp
+            </a>
           </div>
 
           <button
@@ -100,12 +106,14 @@ export function Nav() {
               ))}
             </nav>
             <div className="mt-8 flex flex-col gap-3">
-              <NavLink
-                to="/adquirir"
+              <a
+                href={waNav}
+                target="_blank"
+                rel="noreferrer"
                 className="border border-terracota bg-terracota px-4 py-3 text-center font-mono text-xs uppercase tracking-widest text-bone"
               >
-                Adquirir obra
-              </NavLink>
+                WhatsApp
+              </a>
             </div>
           </div>
         </div>
