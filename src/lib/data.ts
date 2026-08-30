@@ -17,12 +17,14 @@ export function waLink(message: string) {
 
 export type ArtAccent = "terracota" | "ocre" | "verde" | "ultramar" | "tierra-rosa"
 
+/* Monochrome now — the placeholder cards read as unphotographed work, not as a
+   colour swatch. Magenta is the one tint, used sparingly. */
 export const accentHex: Record<ArtAccent, string> = {
-  terracota: "#C1502E",
-  ocre: "#C98A22",
-  verde: "#45624A",
-  ultramar: "#2E4A82",
-  "tierra-rosa": "#A8546A",
+  terracota: "#F1B2DC",
+  ocre: "#9A9A94",
+  verde: "#6F6F6A",
+  ultramar: "#4A4A46",
+  "tierra-rosa": "#F1B2DC",
 }
 
 export type Collection = {

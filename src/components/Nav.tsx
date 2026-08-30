@@ -30,19 +30,23 @@ export function Nav() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-ink/90 text-bone backdrop-blur-md">
-        <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-5 py-3 sm:px-8">
-          <NavLink to="/" data-cursor="INICIO" className="block shrink-0">
-            <Wordmark className="w-[118px] sm:w-[146px]" />
+      <header className="sticky top-0 z-50 border-b border-ink/10 bg-bone/90 text-ink backdrop-blur-md">
+        <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-5 py-4 sm:px-8">
+          <NavLink to="/" aria-label="Inicio — Mashanta" className="block shrink-0">
+            <Wordmark tone="ink" className="w-[112px] sm:w-[138px]" />
           </NavLink>
 
-          <nav className="hidden items-center gap-7 font-mono text-[0.72rem] uppercase tracking-widest text-bone-shade-2 lg:flex">
+          <nav className="hidden items-center gap-8 lg:flex">
             {links.map((l) => (
               <NavLink
                 key={l.to}
                 to={l.to}
                 className={({ isActive }) =>
-                  `border-b border-transparent pb-0.5 transition-colors hover:text-bone ${isActive ? "border-terracota text-bone" : ""}`
+                  `label border-b-2 pb-1 transition-colors ${
+                    isActive
+                      ? "border-rosa text-ink"
+                      : "border-transparent text-graphite hover:text-ink"
+                  }`
                 }
               >
                 {l.label}
@@ -50,13 +54,12 @@ export function Nav() {
             ))}
           </nav>
 
-          <div className="hidden items-center gap-2 lg:flex">
+          <div className="hidden items-center lg:flex">
             <a
               href={waNav}
               target="_blank"
               rel="noreferrer"
-              data-cursor="VER"
-              className="border border-terracota bg-terracota px-3.5 py-1.5 font-mono text-[0.68rem] uppercase tracking-widest text-bone transition-colors hover:bg-bone hover:text-ink hover:border-bone"
+              className="label border border-ink px-4 py-2 transition-colors hover:bg-ink hover:text-bone"
             >
               WhatsApp
             </a>
@@ -69,53 +72,50 @@ export function Nav() {
             onClick={() => setOpen((v) => !v)}
             className="relative z-[101] flex h-9 w-9 flex-col items-center justify-center gap-1.5 lg:hidden"
           >
-            <span className={`block h-px w-6 bg-bone transition-transform ${open ? "translate-y-[3.5px] rotate-45" : ""}`} />
-            <span className={`block h-px w-6 bg-bone transition-transform ${open ? "-translate-y-[3.5px] -rotate-45" : ""}`} />
+            <span className={`block h-px w-6 bg-ink transition-transform ${open ? "translate-y-[3.5px] rotate-45" : ""}`} />
+            <span className={`block h-px w-6 bg-ink transition-transform ${open ? "-translate-y-[3.5px] -rotate-45" : ""}`} />
           </button>
         </div>
       </header>
 
-      {/*
-        Rendered as a sibling of <header>, not a descendant — a header with
-        backdrop-blur establishes a new containing block for position:fixed
-        children (same rule as `filter`), which silently breaks a nested
-        fixed overlay's viewport anchoring. Full inset-0 + its own logo row
-        also means it never depends on the real header's measured height.
-      */}
       {open && (
-        <div className="fixed inset-0 z-[100] flex flex-col bg-ink text-bone lg:hidden">
-          <div className="flex items-center justify-between border-b border-white/10 px-5 py-3">
-            <NavLink to="/" data-cursor="INICIO" className="block">
-              <Wordmark className="w-[118px]" />
+        <div className="fixed inset-0 z-[100] flex flex-col bg-bone text-ink lg:hidden">
+          <div className="flex items-center justify-between border-b border-ink/10 px-5 py-4">
+            <NavLink to="/" aria-label="Inicio — Mashanta" className="block">
+              <Wordmark tone="ink" className="w-[112px]" />
             </NavLink>
             <button
               type="button"
               aria-label="Cerrar menú"
               onClick={() => setOpen(false)}
-              className="flex h-9 w-9 items-center justify-center font-display text-2xl"
+              className="flex h-9 w-9 items-center justify-center text-2xl"
             >
               ✕
             </button>
           </div>
 
-          <div className="flex flex-1 flex-col justify-between overflow-y-auto px-5 py-8">
-            <nav className="flex flex-col gap-1">
+          <div className="flex flex-1 flex-col justify-between overflow-y-auto px-5 py-10">
+            <nav className="flex flex-col">
               {links.map((l) => (
-                <NavLink key={l.to} to={l.to} className="border-b border-white/10 py-4 font-display text-3xl uppercase">
+                <NavLink
+                  key={l.to}
+                  to={l.to}
+                  className={({ isActive }) =>
+                    `border-b border-ink/10 py-5 font-display text-3xl ${isActive ? "text-ink" : "text-graphite"}`
+                  }
+                >
                   {l.label}
                 </NavLink>
               ))}
             </nav>
-            <div className="mt-8 flex flex-col gap-3">
-              <a
-                href={waNav}
-                target="_blank"
-                rel="noreferrer"
-                className="border border-terracota bg-terracota px-4 py-3 text-center font-mono text-xs uppercase tracking-widest text-bone"
-              >
-                WhatsApp
-              </a>
-            </div>
+            <a
+              href={waNav}
+              target="_blank"
+              rel="noreferrer"
+              className="label mt-10 border border-ink px-4 py-4 text-center transition-colors hover:bg-ink hover:text-bone"
+            >
+              Escribir por WhatsApp
+            </a>
           </div>
         </div>
       )}

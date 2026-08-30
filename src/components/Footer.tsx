@@ -5,46 +5,40 @@ import { Wordmark } from "./Wordmark"
 export function Footer() {
   return (
     <footer className="border-t border-ink bg-ink text-bone">
-      <div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-5 py-10 sm:px-8 md:flex-row md:items-start md:justify-between">
-        <div className="flex flex-col gap-2 font-mono text-[0.72rem] uppercase tracking-widest text-bone-shade-2">
-          <span className="text-bone">Estudio</span>
-          <span>{artistInfo.studio}</span>
-          <a href={artistInfo.mapsUrl} target="_blank" rel="noreferrer" className="hover:text-bone">
-            Ver en Maps
-          </a>
-          <a href={artistInfo.instagramUrl} target="_blank" rel="noreferrer" className="hover:text-bone">
-            {artistInfo.instagram}
-          </a>
+      <div className="mx-auto flex max-w-[1440px] flex-col gap-10 px-5 py-14 sm:px-8 md:flex-row md:items-start md:justify-between">
+        <div className="flex flex-col gap-2">
+          <span className="label text-bone-shade-2">Estudio</span>
+          <span className="font-display text-xl">{artistInfo.studio}</span>
+          <div className="mt-2 flex flex-col gap-1.5">
+            <a href={artistInfo.mapsUrl} target="_blank" rel="noreferrer" className="label text-graphite-soft transition-colors hover:text-bone">
+              Ver en Maps
+            </a>
+            <a href={artistInfo.instagramUrl} target="_blank" rel="noreferrer" className="label text-graphite-soft transition-colors hover:text-bone">
+              {artistInfo.instagram}
+            </a>
+          </div>
         </div>
 
-        <nav className="flex flex-wrap gap-x-6 gap-y-2 font-mono text-[0.72rem] uppercase tracking-widest text-bone-shade-2">
-          <Link to="/colecciones" className="hover:text-bone">
-            Colecciones
-          </Link>
-          <Link to="/pedidos" className="hover:text-bone">
-            Pedidos o comisiones
-          </Link>
-          <Link to="/mi-historia" className="hover:text-bone">
-            Mi historia
-          </Link>
-          <Link to="/otros" className="hover:text-bone">
-            Otros
-          </Link>
-          <Link to="/contacto" className="hover:text-bone">
-            Contacto
-          </Link>
+        <nav className="flex flex-col gap-2.5">
+          {[
+            { to: "/colecciones", label: "Colecciones" },
+            { to: "/pedidos", label: "Pedidos o comisiones" },
+            { to: "/mi-historia", label: "Mi historia" },
+            { to: "/otros", label: "Otros" },
+            { to: "/contacto", label: "Contacto" },
+          ].map((l) => (
+            <Link key={l.to} to={l.to} className="label text-graphite-soft transition-colors hover:text-bone">
+              {l.label}
+            </Link>
+          ))}
         </nav>
       </div>
 
-      <Link
-        to="/"
-        data-cursor="INICIO"
-        className="block w-full overflow-hidden border-t border-white/10 px-5 py-10 sm:py-14"
-      >
-        <Wordmark className="mx-auto w-[min(90%,1000px)]" />
+      <Link to="/" aria-label="Inicio — Mashanta" className="block w-full overflow-hidden border-t border-white/10 px-5 py-12 sm:py-16">
+        <Wordmark tone="paper" className="mx-auto w-[min(88%,880px)]" />
       </Link>
-      <div className="border-t border-white/10 px-5 py-3 text-center font-mono text-[0.62rem] uppercase tracking-widest text-graphite-soft sm:px-8">
-        © {new Date().getFullYear()} Mashanta — obra, comisiones y talleres
+      <div className="label border-t border-white/10 px-5 py-4 text-center text-graphite-soft sm:px-8">
+        © {new Date().getFullYear()} Mashanta · Pintura, restauración y comisiones
       </div>
     </footer>
   )

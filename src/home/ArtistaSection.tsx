@@ -5,26 +5,23 @@ import { Reveal } from "../components/Reveal"
 
 export function ArtistaSection() {
   return (
-    <section className="border-y border-white/10 bg-ink py-20 text-bone sm:py-28">
-      <div className="mx-auto grid max-w-[1440px] gap-10 px-5 sm:px-8 md:grid-cols-[1.1fr_1fr] md:gap-16">
-        <Reveal variant="rise">
-          <span className="font-mono text-[0.68rem] uppercase tracking-widest text-bone-shade-2">Mi historia</span>
-          <h2 className="mt-4 font-display text-[clamp(2.4rem,7vw,5.2rem)] uppercase leading-[0.95] text-balance">
-            {artistInfo.name},<br />el taller
-            <br />
-            como oficio
+    <section className="border-y border-ink bg-ink py-24 text-bone sm:py-32">
+      <div className="mx-auto grid max-w-[1440px] gap-12 px-5 sm:px-8 md:grid-cols-[1.1fr_1fr] md:items-center md:gap-16">
+        <Reveal>
+          <span className="label text-rosa">Mi historia</span>
+          <h2 className="mt-5 font-display text-[clamp(2.4rem,7vw,5rem)] leading-[0.98] text-balance">
+            El taller como oficio
           </h2>
-          <p className="mt-6 max-w-md text-bone-shade-2">{artistInfo.manifesto[0]}</p>
+          <p className="mt-7 max-w-md text-bone-shade-2">{artistInfo.manifesto[0]}</p>
           <Link
             to="/mi-historia"
-            data-cursor="VER"
-            className="mt-7 inline-flex items-center gap-3 border-b border-bone/60 pb-1 font-mono text-xs uppercase tracking-widest transition-colors hover:text-rosa hover:border-rosa"
+            className="label mt-9 inline-block border-b-2 border-bone pb-1 transition-colors hover:border-rosa"
           >
-            Conoce mi historia →
+            Conoce mi historia
           </Link>
         </Reveal>
 
-        <Reveal variant="wipe" delay={0.1} className="aspect-[4/5] w-full overflow-hidden border border-white/10 md:aspect-auto">
+        <Reveal className="aspect-[4/5] w-full overflow-hidden border border-white/10 md:aspect-auto md:self-stretch">
           <ArtVisual
             image={artistInfo.studioImage}
             seed="artista-estudio"
