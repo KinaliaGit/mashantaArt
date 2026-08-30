@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import { artworks, currentCollection, waLink } from "../lib/data"
 import { ArtVisual } from "../components/ArtVisual"
 import { Reveal } from "../components/Reveal"
+import { ClosingNoteReveal } from "../components/ClosingNoteReveal"
 
 const waColeccion = waLink(
   `Hola Mashanta, me interesa la colección ${currentCollection.name}. ¿Me compartes disponibilidad y precios?`,
@@ -13,22 +14,19 @@ export function Coleccion() {
   return (
     <section className="border-b border-ink/10 bg-bone py-20 sm:py-28">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8">
-        <Reveal className="mb-6 flex flex-wrap items-center gap-x-4 gap-y-2">
-          <span className="label text-ink">Colección en cierre</span>
-          <span className="label text-graphite-soft">{currentCollection.year}</span>
-        </Reveal>
+        <Reveal className="mb-14 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:items-start lg:gap-16">
+          <div>
+            <div className="mb-1 flex flex-wrap items-center gap-x-4 gap-y-2">
+              <span className="label text-ink">Colección en cierre</span>
+              <span className="label text-graphite-soft">{currentCollection.year}</span>
+            </div>
+            <h2 className="heading text-[clamp(2.6rem,7vw,5rem)] leading-[0.95]">
+              {currentCollection.name}
+            </h2>
+            <p className="mt-6 max-w-xl text-ink-soft">{currentCollection.description}</p>
+          </div>
 
-        <Reveal className="mb-12 grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:items-end lg:gap-16">
-          <h2 className="rule-magenta font-display text-[clamp(2.6rem,7vw,5rem)] leading-[0.95]">
-            {currentCollection.name}
-          </h2>
-          <p className="text-ink-soft">{currentCollection.description}</p>
-        </Reveal>
-
-        <Reveal className="mb-14 bg-rosa/30 px-6 py-7 sm:px-8 sm:py-9">
-          <p className="font-display text-[clamp(1.1rem,2.6vw,1.6rem)] italic leading-snug text-ink">
-            {currentCollection.closingNote}
-          </p>
+          <ClosingNoteReveal text={currentCollection.closingNote} className="lg:mt-2" />
         </Reveal>
 
         <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
@@ -75,7 +73,7 @@ function ArtworkCard({ art }: { art: (typeof artworks)[number] }) {
       <div className="mt-4 flex items-start gap-2.5 border-t border-ink pt-3">
         <span aria-hidden className="mt-2 h-1.5 w-1.5 shrink-0 bg-rosa" />
         <div>
-          <p className="font-display text-lg leading-tight">{art.title}</p>
+          <p className="font-display text-lg leading-tight transition-colors group-hover:text-rosa">{art.title}</p>
           <p className="label mt-1.5 text-graphite">
             {art.technique} · {art.year}
           </p>

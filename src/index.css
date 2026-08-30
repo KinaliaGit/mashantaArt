@@ -27,7 +27,11 @@
   --color-ultramar: #1a1a1a;
   --color-tierra-rosa: #f1b2dc;
 
-  --font-display: "Bodoni Moda", "Didot", "Playfair Display", Georgia, "Times New Roman", serif;
+  /* Barlow Condensed — the same register as the gallery sites Mashanta wants
+     to sit next to (Maruani Mercier's Trade Gothic Condensed, Johnson Lowe's
+     Din Next Condensed, Shantell Martin's blocky logotype): a bold, tracked,
+     condensed grotesque carrying the identity, not a soft literary serif. */
+  --font-display: "Barlow Condensed", "Oswald", "Arial Narrow", sans-serif;
   --font-body: "Hanken Grotesk", system-ui, -apple-system, sans-serif;
   --font-mono: "Hanken Grotesk", system-ui, -apple-system, sans-serif;
 
@@ -73,22 +77,24 @@
     color: var(--color-ink);
   }
 
-  /* Bodoni Moda is a high-contrast Didone — let the optical-size axis track the
-     rendered size, keep the weight light, and give large all-caps a hair of
-     tracking so the hairlines read as deliberate, not fragile. */
+  /* Base weight for font-display used as running text (the italic-free pull
+     quotes) — headline elements go through .heading instead, which adds the
+     weight, tracking and caps that make the condensed grotesque read as a
+     gallery wordmark rather than a paragraph. */
   .font-display {
-    font-weight: 400;
-    font-optical-sizing: auto;
-    letter-spacing: 0.005em;
+    font-weight: 500;
+    letter-spacing: 0;
   }
 
-  /* Utility labels: the grotesque in caps, spaced like museum wall text. */
+  /* Small running labels — nav links, meta lines like "Colección en cierre".
+     Plain mixed case now, same condensed family as headings but at normal
+     weight and almost no tracking: reads as a short line of text, not a
+     stamped tag. */
   .label {
-    font-family: var(--font-body);
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
+    font-family: var(--font-display);
+    letter-spacing: 0.005em;
     font-weight: 500;
-    font-size: 0.68rem;
+    font-size: 0.95rem;
   }
 
   a {
@@ -117,6 +123,16 @@
     font-family: var(--font-mono);
   }
 
+  /* The actual headline treatment: bold, tracked, uppercase condensed
+   * grotesque — replaces bare .font-display on every h1/h2/h3. Quote-style
+   * paragraphs keep plain .font-display (mixed case, lighter weight). */
+  .heading {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+  }
+
   /* Kept as no-ops so existing call sites stay valid — the redesign leans on
      hairline borders and flat colour, not texture or drop shadows. */
   .paper-grain {
@@ -125,15 +141,5 @@
 
   .shadow-soft {
     box-shadow: none;
-  }
-
-  /* A short magenta rule that hangs off a section title. */
-  .rule-magenta::before {
-    content: "";
-    display: block;
-    width: 2.5rem;
-    height: 3px;
-    background: var(--color-rosa);
-    margin-bottom: 1.25rem;
   }
 }

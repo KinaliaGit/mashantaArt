@@ -10,10 +10,10 @@ export function Footer() {
           <span className="label text-bone-shade-2">Estudio</span>
           <span className="font-display text-xl">{artistInfo.studio}</span>
           <div className="mt-2 flex flex-col gap-1.5">
-            <a href={artistInfo.mapsUrl} target="_blank" rel="noreferrer" className="label text-graphite-soft transition-colors hover:text-bone">
+            <a href={artistInfo.mapsUrl} target="_blank" rel="noreferrer" className="label text-graphite-soft transition-colors hover:text-rosa">
               Ver en Maps
             </a>
-            <a href={artistInfo.instagramUrl} target="_blank" rel="noreferrer" className="label text-graphite-soft transition-colors hover:text-bone">
+            <a href={artistInfo.instagramUrl} target="_blank" rel="noreferrer" className="label text-graphite-soft transition-colors hover:text-rosa">
               {artistInfo.instagram}
             </a>
           </div>
@@ -27,7 +27,7 @@ export function Footer() {
             { to: "/otros", label: "Otros" },
             { to: "/contacto", label: "Contacto" },
           ].map((l) => (
-            <Link key={l.to} to={l.to} className="label text-graphite-soft transition-colors hover:text-bone">
+            <Link key={l.to} to={l.to} className="label text-graphite-soft transition-colors hover:text-rosa">
               {l.label}
             </Link>
           ))}

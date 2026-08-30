@@ -9,7 +9,7 @@ export function ArtistaSection() {
       <div className="mx-auto grid max-w-[1440px] gap-12 px-5 sm:px-8 md:grid-cols-[1.1fr_1fr] md:items-center md:gap-16">
         <Reveal>
           <span className="label text-rosa">Mi historia</span>
-          <h2 className="mt-5 font-display text-[clamp(2.4rem,7vw,5rem)] leading-[0.98] text-balance">
+          <h2 className="mt-5 heading text-[clamp(2.4rem,7vw,5rem)] leading-[0.98] text-balance">
             El taller como oficio
           </h2>
           <p className="mt-7 max-w-md text-bone-shade-2">{artistInfo.manifesto[0]}</p>

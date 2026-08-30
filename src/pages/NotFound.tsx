@@ -3,8 +3,8 @@ import { Link } from "react-router-dom"
 export function NotFound() {
   return (
     <div className="flex min-h-[60vh] flex-col items-center justify-center px-5 text-center">
-      <span className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite">404</span>
-      <h1 className="mt-2 font-display text-[clamp(2.4rem,8vw,5rem)] uppercase leading-[0.9]">
+      <p className="label text-graphite">Error 404</p>
+      <h1 className="mt-3 heading text-[clamp(1.75rem,4vw,2.5rem)] leading-[1.1]">
         No está en la pared
       </h1>
       <p className="mt-3 max-w-sm text-ink-soft">Esta pieza no existe o se movió de lugar.</p>

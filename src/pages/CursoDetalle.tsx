@@ -20,19 +20,26 @@ export function CursoDetalle() {
 
   return (
     <div className="mx-auto grid max-w-[1440px] gap-10 px-5 py-12 sm:px-8 sm:py-16 md:grid-cols-[1fr_1.15fr] md:gap-16">
-      <Reveal variant="wipe" className="border border-ink/15 shadow-soft md:order-2">
-        <ArtVisual image={course.image} seed={course.slug} accent={course.accent} alt={course.title} className="aspect-[4/3] w-full" />
+      <Reveal variant="wipe" className="flex items-center justify-center md:order-2">
+        <ArtVisual
+          image={course.image}
+          seed={course.slug}
+          accent={course.accent}
+          alt={course.title}
+          fit="contain"
+          className="max-h-[65vh] w-full"
+        />
       </Reveal>
 
       <Reveal variant="rise" delay={0.1} className="md:order-1">
-        <Link to="/otros" className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite hover:text-ink">
+        <Link to="/otros" className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite hover:text-rosa">
           ← Otros
         </Link>
 
         <div className="mt-6 flex items-start justify-between gap-4">
           <div>
             <span className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite">{course.date} — {course.time}</span>
-            <h1 className="mt-1 font-display text-[clamp(2rem,5.6vw,3.6rem)] uppercase leading-[0.9] text-balance">{course.title}</h1>
+            <h1 className="mt-1 heading text-[clamp(1.6rem,3.6vw,2.25rem)] leading-[1.1] text-balance">{course.title}</h1>
           </div>
           <span className={`shrink-0 whitespace-nowrap border px-2.5 py-1 font-mono text-[0.62rem] uppercase tracking-widest ${av.tone}`}>
             {av.text}
@@ -85,7 +92,7 @@ export function CursoDetalle() {
         <div className="mt-8 border-t border-bone-shade-2 pt-6">
           <p className="text-sm text-ink-soft">
             ¿Dudas sobre el nivel o el material? Escríbenos por{" "}
-            <Link to="/contacto" className="underline hover:text-ink">
+            <Link to="/contacto" className="underline hover:text-rosa">
               WhatsApp o correo
             </Link>{" "}
             antes de apartar tu lugar.
