@@ -12,7 +12,7 @@ export function PedidosTeaser() {
         <Reveal className="mb-12 grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] lg:items-end lg:gap-16">
           <div>
             <span className="label text-graphite">Pedidos o comisiones</span>
-            <h2 className="rule-magenta mt-4 font-display text-[clamp(2.2rem,6vw,4.4rem)] leading-[0.95]">
+            <h2 className="mt-4 heading text-[clamp(2.2rem,6vw,4.4rem)] leading-[0.95]">
               Una obra hecha para ti
             </h2>
           </div>

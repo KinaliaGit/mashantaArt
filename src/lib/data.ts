@@ -442,6 +442,12 @@ export const artistInfo = {
     "Hoy mi estudio hace tres cosas a la vez: pinta, repara y enseña. No las separo porque no se sienten separadas — restaurar me enseña a pintar, enseñar me enseña a mirar.",
     "Trabajo con niñas, niños y adultos por igual, con la misma seriedad. El arte no es un premio de consolación para quien no sabe qué más hacer un domingo: es una técnica que se aprende, se practica y se hereda.",
   ],
+  /** De dónde sale el nombre "Mashanta" — para Mi Historia. */
+  nameOrigin: [
+    "Mashanta no es el nombre con el que firmaba antes. De niña, mi papá me decía \"María Santa\" de cariño — dicho rápido, sin pensarlo, se quedó en Mashanta.",
+    "Estudié arquitectura, y durante años firmé mis planos y mi obra con mi firma oficial. Era una firma correcta, pero cargaba todo lo técnico del oficio — la escuadra, la medida exacta — y no se sentía como mi pintura.",
+    "Cuando empecé a mostrar mi trabajo por separado, tomé el apodo de mi papá en su lugar. Era la forma de decir: esto de aquí no es el plano, es otra cosa.",
+  ],
   studio: "Estudio Mashanta",
   email: "hola@mashanta.art",
   whatsapp: "+52 55 0000 0000",
@@ -454,6 +460,10 @@ export const artistInfo = {
   address: "",
   studioImage: unsplash("1752649935691-ac99478aaa56"),
   handsImage: unsplash("1644375391877-0ae77eeed8fc"),
+  /** Materials flat-lay for the Mi Historia intro — paired with her own words instead of a face shot. */
+  materialsImage: unsplash("1471666875520-c75081f42081"),
+  /** Full-bleed shot for the homepage hero — same shoot as studioImage, wide crop. */
+  heroImage: unsplash("1752649937405-ca9efa68e4d5", 2400),
 }
 
 export const testimonials = [

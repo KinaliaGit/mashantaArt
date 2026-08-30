@@ -11,7 +11,7 @@ export function OtrosTeaser() {
         <Reveal className="flex flex-col gap-10 sm:flex-row sm:items-start sm:justify-between">
           <div className="max-w-md">
             <span className="label text-graphite">También en el estudio</span>
-            <h2 className="rule-magenta mt-4 font-display text-[clamp(2rem,5vw,3.2rem)] leading-[0.98]">Otros</h2>
+            <h2 className="mt-4 heading text-[clamp(2rem,5vw,3.2rem)] leading-[0.98]">Otros</h2>
             <p className="mt-4 text-sm text-ink-soft">
               Cursos permanentes de pintura, restauración e ilustración para todas las edades, y restauración de piezas
               familiares o de colección.

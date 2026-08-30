@@ -18,7 +18,7 @@ export function Reservar() {
   if (course.availability === "agotado") {
     return (
       <div className="mx-auto max-w-xl px-5 py-24 text-center sm:px-8">
-        <h1 className="font-display text-3xl uppercase">Este taller está agotado</h1>
+        <h1 className="heading text-3xl">Este taller está agotado</h1>
         <p className="mt-4 text-ink-soft">Escríbenos y te avisamos en cuanto se libere un lugar.</p>
         <Link to={`/otros/cursos/${course.slug}`} className="mt-6 inline-block border border-ink px-5 py-2.5 font-mono text-xs uppercase tracking-widest">
           Volver al curso
@@ -46,10 +46,10 @@ export function Reservar() {
 
   return (
     <div className="mx-auto max-w-2xl px-5 py-12 sm:px-8 sm:py-16">
-      <Link to={`/otros/cursos/${course.slug}`} className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite hover:text-ink">
+      <Link to={`/otros/cursos/${course.slug}`} className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite hover:text-rosa">
         ← {course.title}
       </Link>
-      <h1 className="mt-3 mb-8 font-display text-[clamp(2rem,5.6vw,3.2rem)] uppercase leading-[0.9]">Reservar lugar</h1>
+      <h1 className="mt-3 mb-8 heading text-[clamp(1.75rem,4vw,2.5rem)] leading-[1.1]">Reservar lugar</h1>
 
       <StepProgress steps={steps} current={step} />
 
@@ -58,7 +58,7 @@ export function Reservar() {
         {step === 0 && (
           <div className="border border-ink/15 p-5">
             <span className="font-mono text-[0.62rem] uppercase tracking-widest text-graphite">{course.date} — {course.time}</span>
-            <h2 className="mt-1 font-display text-2xl uppercase">{course.title}</h2>
+            <h2 className="mt-1 heading text-2xl">{course.title}</h2>
             <p className="mt-2 font-mono text-[0.68rem] uppercase tracking-wide text-graphite-soft">
               {course.level} — {course.location}
             </p>
@@ -105,7 +105,7 @@ export function Reservar() {
         {step === 3 && submitted && (
           <div className="border border-ink/15 p-6 text-center">
             <p className="font-mono text-[0.62rem] uppercase tracking-widest text-verde">Lugar apartado</p>
-            <h2 className="mt-2 font-display text-2xl uppercase">Te esperamos, {form.nombre.split(" ")[0] || "por aquí"}</h2>
+            <h2 className="mt-2 heading text-2xl">Te esperamos, {form.nombre.split(" ")[0] || "por aquí"}</h2>
             <p className="mt-3 text-ink-soft">
               Confirmamos tu lugar en <strong>{course.title}</strong> por WhatsApp o correo dentro de las próximas 24 horas, con los datos para completar el pago vía {form.metodo === "transferencia" ? "transferencia" : form.metodo === "estudio" ? "pago en el estudio" : "WhatsApp"}.
             </p>

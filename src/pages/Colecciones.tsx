@@ -2,6 +2,7 @@ import { useMemo, useState } from "react"
 import { Link } from "react-router-dom"
 import { artworks, currentCollection, waLink } from "../lib/data"
 import { ArtVisual } from "../components/ArtVisual"
+import { ClosingNoteReveal } from "../components/ClosingNoteReveal"
 import { NextCollectionTeaser } from "../home/NextCollectionTeaser"
 
 const series = ["Todas", ...Array.from(new Set(artworks.map((a) => a.series)))]
@@ -30,34 +31,33 @@ export function Colecciones() {
 
   return (
     <div className="paper-grain">
-      <header className="bg-ink px-5 pb-14 pt-14 text-bone sm:px-8 sm:pt-20">
-        <div className="mx-auto max-w-[1440px]">
-          <span className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite-soft">Colección actual</span>
-          <h1 className="mt-4 font-display text-[clamp(2.6rem,9vw,6rem)] uppercase leading-[0.95] text-balance">
-            {currentCollection.name}
-          </h1>
-          <p className="mt-6 max-w-md text-bone-shade-2">{currentCollection.description}</p>
-          <p className="mt-4 max-w-xl text-sm text-bone-shade-2">{currentCollection.descriptionLong}</p>
+      <div className="border-b border-ink/10 bg-bone px-5 pb-8 pt-10 sm:px-8 sm:pb-10 sm:pt-14">
+        <div className="mx-auto grid max-w-[1440px] gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:gap-16">
+          <div>
+            <h1 className="heading text-[clamp(1.75rem,4vw,2.5rem)] leading-[1.1] text-balance text-ink">
+              {currentCollection.name}
+            </h1>
+            <p className="mt-4 text-ink-soft">{currentCollection.description}</p>
+            <p className="mt-4 text-sm text-ink-soft">{currentCollection.descriptionLong}</p>
 
-          <div className="mt-7 flex max-w-lg flex-col gap-2 border border-terracota/60 bg-terracota/10 p-4">
-            <p className="font-mono text-[0.66rem] uppercase tracking-widest text-rosa">Colección en cierre — {currentCollection.year}</p>
-            <p className="text-sm text-bone">{currentCollection.closingNote}</p>
-            {currentCollection.discount && (
-              <p className="font-mono text-[0.66rem] uppercase tracking-wide text-graphite-soft">{currentCollection.discount}</p>
-            )}
+            <a
+              href={waColeccion}
+              target="_blank"
+              rel="noreferrer"
+              data-cursor="VER"
+              className="label mt-7 inline-flex items-center gap-2 border border-ink bg-ink px-5 py-3 text-bone transition-colors hover:bg-bone hover:text-ink"
+            >
+              Preguntar por la colección · WhatsApp →
+            </a>
           </div>
 
-          <a
-            href={waColeccion}
-            target="_blank"
-            rel="noreferrer"
-            data-cursor="VER"
-            className="mt-7 inline-flex items-center gap-2 border border-terracota bg-terracota px-5 py-3 font-mono text-xs uppercase tracking-widest text-bone transition-colors hover:bg-bone hover:text-ink hover:border-bone"
-          >
-            Preguntar por la colección · WhatsApp →
-          </a>
+          <ClosingNoteReveal
+            label={`Colección en cierre — ${currentCollection.year}`}
+            text={currentCollection.closingNote}
+            footer={currentCollection.discount && <p className="label mt-1 text-graphite">{currentCollection.discount}</p>}
+          />
         </div>
-      </header>
+      </div>
 
       <div className="mx-auto max-w-[1440px] px-5 py-12 sm:px-8 sm:py-16">
         <div className="mb-10 flex flex-wrap gap-2">
@@ -88,7 +88,7 @@ export function Colecciones() {
                   </span>
                 </div>
                 <div className="mt-3 flex items-start justify-between gap-3 font-mono text-[0.68rem] uppercase tracking-wide text-graphite">
-                  <span className="text-ink">{art.title}</span>
+                  <span className="text-ink transition-colors group-hover:text-rosa">{art.title}</span>
                   {art.price && <span className="shrink-0">{art.price}</span>}
                 </div>
                 <div className="font-mono text-[0.62rem] uppercase tracking-wide text-graphite-soft">

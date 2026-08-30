@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom"
 import { artworks, courses, restorationSteps, waLink } from "../lib/data"
 import { ArtVisual } from "../components/ArtVisual"
+import { PageHeader } from "../components/PageHeader"
+import { SectionTitle } from "../components/SectionTitle"
 import { Reveal } from "../components/Reveal"
 
 const availabilityLabel: Record<string, { text: string; tone: string }> = {
@@ -18,34 +20,24 @@ const waRestauracion = waLink(
 export function Otros() {
   return (
     <div>
-      <header className="bg-ink px-5 pb-14 pt-14 text-bone sm:px-8 sm:pt-20">
-        <div className="mx-auto max-w-[1440px]">
-          <span className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite-soft">Otros</span>
-          <h1 className="mt-4 font-display text-[clamp(2.6rem,9vw,6rem)] uppercase leading-[0.95] text-balance">
-            Cursos y
-            <br />
-            restauración
-          </h1>
-          <p className="mt-6 max-w-md text-bone-shade-2">
-            Además de la obra de colección y las comisiones, el estudio enseña y repara. Clases permanentes para todas las edades y restauración de piezas familiares o de colección.
-          </p>
-          <nav className="mt-6 flex flex-wrap gap-2 font-mono text-[0.66rem] uppercase tracking-widest">
-            <a href="#cursos" className="border border-bone-shade-2 px-3 py-1.5 text-bone-shade-2 hover:border-bone hover:text-bone">
-              Cursos
-            </a>
-            <a href="#restauracion" className="border border-bone-shade-2 px-3 py-1.5 text-bone-shade-2 hover:border-bone hover:text-bone">
-              Restauración
-            </a>
-          </nav>
-        </div>
-      </header>
+      <PageHeader
+        title="Cursos y restauración"
+        description="Además de la obra de colección y las comisiones, el estudio enseña y repara."
+      >
+        <nav className="mt-5 flex flex-wrap gap-4 label text-graphite">
+          <a href="#cursos" className="border-b-2 border-transparent pb-0.5 hover:border-rosa hover:text-ink">
+            Cursos
+          </a>
+          <a href="#restauracion" className="border-b-2 border-transparent pb-0.5 hover:border-rosa hover:text-ink">
+            Restauración
+          </a>
+        </nav>
+      </PageHeader>
 
       {/* Cursos */}
-      <section id="cursos" className="mx-auto max-w-[1440px] px-5 pt-12 sm:px-8 sm:pt-16">
-        <Reveal className="mb-2 flex items-baseline justify-between gap-4">
-          <h2 className="font-display text-[clamp(1.8rem,5vw,3rem)] uppercase leading-none">Cursos y talleres</h2>
-        </Reveal>
-        <p className="mb-4 max-w-md text-sm text-ink-soft">
+      <section id="cursos" className="mx-auto max-w-[1440px] px-5 pt-8 sm:px-8 sm:pt-10">
+        <SectionTitle>Cursos y talleres</SectionTitle>
+        <p className="mx-auto mt-6 mb-10 max-w-md text-center text-sm text-ink-soft">
           Clases permanentes de pintura, restauración e ilustración. Esta página es informativa — escríbenos para conocer el cupo actual de cada sesión.
         </p>
 
@@ -56,26 +48,26 @@ export function Otros() {
               <Link
                 to={`/otros/cursos/${c.slug}`}
                 data-cursor="VER"
-                className="group grid grid-cols-[auto_1fr] items-center gap-5 border-b border-bone-shade-2 py-6 sm:grid-cols-[120px_auto_1fr_auto] sm:gap-8"
+                className="group grid grid-cols-[auto_1fr] items-center gap-5 border-b border-bone-shade-2 py-6 transition-colors hover:bg-rosa/10 sm:grid-cols-[120px_auto_1fr_auto] sm:gap-8"
               >
-                <div className="row-span-2 aspect-square w-16 overflow-hidden border border-ink/15 sm:row-span-1 sm:w-[120px]">
+                <div className="row-span-2 aspect-square w-16 overflow-hidden sm:row-span-1 sm:w-[120px]">
                   <ArtVisual image={c.image} seed={c.slug} accent={c.accent} alt={c.title} className="h-full w-full" />
                 </div>
 
-                <span className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite sm:order-2">{c.date}</span>
+                <span className="label text-graphite sm:order-2">{c.date}</span>
 
                 <div className="col-span-2 sm:order-3 sm:col-span-1">
-                  <h3 className="font-display text-[clamp(1.3rem,3.4vw,2.2rem)] uppercase leading-none transition-colors group-hover:text-terracota">
+                  <h3 className="heading text-[clamp(1.3rem,3.4vw,2.2rem)] leading-none transition-colors group-hover:text-rosa">
                     {c.title}
                   </h3>
-                  <p className="mt-1 font-mono text-[0.64rem] uppercase tracking-wide text-graphite-soft">
+                  <p className="label mt-1 text-graphite-soft">
                     {c.level} — {c.location}
                   </p>
                 </div>
 
                 <div className="col-span-2 flex items-center justify-between gap-4 sm:order-4 sm:col-span-1 sm:flex-col sm:items-end sm:gap-1">
                   <span className="font-mono text-sm text-ink">{c.price}</span>
-                  <span className={`font-mono text-[0.62rem] uppercase tracking-widest ${av.tone}`}>{av.text}</span>
+                  <span className={`label ${av.tone}`}>{av.text}</span>
                 </div>
               </Link>
             </Reveal>
@@ -84,12 +76,11 @@ export function Otros() {
       </section>
 
       {/* Restauración */}
-      <section id="restauracion" className="border-t border-ink bg-bone-shade py-14 sm:py-20">
+      <section id="restauracion" className="mt-14 border-t border-ink/10 bg-bone-shade py-14 sm:mt-20 sm:py-20">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8">
-          <Reveal variant="rise" className="mb-8">
-            <span className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite">Servicio</span>
-            <h2 className="mt-2 font-display text-[clamp(1.8rem,5vw,3rem)] uppercase leading-none">Restauración</h2>
-            <p className="mt-4 max-w-xl text-ink-soft">
+          <Reveal variant="rise" className="mb-10">
+            <SectionTitle>Restauración</SectionTitle>
+            <p className="mx-auto mt-6 max-w-xl text-center text-ink-soft">
               Recuperación de retratos de familia, óleos con humedad y piezas sin firma. Cada intervención parte de un diagnóstico y es reversible. El tiempo y el presupuesto dependen del estado de la obra — se define caso por caso.
             </p>
           </Reveal>
@@ -102,7 +93,7 @@ export function Otros() {
                   className="border-b border-bone-shade-2 py-6 sm:border-r sm:px-6 sm:odd:pl-0 sm:even:border-r-0"
                 >
                   <span className="font-mono text-[0.7rem] text-graphite">{String(i + 1).padStart(2, "0")}</span>
-                  <h3 className="mt-1 font-display text-xl uppercase">{s.title}</h3>
+                  <h3 className="mt-1 heading text-xl">{s.title}</h3>
                   <p className="mt-2 max-w-sm text-sm text-ink-soft">{s.detail}</p>
                 </li>
               ))}

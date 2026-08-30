@@ -8,7 +8,7 @@ export function NextCollectionTeaser() {
       <div className="mx-auto grid max-w-[1440px] gap-10 px-5 sm:px-8 md:grid-cols-[1.1fr_1fr] md:items-center md:gap-16">
         <Reveal variant="rise">
           <span className="font-mono text-[0.68rem] uppercase tracking-widest text-bone-shade-2">Próxima colección</span>
-          <h2 className="mt-4 font-display text-[clamp(2.6rem,8vw,5.6rem)] uppercase leading-[0.95] text-balance">
+          <h2 className="mt-4 heading text-[clamp(2.6rem,8vw,5.6rem)] leading-[0.95] text-balance">
             {nextCollection.name}
           </h2>
           <p className="mt-3 font-mono text-[0.68rem] uppercase tracking-widest text-rosa">{nextCollection.expected}</p>

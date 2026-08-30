@@ -30,16 +30,23 @@ export function ObraDetalle() {
   return (
     <div>
       <div className="mx-auto grid max-w-[1440px] gap-10 px-5 py-12 sm:px-8 sm:py-16 md:grid-cols-[1.2fr_1fr] md:gap-16">
-        <Reveal variant="wipe" className="border border-ink/15 shadow-soft">
-          <ArtVisual image={art.image} seed={art.slug} accent={art.accent} alt={art.title} className="aspect-[4/5] w-full" />
+        <Reveal variant="wipe" className="flex items-center justify-center">
+          <ArtVisual
+            image={art.image}
+            seed={art.slug}
+            accent={art.accent}
+            alt={art.title}
+            fit="contain"
+            className="max-h-[75vh] w-full"
+          />
         </Reveal>
 
         <Reveal variant="rise" delay={0.1}>
-          <Link to="/colecciones" className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite hover:text-ink">
+          <Link to="/colecciones" className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite hover:text-rosa">
             ← Colección
           </Link>
           <span className="mt-6 block font-mono text-[0.68rem] uppercase tracking-widest text-graphite">{art.series}</span>
-          <h1 className="mt-2 font-display text-[clamp(2.2rem,6vw,4rem)] uppercase leading-[0.9] text-balance">{art.title}</h1>
+          <h1 className="mt-2 heading text-[clamp(1.75rem,4vw,2.5rem)] leading-[1.1] text-balance">{art.title}</h1>
 
           <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-3 border-y border-bone-shade-2 py-5 font-mono text-[0.7rem] uppercase tracking-wide">
             <div>
@@ -62,7 +69,7 @@ export function ObraDetalle() {
 
           <p className="mt-6 max-w-md text-ink-soft">{art.description}</p>
 
-          {art.price && <p className="mt-6 font-display text-3xl uppercase">{art.price}</p>}
+          {art.price && <p className="mt-6 font-display text-3xl">{art.price}</p>}
 
           {art.status === "disponible" && (
             <p className="mt-2 font-mono text-[0.66rem] uppercase tracking-wide text-terracota">
