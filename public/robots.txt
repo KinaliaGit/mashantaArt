@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mashanta-art.kinalia.com.mx/sitemap.xml

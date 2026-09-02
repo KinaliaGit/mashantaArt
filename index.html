@@ -4,17 +4,128 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Mashanta — pintura, restauración y comisiones. Estudio de una pintora y restauradora: colecciones, obra por encargo y talleres." />
+
+    <!-- ============================================================
+         SEO — frases principales por las que Mashanta debe salir en Google.
+         Dominio: https://mashanta-art.kinalia.com.mx
+         Pendiente: reemplazar og:image / twitter:image por una foto real.
+         ============================================================ -->
+    <title>Mashanta — Estudio de pintura, restauración y obra por encargo</title>
+    <meta
+      name="description"
+      content="Estudio de Mashanta, pintora y restauradora: colección Aguas Quietas, retratos y obra por encargo (comisiones), restauración de óleos y cuadros antiguos, y talleres de pintura y acuarela en Ciudad de México."
+    />
+    <meta
+      name="keywords"
+      content="Mashanta, estudio de pintura, restauración de cuadros, restauración de óleos, obra por encargo, comisiones de retratos, retrato al óleo por encargo, pintora restauradora, talleres de pintura, cursos de acuarela, ilustración infantil, colección Aguas Quietas, arte CDMX, Ciudad de México"
+    />
+    <meta name="author" content="Mashanta" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#111111" />
+    <link rel="canonical" href="https://mashanta-art.kinalia.com.mx/" />
+
+    <!-- Open Graph / redes sociales -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Mashanta" />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:title" content="Mashanta — Estudio de pintura, restauración y obra por encargo" />
+    <meta
+      property="og:description"
+      content="Pintura, restauración de óleos y cuadros antiguos, retratos y obra por encargo, y talleres de pintura y acuarela. Colección actual: Aguas Quietas."
+    />
+    <meta property="og:url" content="https://mashanta-art.kinalia.com.mx/" />
+    <meta
+      property="og:image"
+      content="https://images.unsplash.com/photo-1752649937405-ca9efa68e4d5?w=1200&q=80&auto=format&fit=crop"
+    />
+    <meta property="og:image:alt" content="Mashanta pintando en su estudio, frente al caballete" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mashanta — Estudio de pintura, restauración y obra por encargo" />
+    <meta
+      name="twitter:description"
+      content="Pintura, restauración de óleos y cuadros antiguos, retratos y obra por encargo, y talleres de pintura y acuarela en Ciudad de México."
+    />
+    <meta
+      name="twitter:image"
+      content="https://images.unsplash.com/photo-1752649937405-ca9efa68e4d5?w=1200&q=80&auto=format&fit=crop"
+    />
+
+    <!-- Datos estructurados: ayuda a Google a entender qué es el estudio -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": ["ArtGallery", "ProfessionalService"],
+            "@id": "https://mashanta-art.kinalia.com.mx/#estudio",
+            "name": "Estudio Mashanta",
+            "description": "Estudio de pintura y restauración: colecciones de obra original, retratos y obra por encargo (comisiones), restauración de óleos y cuadros antiguos, y talleres de pintura y acuarela.",
+            "url": "https://mashanta-art.kinalia.com.mx/",
+            "image": "https://images.unsplash.com/photo-1752649937405-ca9efa68e4d5?w=1200&q=80&auto=format&fit=crop",
+            "areaServed": "MX",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Ciudad de México",
+              "addressCountry": "MX"
+            },
+            "sameAs": ["https://instagram.com/mashanta.art"],
+            "founder": { "@id": "https://mashanta-art.kinalia.com.mx/#mashanta" },
+            "makesOffer": [
+              { "@type": "Offer", "name": "Obra por encargo y comisiones de retratos" },
+              { "@type": "Offer", "name": "Restauración de óleos y cuadros antiguos" },
+              { "@type": "Offer", "name": "Talleres y cursos de pintura y acuarela" }
+            ]
+          },
+          {
+            "@type": "Person",
+            "@id": "https://mashanta-art.kinalia.com.mx/#mashanta",
+            "name": "Mashanta",
+            "jobTitle": "Pintora, restauradora e ilustradora",
+            "url": "https://mashanta-art.kinalia.com.mx/mi-historia",
+            "sameAs": ["https://instagram.com/mashanta.art"]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://mashanta-art.kinalia.com.mx/#website",
+            "url": "https://mashanta-art.kinalia.com.mx/",
+            "name": "Mashanta",
+            "inLanguage": "es",
+            "publisher": { "@id": "https://mashanta-art.kinalia.com.mx/#estudio" }
+          }
+        ]
+      }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <title>Mashanta — Estudio de pintura y restauración</title>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Contenido de respaldo para buscadores y clientes sin JavaScript.
+         Repite las frases principales del sitio en texto plano. -->
+    <noscript>
+      <h1>Mashanta — Estudio de pintura, restauración y obra por encargo</h1>
+      <p>
+        Estudio de Mashanta, pintora y restauradora. Pintura y colecciones de obra
+        original, retratos y obra por encargo (comisiones), restauración de óleos y
+        cuadros antiguos, y talleres de pintura y acuarela en Ciudad de México.
+      </p>
+      <ul>
+        <li>Colecciones — colección actual: Aguas Quietas</li>
+        <li>Pedidos o comisiones — retrato al óleo por encargo, díptico, comisión familiar</li>
+        <li>Restauración de cuadros — limpieza, consolidación y reintegración cromática</li>
+        <li>Talleres y cursos — acuarela básica, restauración, ilustración infantil</li>
+        <li>Mi historia — de la restauración a la pintura</li>
+      </ul>
+      <p>Contacto por WhatsApp. Instagram: @mashanta.art</p>
+    </noscript>
   </body>
 </html>
