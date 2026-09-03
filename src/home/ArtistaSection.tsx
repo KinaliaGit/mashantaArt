@@ -10,7 +10,7 @@ export function ArtistaSection() {
         <Reveal>
           <span className="label text-rosa">Mi historia</span>
           <h2 className="mt-5 heading text-[clamp(2.4rem,7vw,5rem)] leading-[0.98] text-balance">
-            El taller como oficio
+            De pasatiempo a oficio
           </h2>
           <p className="mt-7 max-w-md text-bone-shade-2">{artistInfo.manifesto[0]}</p>
           <Link

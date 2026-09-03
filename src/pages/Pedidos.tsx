@@ -30,7 +30,7 @@ export function Pedidos() {
       <section className="mx-auto max-w-[1440px] px-5 py-14 sm:px-8 sm:py-20">
         <Reveal variant="rise" className="mb-10">
           <SectionTitle>¿Cómo funciona?</SectionTitle>
-          <p className="mx-auto mt-6 max-w-md text-center text-sm text-ink-soft">
+          <p className="mt-6 max-w-2xl text-sm text-ink-soft">
             El proceso es flexible. Estos son los pasos habituales, pero cada encargo se adapta según lo que necesites.
           </p>
         </Reveal>
@@ -92,7 +92,7 @@ export function Pedidos() {
                 </div>
                 <div className="mt-3 font-mono text-[0.68rem] uppercase tracking-wide text-ink">{c.title}</div>
                 <div className="font-mono text-[0.62rem] uppercase tracking-wide text-graphite-soft">
-                  {c.technique} — {c.year} — {c.dimensions}
+                  {c.technique} · {c.year} · {c.dimensions}
                 </div>
                 <div className="mt-1 font-mono text-[0.62rem] uppercase tracking-wide text-terracota">→ {c.destination}</div>
                 <p className="mt-2 text-sm text-ink-soft">{c.shippingNote}</p>

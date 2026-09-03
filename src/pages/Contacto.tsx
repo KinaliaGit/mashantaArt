@@ -14,7 +14,7 @@ export function Contacto() {
         <Reveal variant="rise" className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:gap-20">
           <div>
             <p className="font-display text-[clamp(1.4rem,3.4vw,2.2rem)] leading-snug text-ink text-balance">
-              La forma más rápida de llegar al estudio. Cuéntame qué buscas — obra, comisión, restauración o taller — y te respondo por ahí.
+              La forma más rápida de llegar al estudio. Cuéntame qué buscas, ya sea obra, comisión, restauración o taller, y te respondo por ese medio.
             </p>
 
             <a

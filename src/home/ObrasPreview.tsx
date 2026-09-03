@@ -1,32 +1,33 @@
 import { Link } from "react-router-dom"
-import { artworks, currentCollection, waLink } from "../lib/data"
+import { artworks, obrasIntro, waLink } from "../lib/data"
 import { ArtVisual } from "../components/ArtVisual"
 import { Reveal } from "../components/Reveal"
 import { ClosingNoteReveal } from "../components/ClosingNoteReveal"
 
-const waColeccion = waLink(
-  `Hola Mashanta, me interesa la colección ${currentCollection.name}. ¿Me compartes disponibilidad y precios?`,
+const waObras = waLink(
+  "Hola Mashanta, me interesa tu obra. ¿Me compartes qué piezas están disponibles y sus precios?",
 )
 
 const shown = artworks.slice(0, 6)
 
-export function Coleccion() {
+export function ObrasPreview() {
   return (
     <section className="border-b border-ink/10 bg-bone py-20 sm:py-28">
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8">
         <Reveal className="mb-14 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:items-start lg:gap-16">
           <div>
             <div className="mb-1 flex flex-wrap items-center gap-x-4 gap-y-2">
-              <span className="label text-ink">Colección en cierre</span>
-              <span className="label text-graphite-soft">{currentCollection.year}</span>
+              <span className="label text-ink">Obras</span>
             </div>
-            <h2 className="heading text-[clamp(2.6rem,7vw,5rem)] leading-[0.95]">
-              {currentCollection.name}
-            </h2>
-            <p className="mt-6 max-w-xl text-ink-soft">{currentCollection.description}</p>
+            <h2 className="heading text-[clamp(2.6rem,7vw,5rem)] leading-[0.95]">{obrasIntro.title}</h2>
+            <p className="mt-6 max-w-xl text-ink-soft">{obrasIntro.description}</p>
           </div>
 
-          <ClosingNoteReveal text={currentCollection.closingNote} className="lg:mt-2" />
+          <ClosingNoteReveal
+            label="Cada obra es única"
+            text={obrasIntro.uniquenessNote}
+            className="lg:mt-2"
+          />
         </Reveal>
 
         <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
@@ -39,18 +40,18 @@ export function Coleccion() {
 
         <Reveal className="mt-16 flex flex-wrap items-center gap-x-10 gap-y-4">
           <Link
-            to="/colecciones"
+            to="/obras"
             className="label border-b-2 border-ink pb-1 transition-colors hover:border-rosa"
           >
-            Ver colección completa
+            Ver todas las obras
           </Link>
           <a
-            href={waColeccion}
+            href={waObras}
             target="_blank"
             rel="noreferrer"
             className="label border-b-2 border-transparent pb-1 text-graphite transition-colors hover:border-rosa hover:text-ink"
           >
-            Preguntar por WhatsApp
+            Preguntar por disponibilidad
           </a>
         </Reveal>
       </div>
@@ -60,7 +61,7 @@ export function Coleccion() {
 
 function ArtworkCard({ art }: { art: (typeof artworks)[number] }) {
   return (
-    <Link to={`/colecciones/${art.slug}`} className="group block">
+    <Link to={`/obras/${art.slug}`} className="group block">
       <div className="aspect-[4/5] w-full overflow-hidden border border-ink/10">
         <ArtVisual
           image={art.image}

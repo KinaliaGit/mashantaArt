@@ -8,7 +8,7 @@ function unsplash(id: string, w = 1200) {
  * format, digits only (country code + number, no "+", spaces or dashes).
  * Example for MX: "5215512345678".
  */
-export const WHATSAPP_NUMBER = "5255XXXXXXXX"
+export const WHATSAPP_NUMBER = "526141415624"
 
 /** Builds a wa.me link with a pre-filled message. */
 export function waLink(message: string) {
@@ -27,47 +27,59 @@ export const accentHex: Record<ArtAccent, string> = {
   "tierra-rosa": "#F1B2DC",
 }
 
-export type Collection = {
-  slug: string
-  name: string
-  year: number
-  status: "en-liquidacion" | "activa"
-  description: string
-  descriptionLong: string
-  closingNote: string
-  discount: string
-}
-
-export const currentCollection: Collection = {
-  slug: "aguas-quietas",
-  name: "Aguas Quietas",
-  year: 2026,
-  status: "en-liquidacion",
+/**
+ * Encabezado de la sección Obras. No es una "colección" con nombre ni una
+ * serie continua — es simplemente la obra realizada hasta hoy, y lo que
+ * está disponible ahora mismo.
+ */
+export const obrasIntro = {
+  title: "Mis obras",
   description:
-    "Un año de trabajo alrededor del agua, la memoria y lo que se queda quieto cuando todo lo demás se mueve. Óleo, acuarela y restauración conviven en esta colección — la primera en reunir tres años de práctica bajo un solo nombre.",
-  descriptionLong:
-    "Aguas Quietas reúne piezas pintadas entre estaciones de lluvia, retratos recuperados y bocetos elevados a obra terminada. No hay un tema único: hay una manera de mirar. El agua aparece como color, como memoria y como el tiempo que tarda cada capa en secar antes de la siguiente. Es la primera colección del estudio que se presenta bajo un solo nombre, y también la última de este ciclo — al agotarse da paso a Tierra Nueva.",
-  closingNote:
-    "Colección en cierre. Cuando se agoten estas piezas no vuelven — dan paso a la siguiente colección del estudio.",
-  discount: "",
+    "Una parte del trabajo de estos años, piezas de distintos momentos de mi carrera, en óleo, acrílico y acuarela. Las que están aquí son las que hay ahora mismo, y cada una es única. Míralas con calma y escríbeme por la que te interese.",
+  /** Sustituye al antiguo campo "estado" (disponible / vendida) de cada obra. */
+  availabilityNote:
+    "Para saber si una pieza sigue disponible y su precio, pregúntame directamente por WhatsApp. Te lo confirmo al momento.",
+  /** Cada obra es irrepetible: cuando se va, no se vuelve a hacer. */
+  uniquenessNote:
+    "Cada obra es única. Una vez que una pieza encuentra dueño, no se vuelve a pintar ni se repite: por eso no hay dos iguales.",
+  /** Disclaimer de originalidad. */
+  originalityNote:
+    "No hago copias ni obras idénticas. Una pieza puede servir de inspiración para un encargo, pero nunca se replica igual.",
 }
 
-export type NextCollection = {
-  slug: string
-  name: string
-  expected: string
+export type NextWork = {
+  label: string
+  title: string
   teaser: string
   accent: ArtAccent
   image: string
 }
 
-export const nextCollection: NextCollection = {
-  slug: "tierra-nueva",
-  name: "Tierra Nueva",
-  expected: "Primavera 2027",
-  teaser: "Después del agua, la tierra. Una colección sobre lo que se planta y lo que tarda en crecer — en proceso en el estudio ahora mismo.",
+/**
+ * Sección genérica "Próximamente": pinturas, proyectos y actividades futuras.
+ * No adelanta información concreta, solo invita a estar atento a la página.
+ */
+export const nextWork: NextWork = {
+  label: "Próximamente",
+  title: "Se está preparando algo nuevo",
+  teaser:
+    "Siempre hay pinturas, proyectos y actividades en preparación. Todavía no hay detalles que compartir, así que mantente atento a esta página. Aquí se anuncian primero.",
   accent: "verde",
   image: unsplash("1517133741870-7b4e3de342d7"),
+}
+
+/** Una imagen del proceso: boceto, foto del taller, capa intermedia. */
+export type ProcessImage = { src: string; caption?: string }
+
+/**
+ * Material de proceso de una obra. Solo algunas piezas lo tienen — su
+ * presencia activa el reverso ("volteo") de la tarjeta. Puede traer solo
+ * texto (una nota escrita a mano, de qué se inspiró), solo imágenes
+ * (bocetos, fotos del proceso), o ambos.
+ */
+export type ArtworkProcess = {
+  note?: string
+  images?: ProcessImage[]
 }
 
 export type Artwork = {
@@ -77,11 +89,11 @@ export type Artwork = {
   year: number
   dimensions: string
   price?: string
-  status: "disponible" | "reservada" | "vendida" | "coleccion"
   accent: ArtAccent
   series: string
   description: string
   image: string
+  process?: ArtworkProcess
 }
 
 export const artworks: Artwork[] = [
@@ -92,12 +104,18 @@ export const artworks: Artwork[] = [
     year: 2026,
     dimensions: "80 × 100 cm",
     price: "$14,500 MXN",
-    status: "disponible",
     accent: "ultramar",
     series: "Momentos",
     description:
       "Capas de azul sobre azul, pintadas durante tres semanas de lluvia en el estudio. Parte de la serie Momentos.",
     image: unsplash("1568448705245-1250489bcd66"),
+    process: {
+      note: "Empezó por una foto del estanque del parque a primera hora, con la niebla todavía encima del agua. Quería que el azul no fuera un color sino una distancia. Las primeras capas fueron casi transparentes; la pintura tardó más en secar que en pintarse.",
+      images: [
+        { src: unsplash("1520856990214-7a9e59dd5ff7"), caption: "Boceto y notas de color" },
+        { src: unsplash("1520420097861-e4959843b682"), caption: "Segunda capa, todavía húmeda" },
+      ],
+    },
   },
   {
     slug: "retrato-de-mi-abuela",
@@ -105,7 +123,6 @@ export const artworks: Artwork[] = [
     technique: "Óleo sobre lino, restauración de base",
     year: 2025,
     dimensions: "50 × 60 cm",
-    status: "coleccion",
     accent: "tierra-rosa",
     series: "Restauración",
     description:
@@ -119,11 +136,13 @@ export const artworks: Artwork[] = [
     year: 2026,
     dimensions: "100 × 120 cm",
     price: "$19,800 MXN",
-    status: "disponible",
     accent: "verde",
     series: "Procesos",
     description: "El primero de una serie sobre lo que crece adentro cuando afuera hay ruido.",
     image: unsplash("1530100914167-73e7602b004c"),
+    process: {
+      note: "No hay bocetos de esta. Nació de una frase que anoté en el cuaderno una noche: \"un jardín que nadie riega pero igual crece\". La pinté sin plan, corrigiendo sobre la marcha. El pigmento seco se fue agregando encima del acrílico todavía fresco.",
+    },
   },
   {
     slug: "cuento-de-domingo",
@@ -132,7 +151,6 @@ export const artworks: Artwork[] = [
     year: 2025,
     dimensions: "40 × 40 cm",
     price: "$3,200 MXN",
-    status: "disponible",
     accent: "ocre",
     series: "Ilustración infantil",
     description: "Parte del libro ilustrado inédito que Mashanta desarrolla junto a talleres infantiles.",
@@ -140,11 +158,10 @@ export const artworks: Artwork[] = [
   },
   {
     slug: "comision-familia-rios",
-    title: "Comisión — Familia Ríos",
+    title: "Comisión para la familia Ríos",
     technique: "Óleo sobre tela por encargo",
     year: 2026,
     dimensions: "70 × 90 cm",
-    status: "vendida",
     accent: "terracota",
     series: "Comisiones",
     description: "Retrato familiar comisionado, entregado en marco hecho a mano por el estudio.",
@@ -157,7 +174,6 @@ export const artworks: Artwork[] = [
     year: 2024,
     dimensions: "30 × 42 cm",
     price: "$5,600 MXN",
-    status: "reservada",
     accent: "ultramar",
     series: "Procesos",
     description: "Boceto preparatorio elevado a pieza terminada, expuesto tal cual salió del cuaderno.",
@@ -170,19 +186,24 @@ export const artworks: Artwork[] = [
     year: 2025,
     dimensions: "35 × 50 cm",
     price: "$4,100 MXN",
-    status: "disponible",
     accent: "ocre",
     series: "Momentos",
     description: "Pintada en vivo durante una visita guiada al Museo Tamayo con el grupo de talleres.",
     image: unsplash("1629654857513-1136aef1b10f"),
+    process: {
+      images: [
+        { src: unsplash("1698340311456-77454d0abdc7"), caption: "El grupo pintando en la sala" },
+        { src: unsplash("1658301720419-d1c963f7993b"), caption: "Paleta de ese día, al aire libre" },
+        { src: unsplash("1520856990214-7a9e59dd5ff7"), caption: "Primeras manchas, sin dibujo previo" },
+      ],
+    },
   },
   {
     slug: "restauracion-oleo-1940",
-    title: "Restauración — óleo c. 1940",
+    title: "Restauración de un óleo de alrededor de 1940",
     technique: "Restauración e inpainting sobre óleo original",
     year: 2026,
     dimensions: "60 × 80 cm",
-    status: "coleccion",
     accent: "verde",
     series: "Restauración",
     description: "Ocho semanas de limpieza, consolidación y reintegración cromática para una colección privada.",
@@ -210,7 +231,7 @@ export type Commission = {
 
 export const commissions: Commission[] = [
   {
-    title: "Retrato — Familia Ríos",
+    title: "Retrato de la familia Ríos",
     year: 2026,
     technique: "Óleo sobre tela",
     dimensions: "70 × 90 cm",
@@ -220,7 +241,7 @@ export const commissions: Commission[] = [
     image: unsplash("1541512416146-3cf58d6b27cc"),
   },
   {
-    title: "Restauración — óleo c. 1940",
+    title: "Restauración de un óleo de alrededor de 1940",
     year: 2026,
     technique: "Limpieza, consolidación e inpainting reversible",
     dimensions: "60 × 80 cm",
@@ -251,7 +272,7 @@ export const commissions: Commission[] = [
   },
 ]
 
-export type ProcessStep = { title: string; detail: string }
+export type ProcessStep = { title: string; detail?: string }
 
 /** Paso a paso de una comisión — informativo, flexible según cada caso. */
 export const commissionSteps: ProcessStep[] = [
@@ -282,180 +303,125 @@ export const commissionSteps: ProcessStep[] = [
   },
 ]
 
-/** Paso a paso de una restauración. */
+/** Paso a paso de una restauración. Solo los títulos, sin detalle. */
 export const restorationSteps: ProcessStep[] = [
-  {
-    title: "Diagnóstico",
-    detail:
-      "Lectura del daño: humedad, craquelado, pérdida de capa pictórica, barnices oxidados. Se documenta con fotografía antes de tocar nada.",
-  },
-  {
-    title: "Limpieza",
-    detail: "Pruebas de sensibilidad y solventes seguros para retirar suciedad y barniz sin afectar la obra original.",
-  },
-  {
-    title: "Consolidación",
-    detail: "Se fija la capa pictórica y se estabiliza el soporte — tela, tabla o papel — donde haya riesgo de pérdida.",
-  },
-  {
-    title: "Reintegración cromática",
-    detail:
-      "Inpainting reversible solo en las zonas perdidas, respetando el trazo original. Se cierra con barniz de protección e informe de intervención.",
-  },
+  { title: "Diagnóstico" },
+  { title: "Lectura de daño" },
+  { title: "Tiempo del proceso" },
 ]
 
-export type CourseLevel = "todas las edades" | "principiante" | "intermedio" | "niñas y niños"
-export type CourseAvailability = "disponible" | "ultimos-lugares" | "agotado"
+/**
+ * Aviso sobre la restauración: es un oficio aprendido en la práctica, no un
+ * servicio con credenciales oficiales ni certificación. Se puede ver el
+ * trabajo hecho para hacerse una idea.
+ */
+export const restorationNote =
+  "Esto no es un servicio de restauración oficial. No tengo credenciales ni certificación profesional, es un oficio que aprendí en la práctica. Aquí puedes ver trabajos ya hechos para hacerte una idea, y antes de empezar siempre te explico qué se va a hacer y por qué."
 
 export type Course = {
   slug: string
   title: string
-  date: string
-  dateISO: string
-  time: string
-  level: CourseLevel
+  /** Ritmo y horario, en texto libre. */
+  schedule: string
   location: string
+  /** Precio de referencia del año anterior. Puede haber ajustes menores. */
   price: string
-  availability: CourseAvailability
-  spotsLeft?: number
+  /** Qué incluye, inscripción, etc. Opcional. */
+  priceNote?: string
   accent: ArtAccent
   summary: string
-  materials: string[]
-  syllabus: { title: string; detail: string }[]
+  materials?: string[]
+  syllabus?: { title: string; detail: string }[]
   image: string
 }
 
+/**
+ * Los talleres ofrecen solo estas tres modalidades. La restauración no es un
+ * curso, es un servicio aparte. Los precios son de referencia, del año
+ * anterior, y pueden tener ajustes menores. No se muestra cupo ni lugares
+ * disponibles: hay que preguntar por disponibilidad.
+ */
 export const courses: Course[] = [
   {
-    slug: "acuarela-basica",
-    title: "Acuarela básica",
-    date: "14 sep 2026",
-    dateISO: "2026-09-14",
-    time: "10:00 – 13:00",
-    level: "todas las edades",
-    location: "Estudio Mashanta",
-    price: "$850 MXN",
-    availability: "disponible",
+    slug: "clases-regulares",
+    title: "Clases regulares",
+    schedule: "Sesiones semanales durante todo el año. No hay fecha de inicio fija, te sumas cuando quieras.",
+    location: "Estudio Mashanta.",
+    price: "$1,000 MXN por mes.",
+    priceNote: "Incluye material. Sin inscripción.",
     accent: "ultramar",
     summary:
-      "Fundamentos de agua, pigmento y papel. Clase permanente pensada para quien nunca ha tomado un pincel — y para quien quiere volver a empezar.",
-    materials: ["Papel de algodón 300g", "Set de acuarelas", "Pinceles", "Delantal"],
+      "Clases semanales de acuarela para todas las edades, desde los fundamentos hasta tu propio proyecto. Otras técnicas se pueden coordinar, pero hay que preguntar con anticipación.",
+    materials: ["Papel de algodón", "Acuarelas", "Pinceles", "Lo pone el estudio"],
     syllabus: [
-      { title: "Control del agua", detail: "Húmedo sobre húmedo, húmedo sobre seco." },
-      { title: "Mezcla de color", detail: "Paleta reducida, gama de tres pigmentos." },
+      { title: "Control del agua", detail: "Húmedo sobre húmedo y húmedo sobre seco." },
+      { title: "Mezcla de color", detail: "Paleta reducida, con una gama de tres pigmentos." },
       { title: "Composición", detail: "Encuadre y punto focal en formato pequeño." },
     ],
     image: unsplash("1510832842230-87253f48d74f"),
   },
   {
-    slug: "restauracion-i",
-    title: "Restauración I",
-    date: "21 sep 2026",
-    dateISO: "2026-09-21",
-    time: "16:00 – 19:00",
-    level: "intermedio",
-    location: "Estudio Mashanta",
-    price: "$1,450 MXN",
-    availability: "ultimos-lugares",
-    spotsLeft: 2,
-    accent: "verde",
-    summary:
-      "Introducción práctica a limpieza, consolidación y reintegración cromática sobre piezas propias u obra de práctica del estudio.",
-    materials: ["Obra propia (opcional)", "Kit de limpieza básico incluido", "Guantes de nitrilo"],
-    syllabus: [
-      { title: "Diagnóstico", detail: "Lectura del daño: humedad, craquelado, pérdida de capa." },
-      { title: "Limpieza", detail: "Solventes seguros y pruebas de sensibilidad." },
-      { title: "Reintegración", detail: "Inpainting reversible a nivel de introducción." },
-    ],
-    image: unsplash("1613463251864-2a2bc3952817"),
-  },
-  {
-    slug: "ilustracion-infantil",
-    title: "Ilustración infantil",
-    date: "05 oct 2026",
-    dateISO: "2026-10-05",
-    time: "11:00 – 12:30",
-    level: "niñas y niños",
-    location: "Estudio Mashanta",
-    price: "$650 MXN",
-    availability: "disponible",
-    accent: "ocre",
-    summary:
-      "Taller para niñas y niños centrado en personajes propios, color plano y narrativa visual. Clase permanente, entrada libre por sesión.",
-    materials: ["Papel", "Plumones y crayones", "Cuaderno de personajes (se queda en casa)"],
-    syllabus: [
-      { title: "Mi personaje", detail: "Formas simples, expresión y color." },
-      { title: "Escenario", detail: "Fondo y contexto de la historia." },
-      { title: "Mini cómic", detail: "Tres viñetas, una idea." },
-    ],
-    image: unsplash("1609174112693-52fdcebffd89"),
-  },
-  {
-    slug: "visita-museo-tamayo",
-    title: "Visita guiada — Museo Tamayo",
-    date: "19 oct 2026",
-    dateISO: "2026-10-19",
-    time: "09:30 – 13:00",
-    level: "todas las edades",
-    location: "Museo Tamayo, CDMX",
-    price: "$500 MXN + entrada",
-    availability: "disponible",
-    accent: "terracota",
-    summary:
-      "Recorrido guiado con ejercicio de dibujo en vivo frente a la colección permanente. Punto de encuentro en la explanada principal.",
-    materials: ["Cuaderno de bocetos", "Lápiz o pluma", "Banco plegable (opcional)"],
-    syllabus: [
-      { title: "Recorrido", detail: "Lectura de obra guiada por Mashanta." },
-      { title: "Dibujo en vivo", detail: "Ejercicio de observación de 20 minutos por pieza." },
-      { title: "Puesta en común", detail: "Cierre grupal con los bocetos del día." },
-    ],
-    image: unsplash("1606819717115-9159c900370b"),
-  },
-  {
-    slug: "verano-2026",
-    title: "Campamento de verano 2026",
-    date: "13 – 24 jul 2026",
-    dateISO: "2026-07-13",
-    time: "09:00 – 13:00, lunes a viernes",
-    level: "niñas y niños",
-    location: "Estudio Mashanta",
-    price: "$3,900 MXN — dos semanas",
-    availability: "agotado",
+    slug: "curso-de-verano",
+    title: "Curso de verano",
+    schedule: "3 días por semana, lunes, miércoles y viernes, de 10:00 a 13:00.",
+    location: "Estudio Mashanta.",
+    price: "$2,600 MXN.",
     accent: "tierra-rosa",
     summary:
-      "Dos semanas de pintura, ilustración, cerámica y visita a museo. El campamento insignia del estudio — se agota cada año en junio.",
-    materials: ["Kit de materiales incluido", "Bata o ropa cómoda", "Lonchera"],
-    syllabus: [
-      { title: "Semana 1", detail: "Color, textura y técnica mixta." },
-      { title: "Semana 2", detail: "Proyecto final e ilustración narrativa." },
-      { title: "Cierre", detail: "Exposición de obra para familias." },
-    ],
+      "Un intensivo de verano centrado en pintura, color y proyecto propio, pensado para avanzar rápido en pocas semanas.",
     image: unsplash("1597274303632-880ef8660375"),
   },
+  {
+    slug: "curso-de-primavera",
+    title: "Curso de primavera",
+    schedule: "5 días por semana, de lunes a viernes, de 10:00 a 13:00.",
+    location: "Estudio Mashanta.",
+    price: "$2,600 MXN.",
+    accent: "verde",
+    summary:
+      "La versión más intensiva del taller. Mismo horario que el curso de verano, pero de lunes a viernes, para ganar más horas de práctica y terminar con obra propia.",
+    image: unsplash("1609174112693-52fdcebffd89"),
+  },
 ]
+
+/**
+ * Visitas guiadas a museos. Rotan cada mes según el museo y la exposición
+ * vigente. Es una actividad aparte de los cursos.
+ */
+export const museumVisits = {
+  title: "Visitas guiadas a museos",
+  image: unsplash("1606819717115-9159c900370b"),
+  intro:
+    "Rotan cada mes según el museo y la exposición vigente. Las actividades están pensadas para que quien asiste pueda aprender sobre las piezas expuestas.",
+  points: [
+    "Se programan en los viernes de Consejo Técnico Escolar, los días en que no hay clases en las escuelas.",
+    "El contenido de cada visita se ajusta a la exposición vigente en ese momento.",
+    "Hay que preguntar por disponibilidad para agendar, igual que en obras y cursos.",
+  ],
+}
 
 export const artistInfo = {
   name: "Mashanta",
   role: "Pintora, restauradora e ilustradora",
   manifesto: [
-    "Empecé restaurando lo que otros habían dejado por perdido — retratos de familia, óleos con humedad, piezas sin firma. Ahí aprendí que toda obra tiene una segunda oportunidad si alguien está dispuesta a mirarla de cerca.",
-    "Hoy mi estudio hace tres cosas a la vez: pinta, repara y enseña. No las separo porque no se sienten separadas — restaurar me enseña a pintar, enseñar me enseña a mirar.",
+    "Dibujar y pintar me gustaron desde siempre, mucho antes de que fueran un oficio. Estudié arquitectura y durante años trabajé con la escuadra y la medida exacta, pero todo se sentía demasiado cuadrado, quería romper ese molde y decir las cosas de otra forma. La pintura terminó siendo esa forma.",
+    "Hoy mi estudio hace tres cosas a la vez: pinta, repara y enseña. No las separo porque no se sienten separadas. Restaurar me enseña a pintar, y enseñar me enseña a mirar.",
     "Trabajo con niñas, niños y adultos por igual, con la misma seriedad. El arte no es un premio de consolación para quien no sabe qué más hacer un domingo: es una técnica que se aprende, se practica y se hereda.",
   ],
   /** De dónde sale el nombre "Mashanta" — para Mi Historia. */
   nameOrigin: [
-    "Mashanta no es el nombre con el que firmaba antes. De niña, mi papá me decía \"María Santa\" de cariño — dicho rápido, sin pensarlo, se quedó en Mashanta.",
-    "Estudié arquitectura, y durante años firmé mis planos y mi obra con mi firma oficial. Era una firma correcta, pero cargaba todo lo técnico del oficio — la escuadra, la medida exacta — y no se sentía como mi pintura.",
+    "Mashanta no es el nombre con el que firmaba antes. De niña, mi papá me decía \"Madre Santa\" de cariño. Dicho rápido, sin pensarlo, se quedó en Mashanta.",
+    "Estudié arquitectura, y durante años firmé mis planos y mi obra con mi firma oficial. Era una firma correcta, pero cargaba todo lo técnico del oficio, la escuadra y la medida exacta, y no se sentía como mi pintura.",
     "Cuando empecé a mostrar mi trabajo por separado, tomé el apodo de mi papá en su lugar. Era la forma de decir: esto de aquí no es el plano, es otra cosa.",
   ],
   studio: "Estudio Mashanta",
   email: "hola@mashanta.art",
-  whatsapp: "+52 55 0000 0000",
+  whatsapp: "+52 614 141 5624",
   instagram: "@mashanta.art",
   /** URL del perfil de Instagram — reemplázala por la real. */
   instagramUrl: "https://instagram.com/mashanta.art",
   /** Enlace a Google Maps del estudio — reemplázalo por el real. */
-  mapsUrl: "https://maps.google.com/?q=Estudio+Mashanta",
+  mapsUrl: "https://maps.app.goo.gl/XHKrekgMZSRdkDNP6",
   /** Dirección visible del estudio — opcional. */
   address: "",
   studioImage: unsplash("1752649935691-ac99478aaa56"),
@@ -475,19 +441,19 @@ export const testimonials = [
   },
   {
     name: "Diego M.",
-    role: "Alumno, Restauración I",
+    role: "Cliente de restauración",
     quote:
-      "Llevé un cuadro de mi abuela que creí perdido. Salí del taller sabiendo exactamente qué hacer con las manos.",
+      "Llevé un cuadro de mi abuela que creí perdido. Salí del estudio sabiendo exactamente qué hacer con las manos.",
   },
   {
     name: "Familia Vargas",
-    role: "Campamento de verano",
+    role: "Curso de verano",
     quote:
       "Nuestra hija entró sin saber mezclar dos colores. Salió pidiendo un caballete para su cuarto.",
   },
   {
     name: "Paola S.",
-    role: "Alumna, Acuarela básica",
+    role: "Alumna, clases regulares",
     quote: "Es la primera clase de arte donde no me sentí la peor del salón. Mashanta enseña sin apurar a nadie.",
   },
   {
@@ -500,7 +466,7 @@ export const testimonials = [
 export const studioPhotos = [
   { alt: "Paletas y pigmentos secos sobre la mesa de trabajo", accent: "ocre" as ArtAccent, image: unsplash("1658301720419-d1c963f7993b") },
   { alt: "Detalle de restauración en proceso, capa de barniz retirada", accent: "verde" as ArtAccent, image: unsplash("1520420097861-e4959843b682") },
-  { alt: "Niñas y niños pintando durante el campamento de verano", accent: "tierra-rosa" as ArtAccent, image: unsplash("1531796311868-83672cd144f3") },
+  { alt: "Niñas y niños pintando durante el curso de verano", accent: "tierra-rosa" as ArtAccent, image: unsplash("1531796311868-83672cd144f3") },
   { alt: "Pinceles secando junto a la ventana del estudio", accent: "ultramar" as ArtAccent, image: unsplash("1499892477393-f675706cbe6e") },
   { alt: "Boceto preparatorio para comisión familiar", accent: "terracota" as ArtAccent, image: unsplash("1520856990214-7a9e59dd5ff7") },
   { alt: "Grupo del taller de acuarela en sesión de domingo", accent: "ocre" as ArtAccent, image: unsplash("1698340311456-77454d0abdc7") },

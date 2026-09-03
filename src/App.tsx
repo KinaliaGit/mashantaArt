@@ -1,12 +1,11 @@
 import { Navigate, Route, Routes, useParams } from "react-router-dom"
 import { Layout } from "./components/Layout"
 import { Home } from "./pages/Home"
-import { Colecciones } from "./pages/Colecciones"
+import { Obras } from "./pages/Obras"
 import { ObraDetalle } from "./pages/ObraDetalle"
 import { Pedidos } from "./pages/Pedidos"
 import { Otros } from "./pages/Otros"
 import { CursoDetalle } from "./pages/CursoDetalle"
-import { Reservar } from "./pages/Reservar"
 import { MiHistoria } from "./pages/MiHistoria"
 import { Contacto } from "./pages/Contacto"
 import { NotFound } from "./pages/NotFound"
@@ -22,8 +21,8 @@ export default function App() {
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
 
-        <Route path="/colecciones" element={<Colecciones />} />
-        <Route path="/colecciones/:slug" element={<ObraDetalle />} />
+        <Route path="/obras" element={<Obras />} />
+        <Route path="/obras/:slug" element={<ObraDetalle />} />
 
         <Route path="/pedidos" element={<Pedidos />} />
 
@@ -31,16 +30,16 @@ export default function App() {
 
         <Route path="/otros" element={<Otros />} />
         <Route path="/otros/cursos/:slug" element={<CursoDetalle />} />
-        <Route path="/otros/cursos/:slug/reservar" element={<Reservar />} />
 
         <Route path="/contacto" element={<Contacto />} />
 
         {/* Redirects desde las rutas anteriores */}
-        <Route path="/obras" element={<Navigate to="/colecciones" replace />} />
-        <Route path="/obras/:slug" element={<RedirectWithSlug to={(s) => `/colecciones/${s}`} />} />
+        <Route path="/colecciones" element={<Navigate to="/obras" replace />} />
+        <Route path="/colecciones/:slug" element={<RedirectWithSlug to={(s) => `/obras/${s}`} />} />
         <Route path="/cursos" element={<Navigate to="/otros" replace />} />
         <Route path="/cursos/:slug" element={<RedirectWithSlug to={(s) => `/otros/cursos/${s}`} />} />
-        <Route path="/cursos/:slug/reservar" element={<RedirectWithSlug to={(s) => `/otros/cursos/${s}/reservar`} />} />
+        <Route path="/otros/cursos/:slug/reservar" element={<RedirectWithSlug to={(s) => `/otros/cursos/${s}`} />} />
+        <Route path="/cursos/:slug/reservar" element={<RedirectWithSlug to={(s) => `/otros/cursos/${s}`} />} />
         <Route path="/la-artista" element={<Navigate to="/mi-historia" replace />} />
         <Route path="/adquirir" element={<Navigate to="/pedidos" replace />} />
 

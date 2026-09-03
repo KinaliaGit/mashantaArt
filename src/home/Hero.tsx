@@ -33,10 +33,10 @@ export function Hero() {
 
       <div className="relative flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
         <Link
-          to="/colecciones"
+          to="/obras"
           className="label border-b-2 border-bone pb-1 text-bone transition-colors hover:border-rosa hover:text-rosa"
         >
-          Ver la colección
+          Ver obra disponible
         </Link>
         <Link
           to="/pedidos"

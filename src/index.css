@@ -101,6 +101,14 @@
     color: inherit;
   }
 
+  /* Todo el texto corrido del sitio va justificado. Las utilidades
+     text-left / text-center / text-right de Tailwind siguen ganando
+     por elemento cuando hace falta (van en una capa posterior). */
+  p {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
   img {
     max-width: 100%;
     display: block;

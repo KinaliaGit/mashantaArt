@@ -21,7 +21,7 @@ export function Footer() {
 
         <nav className="flex flex-col gap-2.5">
           {[
-            { to: "/colecciones", label: "Colecciones" },
+            { to: "/obras", label: "Obras" },
             { to: "/pedidos", label: "Pedidos o comisiones" },
             { to: "/mi-historia", label: "Mi historia" },
             { to: "/otros", label: "Otros" },
@@ -34,7 +34,7 @@ export function Footer() {
         </nav>
       </div>
 
-      <Link to="/" aria-label="Inicio — Mashanta" className="block w-full overflow-hidden border-t border-white/10 px-5 py-12 sm:py-16">
+      <Link to="/" aria-label="Inicio · Mashanta" className="block w-full overflow-hidden border-t border-white/10 px-5 py-12 sm:py-16">
         <Wordmark tone="paper" className="mx-auto w-[min(88%,880px)]" />
       </Link>
       <div className="label border-t border-white/10 px-5 py-4 text-center text-graphite-soft sm:px-8">

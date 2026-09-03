@@ -1,5 +1,5 @@
 import { Hero } from "../home/Hero"
-import { Coleccion } from "../home/Coleccion"
+import { ObrasPreview } from "../home/ObrasPreview"
 import { PedidosTeaser } from "../home/PedidosTeaser"
 import { ArtistaSection } from "../home/ArtistaSection"
 import { OtrosTeaser } from "../home/OtrosTeaser"
@@ -10,7 +10,7 @@ export function Home() {
   return (
     <>
       <Hero />
-      <Coleccion />
+      <ObrasPreview />
       <PedidosTeaser />
       <ArtistaSection />
       <OtrosTeaser />

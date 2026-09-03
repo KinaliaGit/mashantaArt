@@ -4,7 +4,7 @@ import { waLink } from "../lib/data"
 import { Wordmark } from "./Wordmark"
 
 const links = [
-  { to: "/colecciones", label: "Colecciones" },
+  { to: "/obras", label: "Obras" },
   { to: "/pedidos", label: "Pedidos o comisiones" },
   { to: "/mi-historia", label: "Mi historia" },
   { to: "/otros", label: "Otros" },
@@ -60,7 +60,7 @@ export function Nav() {
               the midpoint of whatever space is left over between them. */}
           <NavLink
             to="/"
-            aria-label="Inicio — Mashanta"
+            aria-label="Inicio · Mashanta"
             className={`flex w-[112px] shrink-0 transition-opacity duration-300 sm:w-[138px] ${heroVisible ? "pointer-events-none opacity-0" : "opacity-100"}`}
           >
             <Wordmark tone="ink" className="w-[112px] sm:w-[138px]" />
@@ -111,7 +111,7 @@ export function Nav() {
       {open && (
         <div className="fixed inset-0 z-[100] flex flex-col bg-bone text-ink lg:hidden">
           <div className="flex items-center justify-between border-b border-ink/10 px-5 py-4">
-            <NavLink to="/" aria-label="Inicio — Mashanta" className="block">
+            <NavLink to="/" aria-label="Inicio · Mashanta" className="block">
               <Wordmark tone="ink" className="w-[112px]" />
             </NavLink>
             <button

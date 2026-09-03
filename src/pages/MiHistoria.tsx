@@ -8,7 +8,7 @@ import firmaMashanta from "../assets/firma-mashanta.jpeg"
 const practicas = [
   {
     title: "Pintura",
-    detail: "Óleo, acrílico y acuarela — obra propia y por comisión, para colección privada.",
+    detail: "Óleo, acrílico y acuarela. Obra propia y por comisión, para colección privada.",
     image: artworks.find((a) => a.slug === "memoria-de-agua")?.image,
     accent: "ultramar" as const,
   },
@@ -17,12 +17,6 @@ const practicas = [
     detail: "Limpieza, consolidación y reintegración cromática sobre piezas familiares y de colección.",
     image: artworks.find((a) => a.slug === "restauracion-oleo-1940")?.image,
     accent: "verde" as const,
-  },
-  {
-    title: "Ilustración infantil",
-    detail: "Personajes y narrativa visual, publicados en talleres y en un libro ilustrado en curso.",
-    image: artworks.find((a) => a.slug === "cuento-de-domingo")?.image,
-    accent: "ocre" as const,
   },
   {
     title: "Enseñanza",
@@ -99,9 +93,9 @@ export function MiHistoria() {
 
       <div className="mx-auto max-w-[1440px] px-5 py-14 sm:px-8 sm:py-20">
         <Reveal variant="rise" className="mb-10">
-          <h2 className="heading text-[clamp(2rem,5.5vw,3.4rem)] leading-[0.9]">Cuatro oficios, una mesa</h2>
+          <h2 className="heading text-[clamp(2rem,5.5vw,3.4rem)] leading-[0.9]">Tres oficios, una mesa</h2>
         </Reveal>
-        <div className="grid gap-x-8 gap-y-10 border-t border-ink pt-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-y-0 lg:border-t-0 lg:pt-0">
+        <div className="grid gap-x-8 gap-y-10 border-t border-ink pt-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-y-0 lg:border-t-0 lg:pt-0">
           {practicas.map((p, i) => (
             <Reveal key={p.title} variant="rise" delay={i * 0.06}>
               <div className="aspect-[4/5] w-full overflow-hidden border border-ink/10">
@@ -114,8 +108,8 @@ export function MiHistoria() {
         </div>
 
         <Reveal variant="rise" delay={0.1} className="mt-14 flex flex-wrap gap-3">
-          <Link to="/colecciones" data-cursor="VER" className="border border-terracota bg-terracota px-5 py-2.5 font-mono text-xs uppercase tracking-widest text-bone transition-colors hover:bg-ink hover:border-ink">
-            Ver colección
+          <Link to="/obras" data-cursor="VER" className="border border-terracota bg-terracota px-5 py-2.5 font-mono text-xs uppercase tracking-widest text-bone transition-colors hover:bg-ink hover:border-ink">
+            Ver obras
           </Link>
           <Link to="/otros" data-cursor="VER" className="border border-ink px-5 py-2.5 font-mono text-xs uppercase tracking-widest transition-colors hover:bg-ink hover:text-bone">
             Otros

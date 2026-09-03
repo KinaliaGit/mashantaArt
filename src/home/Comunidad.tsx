@@ -16,9 +16,9 @@ export function Comunidad() {
         <div className="grid gap-x-12 gap-y-10 sm:grid-cols-2">
           {testimonials.map((t, i) => (
             <Reveal key={t.name} variant="rise" delay={i * 0.05} className="border-t border-ink/10 pt-6">
-              <p className="font-display text-[1.15rem] leading-snug text-ink text-balance">"{t.quote}"</p>
-              <p className="label mt-3 text-graphite">
-                — {t.name}, {t.role}
+              <p className="text-left font-display text-[1.15rem] leading-snug text-ink text-balance">"{t.quote}"</p>
+              <p className="label mt-3 text-left text-graphite">
+                {t.name}, {t.role}
               </p>
             </Reveal>
           ))}
