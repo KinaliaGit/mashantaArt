@@ -33,9 +33,9 @@ export const accentHex: Record<ArtAccent, string> = {
  * está disponible ahora mismo.
  */
 export const obrasIntro = {
-  title: "Mis obras",
+  title: "Lenguaje propio",
   description:
-    "Una parte del trabajo de estos años, piezas de distintos momentos de mi carrera, en óleo, acrílico y acuarela. Las que están aquí son las que hay ahora mismo, y cada una es única. Míralas con calma y escríbeme por la que te interese.",
+    "Lenguaje propio es aquello que permanece cuando la técnica cambia: una forma de mirar que se convierte en una forma de crear. Más que pertenecer a una misma serie, estas piezas permiten reconocer la evolución de una voz visual que se ha construido a través de años de exploración, experimentación y creación.",
   /** Sustituye al antiguo campo "estado" (disponible / vendida) de cada obra. */
   availabilityNote:
     "Para saber si una pieza sigue disponible y su precio, pregúntame directamente por WhatsApp. Te lo confirmo al momento.",
@@ -61,7 +61,7 @@ export type NextWork = {
  */
 export const nextWork: NextWork = {
   label: "Próximamente",
-  title: "Se está preparando algo nuevo",
+  title: "Manifiesto visual",
   teaser:
     "Siempre hay pinturas, proyectos y actividades en preparación. Todavía no hay detalles que compartir, así que mantente atento a esta página. Aquí se anuncian primero.",
   accent: "verde",
@@ -403,10 +403,14 @@ export const museumVisits = {
 export const artistInfo = {
   name: "Mashanta",
   role: "Pintora, restauradora e ilustradora",
-  manifesto: [
-    "Dibujar y pintar me gustaron desde siempre, mucho antes de que fueran un oficio. Estudié arquitectura y durante años trabajé con la escuadra y la medida exacta, pero todo se sentía demasiado cuadrado, quería romper ese molde y decir las cosas de otra forma. La pintura terminó siendo esa forma.",
-    "Hoy mi estudio hace tres cosas a la vez: pinta, repara y enseña. No las separo porque no se sienten separadas. Restaurar me enseña a pintar, y enseñar me enseña a mirar.",
-    "Trabajo con niñas, niños y adultos por igual, con la misma seriedad. El arte no es un premio de consolación para quien no sabe qué más hacer un domingo: es una técnica que se aprende, se practica y se hereda.",
+  bio: [
+    "Fernanda Tena (1980) artista plástica mexicana originaria del norte del país y residente desde su infancia en Chihuahua. Cuenta con más de veinte años de trayectoria dedicada a la creación, producción y difusión de las artes visuales.",
+    "Su formación inicial en arquitectura estableció las bases de una mirada profundamente vinculada con la composición, el espacio, la estructura y el diseño. Posteriormente decidió abandonar la práctica arquitectónica para dedicarse de manera plena al desarrollo de su lenguaje artístico.",
+    "Su producción comprende pintura de caballete, muralismo e ilustración, disciplinas desde las que explora la figura, la sensibilidad y la experiencia humana a través de un lenguaje visual de carácter vibrante, femenino y orgánico. Su obra se caracteriza por el uso expresivo del color, la fluidez de las formas y una constante búsqueda de equilibrio entre lo figurativo y lo simbólico.",
+    "A lo largo de su trayectoria ha participado en exposiciones y proyectos artísticos en México y en el extranjero, desarrollando una obra que se encuentra en permanente evolución y que refleja tanto su experiencia como creadora como su interés por explorar nuevas posibilidades técnicas y conceptuales.",
+    "De manera paralela a su producción artística, Fernanda Tena desarrolla una trayectoria como formadora y promotora de las artes visuales. A través de Mashanta Art Studio, espacio dedicado a la enseñanza y difusión del arte, comparte su experiencia con niños, jóvenes y adultos mediante clases, talleres y proyectos creativos.",
+    "Ambas facetas —la creación y la enseñanza— forman parte de una misma visión: entender el arte como un espacio de investigación, expresión y transformación. Mientras su práctica artística le permite desarrollar y cuestionar su propio lenguaje, su labor docente extiende esa experiencia hacia nuevas generaciones de creadores.",
+    "Actualmente, su trabajo continúa desarrollándose entre la producción de obra, proyectos de mural e ilustración, y la formación artística, consolidando una trayectoria en la que la creación y la transmisión del conocimiento dialogan de manera constante.",
   ],
   /** De dónde sale el nombre "Mashanta" — para Mi Historia. */
   nameOrigin: [
