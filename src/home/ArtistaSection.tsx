@@ -12,7 +12,7 @@ export function ArtistaSection() {
           <h2 className="mt-5 heading text-[clamp(2.4rem,7vw,5rem)] leading-[0.98] text-balance">
             De pasatiempo a oficio
           </h2>
-          <p className="mt-7 max-w-md text-bone-shade-2">{artistInfo.manifesto[0]}</p>
+          <p className="mt-7 max-w-md text-bone-shade-2">{artistInfo.bio[0]}</p>
           <Link
             to="/mi-historia"
             className="label mt-9 inline-block border-b-2 border-bone pb-1 transition-colors hover:border-rosa"

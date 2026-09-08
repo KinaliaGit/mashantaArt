@@ -46,7 +46,7 @@ export function MiHistoria() {
             </h1>
             <p className="label mt-3 text-bone-shade-2">{artistInfo.role}</p>
             <p className="mt-7 max-w-xl font-display text-[clamp(1.25rem,3vw,1.75rem)] leading-snug text-bone text-balance [text-shadow:0_1px_16px_rgba(0,0,0,0.5)]">
-              {artistInfo.manifesto[0]}
+              {artistInfo.bio[0]}
             </p>
           </div>
         </Reveal>
@@ -80,9 +80,9 @@ export function MiHistoria() {
 
       <div className="border-t border-ink bg-bone-shade py-14 sm:py-20">
         <div className="mx-auto max-w-[760px] px-5 sm:px-8">
-          <span className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite">Manifiesto</span>
+          <span className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite">Historia</span>
           <div className="mt-4 flex flex-col gap-6">
-            {artistInfo.manifesto.slice(1).map((p, i) => (
+            {artistInfo.bio.slice(1).map((p, i) => (
               <Reveal key={i} variant="rise" delay={i * 0.08}>
                 <p className="font-display text-[clamp(1.2rem,3vw,1.7rem)] leading-snug text-ink text-balance">{p}</p>
               </Reveal>
