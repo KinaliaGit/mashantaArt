@@ -1,5 +1,4 @@
-import { commissions, commissionSteps, waLink } from "../lib/data"
-import { ArtVisual } from "../components/ArtVisual"
+import { commissionSteps, waLink } from "../lib/data"
 import { PageHeader } from "../components/PageHeader"
 import { SectionTitle } from "../components/SectionTitle"
 import { Reveal } from "../components/Reveal"
@@ -71,35 +70,6 @@ export function Pedidos() {
             </Reveal>
           )}
         </ol>
-      </section>
-
-      {/* Portafolio */}
-      <section className="border-t border-bone-shade-2 bg-bone-shade py-14 sm:py-20">
-        <div className="mx-auto max-w-[1440px] px-5 sm:px-8">
-          <Reveal variant="rise" className="mb-10">
-            <span className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite">Portafolio</span>
-            <h2 className="mt-2 heading text-[clamp(1.8rem,5vw,3rem)] leading-none">Obras hechas y enviadas</h2>
-            <p className="mt-3 max-w-md text-sm text-ink-soft">
-              Algunos encargos recientes, a dónde llegaron y cómo se entregaron.
-            </p>
-          </Reveal>
-
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {commissions.map((c, i) => (
-              <Reveal key={c.title} variant="rise" delay={i * 0.05}>
-                <div className="aspect-[4/5] overflow-hidden border border-ink/15 shadow-soft">
-                  <ArtVisual image={c.image} seed={`comision-${i}`} accent={c.accent} alt={c.title} className="h-full w-full" />
-                </div>
-                <div className="mt-3 font-mono text-[0.68rem] uppercase tracking-wide text-ink">{c.title}</div>
-                <div className="font-mono text-[0.62rem] uppercase tracking-wide text-graphite-soft">
-                  {c.technique} · {c.year} · {c.dimensions}
-                </div>
-                <div className="mt-1 font-mono text-[0.62rem] uppercase tracking-wide text-terracota">→ {c.destination}</div>
-                <p className="mt-2 text-sm text-ink-soft">{c.shippingNote}</p>
-              </Reveal>
-            ))}
-          </div>
-        </div>
       </section>
 
       {/* CTA final */}
