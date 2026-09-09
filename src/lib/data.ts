@@ -1,7 +1,38 @@
-/** Stock photography (Unsplash) standing in for real studio/artwork photos until Mashanta supplies her own. */
+/** Stock photography (Unsplash) standing in for real studio/artwork photos not yet covered below. */
 function unsplash(id: string, w = 1200) {
   return `https://images.unsplash.com/photo-${id}?w=${w}&q=80&auto=format&fit=crop`
 }
+
+// Real photography — obra fotografiada en el estudio, fondo recortado.
+import obraHojasRosa from "../assets/obras/hojas-rosa.jpg"
+import obraCrisalida from "../assets/obras/crisalida.jpg"
+import obraBandada from "../assets/obras/bandada.jpg"
+import obraHojasDoradas from "../assets/obras/hojas-doradas.jpg"
+import obraTercerOjo from "../assets/obras/tercer-ojo.jpg"
+import obraNinaFresas from "../assets/obras/nina-fresas.jpg"
+import obraCardos from "../assets/obras/cardos.jpg"
+import obraFloresSilvestres from "../assets/obras/flores-silvestres.jpg"
+import obraAbeja from "../assets/obras/abeja.jpg"
+import obraMetamorfosis from "../assets/obras/metamorfosis.jpg"
+import obraRetratoSombrero from "../assets/obras/retrato-sombrero.jpg"
+import obraGuerrera from "../assets/obras/guerrera.jpg"
+import obraRosas from "../assets/obras/rosas.jpg"
+import obraSilencio from "../assets/obras/silencio.jpg"
+import obraManos from "../assets/obras/manos.jpg"
+import obraAbstractoDorado from "../assets/obras/abstracto-dorado.jpg"
+
+// Real photography — retratos y fotos del estudio.
+import fotoHeroEspaldaPaleta from "../assets/fotos/hero-espalda-paleta.jpg"
+import fotoRetratoFrontal from "../assets/fotos/retrato-frontal.jpg"
+import fotoPintandoCaballete from "../assets/fotos/pintando-en-caballete.jpg"
+import fotoTallerNinos from "../assets/fotos/taller-ninos.jpg"
+import fotoPaletaAcuarelas from "../assets/fotos/paleta-acuarelas.jpg"
+import fotoPintandoLienzoAmarillo from "../assets/fotos/pintando-lienzo-amarillo.jpg"
+import fotoRinconEstudio from "../assets/fotos/rincon-estudio.jpg"
+import fotoBocetoDigital from "../assets/fotos/boceto-digital.jpg"
+import fotoBocetoAcuarela from "../assets/fotos/boceto-acuarela.jpg"
+import fotoTallerDosPersonas from "../assets/fotos/taller-dos-personas.jpg"
+import fotoEstudioVacio from "../assets/fotos/estudio-vacio.jpg"
 
 /**
  * WhatsApp — front-only for now. Replace with the real number in international
@@ -65,7 +96,7 @@ export const nextWork: NextWork = {
   teaser:
     "Siempre hay pinturas, proyectos y actividades en preparación. Todavía no hay detalles que compartir, así que mantente atento a esta página. Aquí se anuncian primero.",
   accent: "verde",
-  image: unsplash("1517133741870-7b4e3de342d7"),
+  image: fotoEstudioVacio,
 }
 
 /** Una imagen del proceso: boceto, foto del taller, capa intermedia. */
@@ -86,128 +117,174 @@ export type Artwork = {
   slug: string
   title: string
   technique: string
-  year: number
-  dimensions: string
+  /** Ninguna de estas piezas trae fecha ni medidas confirmadas todavía —
+   * se agregan obra por obra en cuanto Mashanta las comparta. */
+  year?: number
+  dimensions?: string
   price?: string
   accent: ArtAccent
   series: string
   description: string
   image: string
   process?: ArtworkProcess
+  /** Only set on the pieces actually painted on a round canvas — the thumbnail and detail view mask to a circle instead of a rectangle. */
+  shape?: "circle"
 }
 
+/**
+ * Fotografiadas directo en el estudio, sobre la pared negra donde cuelga la
+ * obra — se recortó el fondo para dejar solo la pieza. Título y descripción
+ * son de lo que se ve en la foto; todavía no hay técnica exacta, año, medidas
+ * ni precio confirmados por Mashanta para cada una, así que esos campos se
+ * quedan fuera en vez de inventarse.
+ */
 export const artworks: Artwork[] = [
   {
-    slug: "memoria-de-agua",
-    title: "Memoria de agua",
-    technique: "Óleo sobre tela",
-    year: 2026,
-    dimensions: "80 × 100 cm",
-    price: "$14,500 MXN",
-    accent: "ultramar",
-    series: "Momentos",
-    description:
-      "Capas de azul sobre azul, pintadas durante tres semanas de lluvia en el estudio. Parte de la serie Momentos.",
-    image: unsplash("1568448705245-1250489bcd66"),
-    process: {
-      note: "Empezó por una foto del estanque del parque a primera hora, con la niebla todavía encima del agua. Quería que el azul no fuera un color sino una distancia. Las primeras capas fueron casi transparentes; la pintura tardó más en secar que en pintarse.",
-      images: [
-        { src: unsplash("1520856990214-7a9e59dd5ff7"), caption: "Boceto y notas de color" },
-        { src: unsplash("1520420097861-e4959843b682"), caption: "Segunda capa, todavía húmeda" },
-      ],
-    },
-  },
-  {
-    slug: "retrato-de-mi-abuela",
-    title: "Retrato de mi abuela",
-    technique: "Óleo sobre lino, restauración de base",
-    year: 2025,
-    dimensions: "50 × 60 cm",
+    slug: "hojas-rosa",
+    title: "Hojas rosa",
+    technique: "Técnica mixta sobre tela",
     accent: "tierra-rosa",
-    series: "Restauración",
-    description:
-      "Pieza familiar recuperada tras años de humedad, con la paleta original reconstruida hilo por hilo.",
-    image: unsplash("1562785072-c65ab858fcbc"),
+    series: "Naturaleza",
+    description: "Un tallo de hojas en tonos rosa y salmón sobre fondo malva, con la firma del estudio en la esquina.",
+    image: obraHojasRosa,
   },
   {
-    slug: "jardin-interior-i",
-    title: "Jardín interior I",
-    technique: "Acrílico y pigmento seco sobre tela",
-    year: 2026,
-    dimensions: "100 × 120 cm",
-    price: "$19,800 MXN",
-    accent: "verde",
-    series: "Procesos",
-    description: "El primero de una serie sobre lo que crece adentro cuando afuera hay ruido.",
-    image: unsplash("1530100914167-73e7602b004c"),
-    process: {
-      note: "No hay bocetos de esta. Nació de una frase que anoté en el cuaderno una noche: \"un jardín que nadie riega pero igual crece\". La pinté sin plan, corrigiendo sobre la marcha. El pigmento seco se fue agregando encima del acrílico todavía fresco.",
-    },
-  },
-  {
-    slug: "cuento-de-domingo",
-    title: "Cuento de domingo",
-    technique: "Ilustración digital, edición limitada",
-    year: 2025,
-    dimensions: "40 × 40 cm",
-    price: "$3,200 MXN",
+    slug: "cardos",
+    title: "Cardos",
+    technique: "Técnica mixta sobre tela",
     accent: "ocre",
-    series: "Ilustración infantil",
-    description: "Parte del libro ilustrado inédito que Mashanta desarrolla junto a talleres infantiles.",
-    image: unsplash("1630609083938-3acb39a06392"),
+    series: "Naturaleza",
+    description: "Un grupo de cardos en flor sobre un fondo verde pálido, en tonos tierra y ocre.",
+    image: obraCardos,
   },
   {
-    slug: "comision-familia-rios",
-    title: "Comisión para la familia Ríos",
-    technique: "Óleo sobre tela por encargo",
-    year: 2026,
-    dimensions: "70 × 90 cm",
-    accent: "terracota",
-    series: "Comisiones",
-    description: "Retrato familiar comisionado, entregado en marco hecho a mano por el estudio.",
-    image: unsplash("1541512416146-3cf58d6b27cc"),
+    slug: "flores-silvestres",
+    title: "Flores silvestres",
+    technique: "Técnica mixta sobre tela",
+    accent: "tierra-rosa",
+    series: "Naturaleza",
+    description: "Pieza de formato circular con un ramo de flores silvestres en rosas y morados.",
+    image: obraFloresSilvestres,
+    shape: "circle",
   },
   {
-    slug: "estudio-de-manos",
-    title: "Estudio de manos",
-    technique: "Grafito y óleo sobre papel prensado",
-    year: 2024,
-    dimensions: "30 × 42 cm",
-    price: "$5,600 MXN",
+    slug: "rosas",
+    title: "Rosas",
+    technique: "Técnica mixta sobre tela",
+    accent: "tierra-rosa",
+    series: "Naturaleza",
+    description: "Un par de rosas abiertas en tonos rosa y malva, con líneas de contorno marcadas.",
+    image: obraRosas,
+  },
+  {
+    slug: "hojas-doradas",
+    title: "Hojas doradas",
+    technique: "Técnica mixta sobre tela",
+    accent: "ocre",
+    series: "Naturaleza",
+    description: "Follaje ilustrado a detalle sobre un fondo dorado, firmado por el estudio.",
+    image: obraHojasDoradas,
+  },
+  {
+    slug: "abstracto-dorado",
+    title: "Abstracto dorado",
+    technique: "Técnica mixta sobre tela",
+    accent: "ocre",
+    series: "Naturaleza",
+    description: "Formas vegetales resueltas en un remolino de dorado y color, entre lo figurativo y lo abstracto.",
+    image: obraAbstractoDorado,
+  },
+  {
+    slug: "tercer-ojo",
+    title: "Tercer ojo",
+    technique: "Técnica mixta sobre tela",
+    accent: "tierra-rosa",
+    series: "Retratos",
+    description: "Un rostro en oración, rodeado de una corona de ojos, en una paleta suave de rosas y verdes.",
+    image: obraTercerOjo,
+  },
+  {
+    slug: "nina-de-las-fresas",
+    title: "Niña de las fresas",
+    technique: "Técnica mixta sobre tela",
+    accent: "tierra-rosa",
+    series: "Retratos",
+    description: "Una niña en vestido bordado, rodeada de fresas y flores, en un estilo cercano al arte popular.",
+    image: obraNinaFresas,
+  },
+  {
+    slug: "retrato-con-sombrero",
+    title: "Retrato con sombrero",
+    technique: "Técnica mixta sobre papel",
+    accent: "ocre",
+    series: "Retratos",
+    description: "Retrato de medio cuerpo bajo un sombrero de ala ancha, en tonos cálidos y terrosos.",
+    image: obraRetratoSombrero,
+  },
+  {
+    slug: "guerrera",
+    title: "Guerrera",
+    technique: "Técnica mixta sobre tela",
     accent: "ultramar",
-    series: "Procesos",
-    description: "Boceto preparatorio elevado a pieza terminada, expuesto tal cual salió del cuaderno.",
-    image: unsplash("1683223585212-6e3cf4cf9473"),
+    series: "Retratos",
+    description: "Perfil de una figura con casco y armadura ornamentados, en azules y dorados sobre fondo oscuro.",
+    image: obraGuerrera,
   },
   {
-    slug: "domingo-en-tamayo",
-    title: "Domingo en Tamayo",
-    technique: "Acuarela sobre papel de algodón",
-    year: 2025,
-    dimensions: "35 × 50 cm",
-    price: "$4,100 MXN",
-    accent: "ocre",
-    series: "Momentos",
-    description: "Pintada en vivo durante una visita guiada al Museo Tamayo con el grupo de talleres.",
-    image: unsplash("1629654857513-1136aef1b10f"),
-    process: {
-      images: [
-        { src: unsplash("1698340311456-77454d0abdc7"), caption: "El grupo pintando en la sala" },
-        { src: unsplash("1658301720419-d1c963f7993b"), caption: "Paleta de ese día, al aire libre" },
-        { src: unsplash("1520856990214-7a9e59dd5ff7"), caption: "Primeras manchas, sin dibujo previo" },
-      ],
-    },
-  },
-  {
-    slug: "restauracion-oleo-1940",
-    title: "Restauración de un óleo de alrededor de 1940",
-    technique: "Restauración e inpainting sobre óleo original",
-    year: 2026,
-    dimensions: "60 × 80 cm",
+    slug: "silencio",
+    title: "Silencio",
+    technique: "Acuarela sobre papel",
     accent: "verde",
-    series: "Restauración",
-    description: "Ocho semanas de limpieza, consolidación y reintegración cromática para una colección privada.",
-    image: unsplash("1579009721337-cec3c69778e4"),
+    series: "Retratos",
+    description: "Retrato de una niña con los ojos cerrados, resuelto en acuarela con salpicaduras de color alrededor.",
+    image: obraSilencio,
+  },
+  {
+    slug: "manos",
+    title: "Manos",
+    technique: "Técnica mixta sobre tela",
+    accent: "ocre",
+    series: "Retratos",
+    description: "Un par de manos entrelazadas sobre un fondo circular en tonos oscuros y dorados.",
+    image: obraManos,
+    shape: "circle",
+  },
+  {
+    slug: "crisalida",
+    title: "Crisálida",
+    technique: "Técnica mixta sobre papel",
+    accent: "ultramar",
+    series: "Criaturas",
+    description: "Una crisálida colgada de una rama, en tonos azules y cálidos sobre fondo claro.",
+    image: obraCrisalida,
+  },
+  {
+    slug: "bandada",
+    title: "Bandada",
+    technique: "Técnica mixta sobre tela",
+    accent: "terracota",
+    series: "Criaturas",
+    description: "Formato circular con un grupo de aves en vuelo sobre un fondo rojo punteado.",
+    image: obraBandada,
+    shape: "circle",
+  },
+  {
+    slug: "abeja",
+    title: "Abeja",
+    technique: "Técnica mixta sobre papel",
+    accent: "ocre",
+    series: "Criaturas",
+    description: "Una abeja en primer plano sobre un fondo geométrico en blanco y negro.",
+    image: obraAbeja,
+  },
+  {
+    slug: "metamorfosis",
+    title: "Metamorfosis",
+    technique: "Técnica mixta sobre papel",
+    accent: "verde",
+    series: "Criaturas",
+    description: "Una criatura fantástica entre insecto y figura humana, con rayos de fondo, en marco blanco.",
+    image: obraMetamorfosis,
   },
 ]
 
@@ -358,7 +435,7 @@ export const courses: Course[] = [
       { title: "Mezcla de color", detail: "Paleta reducida, con una gama de tres pigmentos." },
       { title: "Composición", detail: "Encuadre y punto focal en formato pequeño." },
     ],
-    image: unsplash("1510832842230-87253f48d74f"),
+    image: fotoTallerNinos,
   },
   {
     slug: "curso-de-verano",
@@ -369,7 +446,7 @@ export const courses: Course[] = [
     accent: "tierra-rosa",
     summary:
       "Un intensivo de verano centrado en pintura, color y proyecto propio, pensado para avanzar rápido en pocas semanas.",
-    image: unsplash("1597274303632-880ef8660375"),
+    image: fotoTallerDosPersonas,
   },
   {
     slug: "curso-de-primavera",
@@ -380,7 +457,7 @@ export const courses: Course[] = [
     accent: "verde",
     summary:
       "La versión más intensiva del taller. Mismo horario que el curso de verano, pero de lunes a viernes, para ganar más horas de práctica y terminar con obra propia.",
-    image: unsplash("1609174112693-52fdcebffd89"),
+    image: fotoPintandoLienzoAmarillo,
   },
 ]
 
@@ -428,12 +505,12 @@ export const artistInfo = {
   mapsUrl: "https://maps.app.goo.gl/XHKrekgMZSRdkDNP6",
   /** Dirección visible del estudio — opcional. */
   address: "",
-  studioImage: unsplash("1752649935691-ac99478aaa56"),
-  handsImage: unsplash("1644375391877-0ae77eeed8fc"),
-  /** Materials flat-lay for the Mi Historia intro — paired with her own words instead of a face shot. */
-  materialsImage: unsplash("1471666875520-c75081f42081"),
-  /** Full-bleed shot for the homepage hero — same shoot as studioImage, wide crop. */
-  heroImage: unsplash("1752649937405-ca9efa68e4d5", 2400),
+  /** Pintando frente al lienzo — usada en el teaser de Home y en la franja panorámica de Mi Historia. */
+  studioImage: fotoPintandoCaballete,
+  /** Retrato frontal — la foto de apertura de Mi Historia. */
+  handsImage: fotoRetratoFrontal,
+  /** De espaldas con la paleta — la foto de fondo del Hero de Home. */
+  heroImage: fotoHeroEspaldaPaleta,
 }
 
 export const testimonials = [
@@ -468,10 +545,10 @@ export const testimonials = [
 ]
 
 export const studioPhotos = [
-  { alt: "Paletas y pigmentos secos sobre la mesa de trabajo", accent: "ocre" as ArtAccent, image: unsplash("1658301720419-d1c963f7993b") },
-  { alt: "Detalle de restauración en proceso, capa de barniz retirada", accent: "verde" as ArtAccent, image: unsplash("1520420097861-e4959843b682") },
-  { alt: "Niñas y niños pintando durante el curso de verano", accent: "tierra-rosa" as ArtAccent, image: unsplash("1531796311868-83672cd144f3") },
-  { alt: "Pinceles secando junto a la ventana del estudio", accent: "ultramar" as ArtAccent, image: unsplash("1499892477393-f675706cbe6e") },
-  { alt: "Boceto preparatorio para comisión familiar", accent: "terracota" as ArtAccent, image: unsplash("1520856990214-7a9e59dd5ff7") },
-  { alt: "Grupo del taller de acuarela en sesión de domingo", accent: "ocre" as ArtAccent, image: unsplash("1698340311456-77454d0abdc7") },
+  { alt: "Paleta de acuarelas y pinceles sobre la mesa de trabajo", accent: "ocre" as ArtAccent, image: fotoPaletaAcuarelas },
+  { alt: "Boceto en proceso, acuarela sobre papel", accent: "verde" as ArtAccent, image: fotoBocetoAcuarela },
+  { alt: "Niñas y niños en el taller de acuarela", accent: "tierra-rosa" as ArtAccent, image: fotoTallerNinos },
+  { alt: "Rincón del estudio con material de trabajo", accent: "ultramar" as ArtAccent, image: fotoRinconEstudio },
+  { alt: "Boceto digital de una ilustración floral", accent: "terracota" as ArtAccent, image: fotoBocetoDigital },
+  { alt: "Mashanta pintando sobre un lienzo en el caballete", accent: "ocre" as ArtAccent, image: fotoPintandoLienzoAmarillo },
 ]

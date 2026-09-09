@@ -60,9 +60,10 @@ export function ObrasPreview() {
 }
 
 function ArtworkCard({ art }: { art: (typeof artworks)[number] }) {
+  const circle = art.shape === "circle"
   return (
     <Link to={`/obras/${art.slug}`} className="group block">
-      <div className="aspect-[4/5] w-full overflow-hidden border border-ink/10">
+      <div className={`w-full overflow-hidden ${circle ? "aspect-square rounded-full" : "border border-ink/10"}`}>
         <ArtVisual
           image={art.image}
           seed={art.slug}
@@ -76,7 +77,8 @@ function ArtworkCard({ art }: { art: (typeof artworks)[number] }) {
         <div>
           <p className="font-display text-lg leading-tight transition-colors group-hover:text-rosa">{art.title}</p>
           <p className="label mt-1.5 text-graphite">
-            {art.technique} · {art.year}
+            {art.technique}
+            {art.year ? ` · ${art.year}` : ""}
           </p>
         </div>
       </div>

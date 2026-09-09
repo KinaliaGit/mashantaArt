@@ -89,10 +89,15 @@ export function Obras() {
 }
 
 function ArtworkCard({ art }: { art: (typeof artworks)[number] }) {
+  const circle = art.shape === "circle"
   return (
     <div className="mb-8 break-inside-avoid">
       <Link to={`/obras/${art.slug}`} data-cursor="VER" className="group block">
-        <div className="relative overflow-hidden border border-ink/15 shadow-soft transition-transform duration-300 group-hover:-translate-y-1.5">
+        <div
+          className={`relative overflow-hidden transition-transform duration-300 group-hover:-translate-y-1.5 ${
+            circle ? "aspect-square rounded-full" : "border border-ink/15 shadow-soft"
+          }`}
+        >
           <ArtVisual image={art.image} seed={art.slug} accent={art.accent} alt={art.title} className="h-full w-full" />
         </div>
         <div className="mt-3 flex items-start justify-between gap-3 font-mono text-[0.68rem] uppercase tracking-wide text-graphite">
@@ -100,7 +105,7 @@ function ArtworkCard({ art }: { art: (typeof artworks)[number] }) {
           {art.price && <span className="shrink-0">{art.price}</span>}
         </div>
         <div className="font-mono text-[0.62rem] uppercase tracking-wide text-graphite-soft">
-          {art.technique} · {art.year} · {art.dimensions}
+          {[art.technique, art.year, art.dimensions].filter(Boolean).join(" · ")}
         </div>
       </Link>
     </div>

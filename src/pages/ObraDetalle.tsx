@@ -19,13 +19,12 @@ export function ObraDetalle() {
 
   const related = artworks.filter((a) => a.series === art.series && a.slug !== art.slug).slice(0, 3)
 
+  const artDetails = [art.technique, art.dimensions, art.price].filter(Boolean).join(", ")
   const waObra = waLink(
-    `Hola Mashanta, me interesa "${art.title}" (${art.technique}, ${art.dimensions}${
-      art.price ? `, ${art.price}` : ""
-    }). ¿Sigue disponible?`,
+    `Hola Mashanta, me interesa "${art.title}"${artDetails ? ` (${artDetails})` : ""}. ¿Sigue disponible?`,
   )
   const waSimilar = waLink(
-    `Hola Mashanta, me gustaría un encargo similar o inspirado en "${art.title}" (${art.technique}, ${art.dimensions}).`,
+    `Hola Mashanta, me gustaría un encargo similar o inspirado en "${art.title}"${artDetails ? ` (${artDetails})` : ""}.`,
   )
 
   return (
@@ -44,14 +43,20 @@ export function ObraDetalle() {
                 className={`flex items-center justify-center [backface-visibility:hidden] ${flipped ? "pointer-events-none" : ""}`}
                 style={{ transition: "opacity 0s 325ms", opacity: flipped ? 0 : 1 }}
               >
-                <ArtVisual
-                  image={art.image}
-                  seed={art.slug}
-                  accent={art.accent}
-                  alt={art.title}
-                  fit="contain"
-                  className="max-h-[75vh] w-full"
-                />
+                {art.shape === "circle" ? (
+                  <div className="h-[min(85vw,75vh)] w-[min(85vw,75vh)] overflow-hidden rounded-full">
+                    <ArtVisual image={art.image} seed={art.slug} accent={art.accent} alt={art.title} className="h-full w-full" />
+                  </div>
+                ) : (
+                  <ArtVisual
+                    image={art.image}
+                    seed={art.slug}
+                    accent={art.accent}
+                    alt={art.title}
+                    fit="contain"
+                    className="max-h-[75vh] w-full"
+                  />
+                )}
               </div>
 
               {art.process && (
@@ -118,14 +123,18 @@ export function ObraDetalle() {
               <dt className="text-graphite">Técnica</dt>
               <dd className="mt-0.5 text-ink">{art.technique}</dd>
             </div>
-            <div>
-              <dt className="text-graphite">Año</dt>
-              <dd className="mt-0.5 text-ink">{art.year}</dd>
-            </div>
-            <div>
-              <dt className="text-graphite">Dimensiones</dt>
-              <dd className="mt-0.5 text-ink">{art.dimensions}</dd>
-            </div>
+            {art.year && (
+              <div>
+                <dt className="text-graphite">Año</dt>
+                <dd className="mt-0.5 text-ink">{art.year}</dd>
+              </div>
+            )}
+            {art.dimensions && (
+              <div>
+                <dt className="text-graphite">Dimensiones</dt>
+                <dd className="mt-0.5 text-ink">{art.dimensions}</dd>
+              </div>
+            )}
             <div>
               <dt className="text-graphite">Disponibilidad</dt>
               <dd className="mt-0.5 text-ink">Pregunta por WhatsApp</dd>
@@ -168,7 +177,11 @@ export function ObraDetalle() {
             <div className="mt-6 grid gap-8 sm:grid-cols-3">
               {related.map((r) => (
                 <Link key={r.slug} to={`/obras/${r.slug}`} data-cursor="VER" className="group block">
-                  <div className="aspect-[4/5] overflow-hidden border border-ink/15 transition-transform group-hover:-translate-y-1">
+                  <div
+                    className={`overflow-hidden transition-transform group-hover:-translate-y-1 ${
+                      r.shape === "circle" ? "aspect-square rounded-full" : "border border-ink/15"
+                    }`}
+                  >
                     <ArtVisual image={r.image} seed={r.slug} accent={r.accent} alt={r.title} className="h-full w-full" />
                   </div>
                   <div className="mt-2 font-mono text-[0.62rem] uppercase tracking-wide text-graphite">{r.title}</div>

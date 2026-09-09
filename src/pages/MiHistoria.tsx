@@ -9,13 +9,13 @@ const practicas = [
   {
     title: "Pintura",
     detail: "Óleo, acrílico y acuarela. Obra propia y por comisión, para colección privada.",
-    image: artworks.find((a) => a.slug === "memoria-de-agua")?.image,
+    image: artworks.find((a) => a.slug === "rosas")?.image,
     accent: "ultramar" as const,
   },
   {
     title: "Restauración",
     detail: "Limpieza, consolidación y reintegración cromática sobre piezas familiares y de colección.",
-    image: artworks.find((a) => a.slug === "restauracion-oleo-1940")?.image,
+    image: studioPhotos.find((p) => p.alt.includes("Rincón del estudio"))?.image,
     accent: "verde" as const,
   },
   {
@@ -58,9 +58,9 @@ export function MiHistoria() {
             <div className="w-full max-w-sm -rotate-1 overflow-hidden border border-ink/10 bg-bone shadow-[0_25px_50px_-20px_rgba(0,0,0,0.25)]">
               <img
                 src={firmaMashanta}
-                alt="Mano firmando &quot;Mashanta&quot; sobre una hoja, rodeada de pinceles, acuarelas y bocetos del estudio"
+                alt="Mano escribiendo &quot;mashanta&quot; con marcadores de distintos colores en un cuaderno de bocetos"
                 className="aspect-[5/4] w-full object-cover"
-                style={{ objectPosition: "44% 48%" }}
+                style={{ objectPosition: "50% 45%" }}
               />
             </div>
           </Reveal>

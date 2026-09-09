@@ -1,11 +1,9 @@
 import { Link } from "react-router-dom"
-import { artworks, courses, museumVisits, restorationNote, restorationSteps, waLink } from "../lib/data"
+import { courses, museumVisits, restorationNote, restorationSteps, waLink } from "../lib/data"
 import { ArtVisual } from "../components/ArtVisual"
 import { PageHeader } from "../components/PageHeader"
 import { SectionTitle } from "../components/SectionTitle"
 import { Reveal } from "../components/Reveal"
-
-const restauraciones = artworks.filter((a) => a.series === "Restauración")
 
 const waRestauracion = waLink(
   "Hola Mashanta, tengo una obra que me gustaría restaurar. ¿Te comparto fotos por este medio?",
@@ -138,25 +136,6 @@ export function Otros() {
             <p className="label text-ink">Nota sobre este servicio</p>
             <p className="mt-1.5 max-w-2xl text-sm text-ink-soft">{restorationNote}</p>
           </Reveal>
-
-          {restauraciones.length > 0 && (
-            <Reveal variant="rise" delay={0.1} className="mt-12">
-              <span className="font-mono text-[0.68rem] uppercase tracking-widest text-graphite">Trabajos recientes</span>
-              <div className="mt-4 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                {restauraciones.map((r) => (
-                  <div key={r.slug}>
-                    <div className="aspect-[4/5] overflow-hidden border border-ink/15">
-                      <ArtVisual image={r.image} seed={r.slug} accent={r.accent} alt={r.title} className="h-full w-full" />
-                    </div>
-                    <div className="mt-2 font-mono text-[0.66rem] uppercase tracking-wide text-ink">{r.title}</div>
-                    <div className="font-mono text-[0.62rem] uppercase tracking-wide text-graphite-soft">
-                      {r.technique} · {r.year} · {r.dimensions}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
-          )}
 
           <Reveal variant="rise" delay={0.14} className="mt-10">
             <a
