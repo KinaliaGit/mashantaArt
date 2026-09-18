@@ -3,7 +3,7 @@ import { artistInfo, artworks, studioPhotos } from "../lib/data"
 import { ArtVisual } from "../components/ArtVisual"
 import { Reveal } from "../components/Reveal"
 import { Comunidad } from "../home/Comunidad"
-import firmaMashanta from "../assets/firma-mashanta.jpeg"
+import firmaMashanta from "../assets/firma-mashanta.webp"
 
 const practicas = [
   {

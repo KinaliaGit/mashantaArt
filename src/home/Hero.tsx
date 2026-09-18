@@ -19,6 +19,8 @@ export function Hero() {
         src={artistInfo.heroImage}
         alt="Mashanta pintando en su estudio, frente al caballete"
         className="absolute inset-0 h-full w-full object-cover"
+        loading="eager"
+        fetchPriority="high"
       />
       <div aria-hidden className="absolute inset-0 bg-ink/35" />
 

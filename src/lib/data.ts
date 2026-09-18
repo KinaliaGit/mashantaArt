@@ -4,35 +4,55 @@ function unsplash(id: string, w = 1200) {
 }
 
 // Real photography — obra fotografiada en el estudio, fondo recortado.
-import obraHojasRosa from "../assets/obras/hojas-rosa.jpg"
-import obraCrisalida from "../assets/obras/crisalida.jpg"
-import obraBandada from "../assets/obras/bandada.jpg"
-import obraHojasDoradas from "../assets/obras/hojas-doradas.jpg"
-import obraTercerOjo from "../assets/obras/tercer-ojo.jpg"
-import obraNinaFresas from "../assets/obras/nina-fresas.jpg"
-import obraCardos from "../assets/obras/cardos.jpg"
-import obraFloresSilvestres from "../assets/obras/flores-silvestres.jpg"
-import obraAbeja from "../assets/obras/abeja.jpg"
-import obraMetamorfosis from "../assets/obras/metamorfosis.jpg"
-import obraRetratoSombrero from "../assets/obras/retrato-sombrero.jpg"
-import obraGuerrera from "../assets/obras/guerrera.jpg"
-import obraRosas from "../assets/obras/rosas.jpg"
-import obraSilencio from "../assets/obras/silencio.jpg"
-import obraManos from "../assets/obras/manos.jpg"
-import obraAbstractoDorado from "../assets/obras/abstracto-dorado.jpg"
+import obraHojasRosa from "../assets/obras/hojas-rosa.webp"
+import obraCrisalida from "../assets/obras/crisalida.webp"
+import obraBandada from "../assets/obras/bandada.webp"
+import obraHojasDoradas from "../assets/obras/hojas-doradas.webp"
+import obraTercerOjo from "../assets/obras/tercer-ojo.webp"
+import obraNinaFresas from "../assets/obras/nina-fresas.webp"
+import obraCardos from "../assets/obras/cardos.webp"
+import obraFloresSilvestres from "../assets/obras/flores-silvestres.webp"
+import obraAbeja from "../assets/obras/abeja.webp"
+import obraMetamorfosis from "../assets/obras/metamorfosis.webp"
+import obraRetratoSombrero from "../assets/obras/retrato-sombrero.webp"
+import obraGuerrera from "../assets/obras/guerrera.webp"
+import obraRosas from "../assets/obras/rosas.webp"
+import obraSilencio from "../assets/obras/silencio.webp"
+import obraManos from "../assets/obras/manos.webp"
+import obraAbstractoDorado from "../assets/obras/abstracto-dorado.webp"
+
+// Versiones sin comprimir de la misma foto — solo para la ficha de detalle de
+// cada obra, donde sí importa ver la pieza en máxima calidad. Las miniaturas
+// (grid, tarjetas relacionadas) siguen usando el .webp liviano de arriba.
+import obraHojasRosaFull from "../assets/obras/full/hojas-rosa.jpg"
+import obraCrisalidaFull from "../assets/obras/full/crisalida.jpg"
+import obraBandadaFull from "../assets/obras/full/bandada.jpg"
+import obraHojasDoradasFull from "../assets/obras/full/hojas-doradas.jpg"
+import obraTercerOjoFull from "../assets/obras/full/tercer-ojo.jpg"
+import obraNinaFresasFull from "../assets/obras/full/nina-fresas.jpg"
+import obraCardosFull from "../assets/obras/full/cardos.jpg"
+import obraFloresSilvestresFull from "../assets/obras/full/flores-silvestres.jpg"
+import obraAbejaFull from "../assets/obras/full/abeja.jpg"
+import obraMetamorfosisFull from "../assets/obras/full/metamorfosis.jpg"
+import obraRetratoSombreroFull from "../assets/obras/full/retrato-sombrero.jpg"
+import obraGuerreraFull from "../assets/obras/full/guerrera.jpg"
+import obraRosasFull from "../assets/obras/full/rosas.jpg"
+import obraSilencioFull from "../assets/obras/full/silencio.jpg"
+import obraManosFull from "../assets/obras/full/manos.jpg"
+import obraAbstractoDoradoFull from "../assets/obras/full/abstracto-dorado.jpg"
 
 // Real photography — retratos y fotos del estudio.
-import fotoHeroEspaldaPaleta from "../assets/fotos/hero-espalda-paleta.jpg"
-import fotoRetratoFrontal from "../assets/fotos/retrato-frontal.jpg"
-import fotoPintandoCaballete from "../assets/fotos/pintando-en-caballete.jpg"
-import fotoTallerNinos from "../assets/fotos/taller-ninos.jpg"
-import fotoPaletaAcuarelas from "../assets/fotos/paleta-acuarelas.jpg"
-import fotoPintandoLienzoAmarillo from "../assets/fotos/pintando-lienzo-amarillo.jpg"
-import fotoRinconEstudio from "../assets/fotos/rincon-estudio.jpg"
-import fotoBocetoDigital from "../assets/fotos/boceto-digital.jpg"
-import fotoBocetoAcuarela from "../assets/fotos/boceto-acuarela.jpg"
-import fotoTallerDosPersonas from "../assets/fotos/taller-dos-personas.jpg"
-import fotoEstudioVacio from "../assets/fotos/estudio-vacio.jpg"
+import fotoHeroEspaldaPaleta from "../assets/fotos/hero-espalda-paleta.webp"
+import fotoRetratoFrontal from "../assets/fotos/retrato-frontal.webp"
+import fotoPintandoCaballete from "../assets/fotos/pintando-en-caballete.webp"
+import fotoTallerNinos from "../assets/fotos/taller-ninos.webp"
+import fotoPaletaAcuarelas from "../assets/fotos/paleta-acuarelas.webp"
+import fotoPintandoLienzoAmarillo from "../assets/fotos/pintando-lienzo-amarillo.webp"
+import fotoRinconEstudio from "../assets/fotos/rincon-estudio.webp"
+import fotoBocetoDigital from "../assets/fotos/boceto-digital.webp"
+import fotoBocetoAcuarela from "../assets/fotos/boceto-acuarela.webp"
+import fotoTallerDosPersonas from "../assets/fotos/taller-dos-personas.webp"
+import fotoEstudioVacio from "../assets/fotos/estudio-vacio.webp"
 
 /**
  * WhatsApp — front-only for now. Replace with the real number in international
@@ -126,165 +146,211 @@ export type Artwork = {
   series: string
   description: string
   image: string
+  /** Versión sin comprimir, solo para la ficha de detalle. Si no está, se usa `image`. */
+  fullImage?: string
+  /** Segundo panel — solo en piezas de dos partes (díptico), para mostrarlas juntas. */
+  secondImage?: string
+  secondFullImage?: string
   process?: ArtworkProcess
   /** Only set on the pieces actually painted on a round canvas — the thumbnail and detail view mask to a circle instead of a rectangle. */
   shape?: "circle"
 }
 
 /**
- * Fotografiadas directo en el estudio, sobre la pared negra donde cuelga la
- * obra — se recortó el fondo para dejar solo la pieza. Título y descripción
- * son de lo que se ve en la foto; todavía no hay técnica exacta, año, medidas
- * ni precio confirmados por Mashanta para cada una, así que esos campos se
- * quedan fuera en vez de inventarse.
+ * Obras actuales
+ */
+/**
+ * Título, técnica, medidas y precio/estado vienen de la hoja que compartió
+ * Mashanta.
  */
 export const artworks: Artwork[] = [
   {
     slug: "hojas-rosa",
-    title: "Hojas rosa",
-    technique: "Técnica mixta sobre tela",
+    title: "Hojas Rosa",
+    technique: "Acrílico sobre tela",
+    dimensions: "30 x 30 cm",
+    price: "$1,500 MXN",
     accent: "tierra-rosa",
     series: "Naturaleza",
     description: "Un tallo de hojas en tonos rosa y salmón sobre fondo malva, con la firma del estudio en la esquina.",
     image: obraHojasRosa,
+    fullImage: obraHojasRosaFull,
   },
   {
     slug: "cardos",
-    title: "Cardos",
-    technique: "Técnica mixta sobre tela",
+    title: "Cotton Candy Field",
+    technique: "Acrílico sobre tela",
+    dimensions: "60 x 76 cm",
+    price: "$7,000 MXN",
     accent: "ocre",
     series: "Naturaleza",
     description: "Un grupo de cardos en flor sobre un fondo verde pálido, en tonos tierra y ocre.",
     image: obraCardos,
+    fullImage: obraCardosFull,
   },
   {
     slug: "flores-silvestres",
-    title: "Flores silvestres",
-    technique: "Técnica mixta sobre tela",
+    title: "Cotton Candy Detalle",
+    technique: "Acrílico sobre tela",
+    dimensions: "Tondo 50 cm diám.",
+    price: "$7,000 MXN",
     accent: "tierra-rosa",
     series: "Naturaleza",
     description: "Pieza de formato circular con un ramo de flores silvestres en rosas y morados.",
     image: obraFloresSilvestres,
+    fullImage: obraFloresSilvestresFull,
     shape: "circle",
   },
   {
     slug: "rosas",
-    title: "Rosas",
-    technique: "Técnica mixta sobre tela",
+    title: "Pulso",
+    technique: "Acrílico sobre tela",
+    dimensions: "60 x 76 cm",
+    price: "$7,000 MXN",
     accent: "tierra-rosa",
     series: "Naturaleza",
     description: "Un par de rosas abiertas en tonos rosa y malva, con líneas de contorno marcadas.",
     image: obraRosas,
+    fullImage: obraRosasFull,
   },
   {
-    slug: "hojas-doradas",
-    title: "Hojas doradas",
-    technique: "Técnica mixta sobre tela",
+    // "Espejo áureo" junta las dos piezas doradas en una sola ficha, tal como
+    // se pidió — se muestran juntas como un díptico en vez de como dos obras.
+    slug: "espejo-aureo",
+    title: "Espejo áureo",
+    technique: "Óleo sobre tela",
+    dimensions: "Díptico 40 x 60 cm",
+    price: "$15,000 MXN",
     accent: "ocre",
     series: "Naturaleza",
-    description: "Follaje ilustrado a detalle sobre un fondo dorado, firmado por el estudio.",
+    description:
+      "Díptico en tonos dorados: un follaje ilustrado a detalle junto a un remolino de formas vegetales entre lo figurativo y lo abstracto, pensados para colgarse en espejo.",
     image: obraHojasDoradas,
-  },
-  {
-    slug: "abstracto-dorado",
-    title: "Abstracto dorado",
-    technique: "Técnica mixta sobre tela",
-    accent: "ocre",
-    series: "Naturaleza",
-    description: "Formas vegetales resueltas en un remolino de dorado y color, entre lo figurativo y lo abstracto.",
-    image: obraAbstractoDorado,
+    fullImage: obraHojasDoradasFull,
+    secondImage: obraAbstractoDorado,
+    secondFullImage: obraAbstractoDoradoFull,
   },
   {
     slug: "tercer-ojo",
-    title: "Tercer ojo",
-    technique: "Técnica mixta sobre tela",
+    title: "Conciencia Rosa",
+    technique: "Acrílico sobre tela",
+    dimensions: "60 x 76 cm",
+    price: "$12,000 MXN",
     accent: "tierra-rosa",
     series: "Retratos",
     description: "Un rostro en oración, rodeado de una corona de ojos, en una paleta suave de rosas y verdes.",
     image: obraTercerOjo,
+    fullImage: obraTercerOjoFull,
   },
   {
     slug: "nina-de-las-fresas",
-    title: "Niña de las fresas",
-    technique: "Técnica mixta sobre tela",
+    title: "De Niña",
+    technique: "Mixta sobre tela",
+    dimensions: "25 x 30 cm",
+    price: "Vendida",
     accent: "tierra-rosa",
     series: "Retratos",
     description: "Una niña en vestido bordado, rodeada de fresas y flores, en un estilo cercano al arte popular.",
     image: obraNinaFresas,
+    fullImage: obraNinaFresasFull,
   },
   {
     slug: "retrato-con-sombrero",
-    title: "Retrato con sombrero",
-    technique: "Técnica mixta sobre papel",
+    title: "Juan Evaristo",
+    technique: "Óleo sobre tela",
+    dimensions: "50 x 70 cm",
+    price: "No disponible",
     accent: "ocre",
     series: "Retratos",
     description: "Retrato de medio cuerpo bajo un sombrero de ala ancha, en tonos cálidos y terrosos.",
     image: obraRetratoSombrero,
+    fullImage: obraRetratoSombreroFull,
   },
   {
     slug: "guerrera",
-    title: "Guerrera",
-    technique: "Técnica mixta sobre tela",
+    title: "Invicta",
+    technique: "Mixta sobre tela",
+    dimensions: "120 x 150 cm",
+    price: "$20,000 MXN",
     accent: "ultramar",
     series: "Retratos",
     description: "Perfil de una figura con casco y armadura ornamentados, en azules y dorados sobre fondo oscuro.",
     image: obraGuerrera,
+    fullImage: obraGuerreraFull,
   },
   {
     slug: "silencio",
-    title: "Silencio",
-    technique: "Acuarela sobre papel",
+    title: "Retrato",
+    technique: "Acrílico sobre tela",
+    dimensions: "60 x 76 cm",
+    price: "No disponible",
     accent: "verde",
     series: "Retratos",
     description: "Retrato de una niña con los ojos cerrados, resuelto en acuarela con salpicaduras de color alrededor.",
     image: obraSilencio,
+    fullImage: obraSilencioFull,
   },
   {
     slug: "manos",
-    title: "Manos",
-    technique: "Técnica mixta sobre tela",
+    title: "Gratitud",
+    technique: "Mixta sobre tela",
+    dimensions: "Tondo 90 cm diám.",
+    price: "$15,000 MXN",
     accent: "ocre",
     series: "Retratos",
     description: "Un par de manos entrelazadas sobre un fondo circular en tonos oscuros y dorados.",
     image: obraManos,
+    fullImage: obraManosFull,
     shape: "circle",
   },
   {
     slug: "crisalida",
-    title: "Crisálida",
-    technique: "Técnica mixta sobre papel",
+    title: "La transición",
+    technique: "Mixta sobre tela",
+    dimensions: "80 x 160 cm",
+    price: "$17,000 MXN",
     accent: "ultramar",
     series: "Criaturas",
     description: "Una crisálida colgada de una rama, en tonos azules y cálidos sobre fondo claro.",
     image: obraCrisalida,
+    fullImage: obraCrisalidaFull,
   },
   {
     slug: "bandada",
-    title: "Bandada",
-    technique: "Técnica mixta sobre tela",
+    title: "Día de Pesca",
+    technique: "Acrílico en aro de bordar",
+    dimensions: "50 cm diám.",
+    price: "$1,800 MXN",
     accent: "terracota",
     series: "Criaturas",
     description: "Formato circular con un grupo de aves en vuelo sobre un fondo rojo punteado.",
     image: obraBandada,
+    fullImage: obraBandadaFull,
     shape: "circle",
   },
   {
     slug: "abeja",
-    title: "Abeja",
-    technique: "Técnica mixta sobre papel",
+    title: "Linaje de oro",
+    technique: "Mixta sobre tela",
+    dimensions: "120 x 120 cm",
+    price: "$18,000 MXN",
     accent: "ocre",
     series: "Criaturas",
     description: "Una abeja en primer plano sobre un fondo geométrico en blanco y negro.",
     image: obraAbeja,
+    fullImage: obraAbejaFull,
   },
   {
     slug: "metamorfosis",
-    title: "Metamorfosis",
-    technique: "Técnica mixta sobre papel",
+    title: "Espera en secreto",
+    technique: "Mixta en papel",
+    dimensions: "45 x 60 cm",
+    price: "$6,000 MXN",
     accent: "verde",
     series: "Criaturas",
     description: "Una criatura fantástica entre insecto y figura humana, con rayos de fondo, en marco blanco.",
     image: obraMetamorfosis,
+    fullImage: obraMetamorfosisFull,
   },
 ]
 

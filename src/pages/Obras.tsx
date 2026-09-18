@@ -93,20 +93,26 @@ function ArtworkCard({ art }: { art: (typeof artworks)[number] }) {
   return (
     <div className="mb-8 break-inside-avoid">
       <Link to={`/obras/${art.slug}`} data-cursor="VER" className="group block">
-        <div
-          className={`relative overflow-hidden transition-transform duration-300 group-hover:-translate-y-1.5 ${
-            circle ? "aspect-square rounded-full" : "border border-ink/15 shadow-soft"
-          }`}
-        >
-          <ArtVisual image={art.image} seed={art.slug} accent={art.accent} alt={art.title} className="h-full w-full" />
-        </div>
-        <div className="mt-3 flex items-start justify-between gap-3 font-mono text-[0.68rem] uppercase tracking-wide text-graphite">
-          <span className="text-ink transition-colors group-hover:text-rosa">{art.title}</span>
-          {art.price && <span className="shrink-0">{art.price}</span>}
-        </div>
-        <div className="font-mono text-[0.62rem] uppercase tracking-wide text-graphite-soft">
-          {[art.technique, art.year, art.dimensions].filter(Boolean).join(" · ")}
-        </div>
+        {art.secondImage ? (
+          <div className="flex gap-1.5">
+            {[art.image, art.secondImage].map((img, i) => (
+              <div
+                key={i}
+                className="relative flex-1 overflow-hidden border border-ink/15 shadow-soft transition-transform duration-300 group-hover:-translate-y-1.5"
+              >
+                <ArtVisual image={img} seed={`${art.slug}-${i}`} accent={art.accent} alt={art.title} className="h-full w-full" />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div
+            className={`relative overflow-hidden transition-transform duration-300 group-hover:-translate-y-1.5 ${
+              circle ? "aspect-square rounded-full" : "border border-ink/15 shadow-soft"
+            }`}
+          >
+            <ArtVisual image={art.image} seed={art.slug} accent={art.accent} alt={art.title} className="h-full w-full" />
+          </div>
+        )}
       </Link>
     </div>
   )

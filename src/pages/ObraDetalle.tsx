@@ -43,13 +43,30 @@ export function ObraDetalle() {
                 className={`flex items-center justify-center [backface-visibility:hidden] ${flipped ? "pointer-events-none" : ""}`}
                 style={{ transition: "opacity 0s 325ms", opacity: flipped ? 0 : 1 }}
               >
-                {art.shape === "circle" ? (
+                {art.secondImage ? (
+                  <div className="flex w-full gap-2">
+                    {[
+                      { img: art.fullImage ?? art.image, key: "a" },
+                      { img: art.secondFullImage ?? art.secondImage, key: "b" },
+                    ].map(({ img, key }) => (
+                      <ArtVisual
+                        key={key}
+                        image={img}
+                        seed={`${art.slug}-${key}`}
+                        accent={art.accent}
+                        alt={art.title}
+                        fit="contain"
+                        className="max-h-[75vh] w-1/2"
+                      />
+                    ))}
+                  </div>
+                ) : art.shape === "circle" ? (
                   <div className="h-[min(85vw,75vh)] w-[min(85vw,75vh)] overflow-hidden rounded-full">
-                    <ArtVisual image={art.image} seed={art.slug} accent={art.accent} alt={art.title} className="h-full w-full" />
+                    <ArtVisual image={art.fullImage ?? art.image} seed={art.slug} accent={art.accent} alt={art.title} className="h-full w-full" />
                   </div>
                 ) : (
                   <ArtVisual
-                    image={art.image}
+                    image={art.fullImage ?? art.image}
                     seed={art.slug}
                     accent={art.accent}
                     alt={art.title}
@@ -123,27 +140,19 @@ export function ObraDetalle() {
               <dt className="text-graphite">Técnica</dt>
               <dd className="mt-0.5 text-ink">{art.technique}</dd>
             </div>
-            {art.year && (
-              <div>
-                <dt className="text-graphite">Año</dt>
-                <dd className="mt-0.5 text-ink">{art.year}</dd>
-              </div>
-            )}
             {art.dimensions && (
               <div>
-                <dt className="text-graphite">Dimensiones</dt>
+                <dt className="text-graphite">Medidas</dt>
                 <dd className="mt-0.5 text-ink">{art.dimensions}</dd>
               </div>
             )}
             <div>
-              <dt className="text-graphite">Disponibilidad</dt>
-              <dd className="mt-0.5 text-ink">Pregunta por WhatsApp</dd>
+              <dt className="text-graphite">Precio</dt>
+              <dd className="mt-0.5 text-ink">{art.price ?? "Pregunta por WhatsApp"}</dd>
             </div>
           </dl>
 
           <p className="mt-6 max-w-md text-ink-soft">{art.description}</p>
-
-          {art.price && <p className="mt-6 font-display text-3xl">{art.price}</p>}
 
           <div className="mt-7 flex flex-wrap gap-3">
             <a
