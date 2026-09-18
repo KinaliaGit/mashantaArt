@@ -72,16 +72,6 @@ function ArtworkCard({ art }: { art: (typeof artworks)[number] }) {
           className="h-full w-full transition-transform duration-500 group-hover:scale-[1.03]"
         />
       </div>
-      <div className="mt-4 flex items-start gap-2.5 border-t border-ink pt-3">
-        <span aria-hidden className="mt-2 h-1.5 w-1.5 shrink-0 bg-rosa" />
-        <div>
-          <p className="font-display text-lg leading-tight transition-colors group-hover:text-rosa">{art.title}</p>
-          <p className="label mt-1.5 text-graphite">
-            {art.technique}
-            {art.year ? ` · ${art.year}` : ""}
-          </p>
-        </div>
-      </div>
     </Link>
   )
 }
