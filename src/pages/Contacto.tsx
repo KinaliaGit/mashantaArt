@@ -1,11 +1,17 @@
 import { artistInfo, waLink } from "../lib/data"
 import { PageHeader } from "../components/PageHeader"
 import { Reveal } from "../components/Reveal"
+import { usePageMeta } from "../lib/useMeta"
 
 const mensaje = "Hola Mashanta, te escribo desde tu sitio. Me interesa: "
 const waContacto = waLink(mensaje)
 
 export function Contacto() {
+  usePageMeta(
+    "Contacto",
+    "Escríbele a Mashanta por WhatsApp para obra, comisiones, restauración o talleres.",
+    "/contacto",
+  )
   return (
     <div>
       <PageHeader title="Hablemos por WhatsApp" />

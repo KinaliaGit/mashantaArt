@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom"
 import { artworks, waLink } from "../lib/data"
 import { ArtVisual } from "../components/ArtVisual"
 import { Reveal } from "../components/Reveal"
+import { usePageMeta } from "../lib/useMeta"
 import { NotFound } from "./NotFound"
 
 export function ObraDetalle() {
@@ -15,6 +16,7 @@ export function ObraDetalle() {
     setFlipped(false)
   }
   const art = artworks.find((a) => a.slug === slug)
+  usePageMeta(art?.title ?? "Obra", art?.description ?? "Obra original de Mashanta.", `/obras/${slug}`)
   if (!art) return <NotFound />
 
   const related = artworks.filter((a) => a.series === art.series && a.slug !== art.slug).slice(0, 3)
@@ -61,7 +63,7 @@ export function ObraDetalle() {
                     ))}
                   </div>
                 ) : art.shape === "circle" ? (
-                  <div className="h-[min(85vw,75vh)] w-[min(85vw,75vh)] overflow-hidden rounded-full">
+                  <div className="aspect-square w-full max-w-[min(85vw,75vh)] overflow-hidden rounded-full">
                     <ArtVisual image={art.fullImage ?? art.image} seed={art.slug} accent={art.accent} alt={art.title} className="h-full w-full" />
                   </div>
                 ) : (

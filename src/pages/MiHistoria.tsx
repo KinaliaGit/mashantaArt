@@ -3,6 +3,7 @@ import { artistInfo, artworks, studioPhotos } from "../lib/data"
 import { ArtVisual } from "../components/ArtVisual"
 import { Reveal } from "../components/Reveal"
 import { Comunidad } from "../home/Comunidad"
+import { usePageMeta } from "../lib/useMeta"
 import firmaMashanta from "../assets/firma-mashanta.webp"
 
 const practicas = [
@@ -27,6 +28,7 @@ const practicas = [
 ]
 
 export function MiHistoria() {
+  usePageMeta("Mi historia", artistInfo.bio[0], "/mi-historia")
   return (
     <div>
       <div className="relative flex h-[80dvh] max-h-[760px] min-h-[480px] w-full items-end overflow-hidden">

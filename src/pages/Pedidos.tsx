@@ -2,17 +2,22 @@ import { commissionSteps, waLink } from "../lib/data"
 import { PageHeader } from "../components/PageHeader"
 import { SectionTitle } from "../components/SectionTitle"
 import { Reveal } from "../components/Reveal"
+import { usePageMeta } from "../lib/useMeta"
 
 const waComision = waLink(
   "Hola Mashanta, me gustaría comisionar una obra. Te cuento la idea: ",
 )
 
+const PEDIDOS_DESCRIPTION =
+  "Una comisión es una pieza original pensada desde cero: un retrato, un paisaje, un díptico para un muro específico. La técnica, el tamaño, los tiempos y el envío se definen contigo, caso por caso."
+
 export function Pedidos() {
+  usePageMeta("Pedidos o comisiones", PEDIDOS_DESCRIPTION, "/pedidos")
   return (
     <div className="paper-grain">
       <PageHeader
         title="Una obra hecha para ti"
-        description="Una comisión es una pieza original pensada desde cero: un retrato, un paisaje, un díptico para un muro específico. La técnica, el tamaño, los tiempos y el envío se definen contigo, caso por caso."
+        description={PEDIDOS_DESCRIPTION}
       >
         <a
           href={waComision}

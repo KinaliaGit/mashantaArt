@@ -4,6 +4,7 @@ import { ArtVisual } from "../components/ArtVisual"
 import { PageHeader } from "../components/PageHeader"
 import { SectionTitle } from "../components/SectionTitle"
 import { Reveal } from "../components/Reveal"
+import { usePageMeta } from "../lib/useMeta"
 
 const waRestauracion = waLink(
   "Hola Mashanta, tengo una obra que me gustaría restaurar. ¿Te comparto fotos por este medio?",
@@ -12,12 +13,16 @@ const waVisita = waLink(
   "Hola Mashanta, me interesan las visitas guiadas a museos. ¿Me compartes disponibilidad para agendar?",
 )
 
+const OTROS_DESCRIPTION =
+  "Además de la obra y las comisiones, el estudio enseña, acompaña a museos y repara piezas."
+
 export function Otros() {
+  usePageMeta("Otros", OTROS_DESCRIPTION, "/otros")
   return (
     <div>
       <PageHeader
         title="Cursos, visitas guiadas y restauración"
-        description="Además de la obra y las comisiones, el estudio enseña, acompaña a museos y repara piezas."
+        description={OTROS_DESCRIPTION}
       >
         <nav className="mt-5 flex flex-wrap gap-4 label text-graphite">
           <a href="#cursos" className="border-b-2 border-transparent pb-0.5 hover:border-rosa hover:text-ink">

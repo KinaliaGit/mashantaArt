@@ -4,6 +4,7 @@ import { artworks, obrasIntro, waLink } from "../lib/data"
 import { ArtVisual } from "../components/ArtVisual"
 import { ClosingNoteReveal } from "../components/ClosingNoteReveal"
 import { NextWorkTeaser } from "../home/NextWorkTeaser"
+import { usePageMeta } from "../lib/useMeta"
 
 const series = ["Todas", ...Array.from(new Set(artworks.map((a) => a.series)))]
 
@@ -12,6 +13,7 @@ const waObras = waLink(
 )
 
 export function Obras() {
+  usePageMeta("Obras", obrasIntro.description, "/obras")
   const [filter, setFilter] = useState("Todas")
   const list = useMemo(
     () => (filter === "Todas" ? artworks : artworks.filter((a) => a.series === filter)),

@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom"
+import { useEffect } from "react"
 
 export function NotFound() {
+  useEffect(() => {
+    document.title = "Página no encontrada · Mashanta"
+  }, [])
   return (
     <div className="flex min-h-[60vh] flex-col items-center justify-center px-5 text-center">
       <p className="label text-graphite">Error 404</p>

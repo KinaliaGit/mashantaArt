@@ -36,6 +36,9 @@ export default function App() {
         {/* Redirects desde las rutas anteriores */}
         <Route path="/colecciones" element={<Navigate to="/obras" replace />} />
         <Route path="/colecciones/:slug" element={<RedirectWithSlug to={(s) => `/obras/${s}`} />} />
+        {/* "Hojas doradas" y "Abstracto dorado" se fusionaron en una sola obra ("Espejo áureo") */}
+        <Route path="/obras/hojas-doradas" element={<Navigate to="/obras/espejo-aureo" replace />} />
+        <Route path="/obras/abstracto-dorado" element={<Navigate to="/obras/espejo-aureo" replace />} />
         <Route path="/cursos" element={<Navigate to="/otros" replace />} />
         <Route path="/cursos/:slug" element={<RedirectWithSlug to={(s) => `/otros/cursos/${s}`} />} />
         <Route path="/otros/cursos/:slug/reservar" element={<RedirectWithSlug to={(s) => `/otros/cursos/${s}`} />} />

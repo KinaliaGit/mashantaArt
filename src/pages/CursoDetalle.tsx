@@ -2,10 +2,12 @@ import { Link, Navigate, useParams } from "react-router-dom"
 import { courses, waLink } from "../lib/data"
 import { ArtVisual } from "../components/ArtVisual"
 import { Reveal } from "../components/Reveal"
+import { usePageMeta } from "../lib/useMeta"
 
 export function CursoDetalle() {
   const { slug } = useParams()
   const course = courses.find((c) => c.slug === slug)
+  usePageMeta(course?.title ?? "Curso", course?.summary ?? "Cursos y talleres de pintura en Estudio Mashanta.", `/otros/cursos/${slug}`)
   // Los cursos se reestructuraron: cualquier enlace viejo cae en la lista de Otros.
   if (!course) return <Navigate to="/otros" replace />
 
