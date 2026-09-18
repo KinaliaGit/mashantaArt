@@ -515,32 +515,34 @@ export const artistInfo = {
 
 export const testimonials = [
   {
-    name: "Renata O.",
-    role: "Coleccionista",
+    name: "José A. Enríquez",
+    role: "Alumno",
     quote:
-      "Compré Memoria de agua sin conocer a Mashanta en persona. Cuando llegó la pieza entendí por qué cada trazo tarda lo que tarda.",
+      "Mi mensaje más honesto, tanto sobre el arte como sobre mi maestra, es que su forma de adaptarse y ser paciente es única. También la manera en que apoya a los alumnos a seguir adelante y ser perseverantes. Nunca olvidaré mi experiencia con la pintura y con mi maestra.",
   },
   {
-    name: "Diego M.",
-    role: "Cliente de restauración",
+    name: "Zayra Martínez",
+    role: "Madre de familia",
     quote:
-      "Llevé un cuadro de mi abuela que creí perdido. Salí del estudio sabiendo exactamente qué hacer con las manos.",
+      "Gracias por tu paciencia con cada uno de mis hijos, siendo tan diferentes, lograste empatizar con cada uno. Tienes una gran habilidad: la sensibilidad en ti está a flor de piel y la transmites con mucho amor y paciencia. Esa vocación por el arte se refleja en el avance de tus estudiantes.",
   },
   {
-    name: "Familia Vargas",
-    role: "Curso de verano",
+    name: "Paty Acosta",
+    role: "Cd. Obregón, Sonora",
     quote:
-      "Nuestra hija entró sin saber mezclar dos colores. Salió pidiendo un caballete para su cuarto.",
+      "Le pedí a Mashanta cuatro cuadros de flores, todos distintos, y no solo los pintó hermosos y delicados: sientes su aroma en las formas y texturas de los pétalos, y lo dulce de sus colores y matices. Sus cuadros se disfrutan en cualquier espacio, iluminan y dan vida. Gracias, Mashanta, por tu arte y por la oportunidad de gozarlos.",
   },
   {
-    name: "Paola S.",
-    role: "Alumna, clases regulares",
-    quote: "Es la primera clase de arte donde no me sentí la peor del salón. Mashanta enseña sin apurar a nadie.",
+    name: "Mark y Mike",
+    role: "Quintana Roo, México",
+    quote:
+      "El de los árboles de sakura en acuarela nos transmite una paz y una delicadeza infinitas, y el óleo es pura ternura: nos roba el corazón cada vez que lo vemos. Son obras llenas de tu sensibilidad. Tenerlas en casa nos hace muy felices.",
   },
   {
-    name: "Iván R.",
-    role: "Coleccionista",
-    quote: "La comisión del retrato familiar llegó con marco hecho a mano. Se nota que nada sale del estudio a medias.",
+    name: "Nancy Corral",
+    role: "Chihuahua, Chihuahua",
+    quote:
+      "Estoy encantada con el cuadro de elefantes que Fernanda pintó para mí, es una pintora muy talentosa. Es una pintura con un significado muy especial. Gracias por crear esta obra tan bonita. Te felicito por tu arte y por el amor que le pones a cada lienzo.",
   },
 ]
 
