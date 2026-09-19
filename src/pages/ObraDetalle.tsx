@@ -16,12 +16,15 @@ export function ObraDetalle() {
     setFlipped(false)
   }
   const art = artworks.find((a) => a.slug === slug)
-  usePageMeta(art?.title ?? "Obra", art?.description ?? "Obra original de Mashanta.", `/obras/${slug}`)
+  const artDetails = art ? [art.technique, art.dimensions, art.price].filter(Boolean).join(", ") : ""
+  usePageMeta(
+    art?.title ?? "Obra",
+    art ? `${art.technique}${art.dimensions ? `, ${art.dimensions}` : ""}. Obra original de Mashanta.` : "Obra original de Mashanta.",
+    `/obras/${slug}`,
+  )
   if (!art) return <NotFound />
 
   const related = artworks.filter((a) => a.series === art.series && a.slug !== art.slug).slice(0, 3)
-
-  const artDetails = [art.technique, art.dimensions, art.price].filter(Boolean).join(", ")
   const waObra = waLink(
     `Hola Mashanta, me interesa "${art.title}"${artDetails ? ` (${artDetails})` : ""}. ¿Sigue disponible?`,
   )
@@ -153,8 +156,6 @@ export function ObraDetalle() {
               <dd className="mt-0.5 text-ink">{art.price ?? "Pregunta por WhatsApp"}</dd>
             </div>
           </dl>
-
-          <p className="mt-6 max-w-md text-ink-soft">{art.description}</p>
 
           <div className="mt-7 flex flex-wrap gap-3">
             <a
