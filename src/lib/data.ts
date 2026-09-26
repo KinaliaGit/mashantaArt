@@ -51,7 +51,6 @@ import fotoPintandoLienzoAmarillo from "../assets/fotos/pintando-lienzo-amarillo
 import fotoRinconEstudio from "../assets/fotos/rincon-estudio.webp"
 import fotoBocetoDigital from "../assets/fotos/boceto-digital.webp"
 import fotoBocetoAcuarela from "../assets/fotos/boceto-acuarela.webp"
-import fotoTallerDosPersonas from "../assets/fotos/taller-dos-personas.webp"
 import fotoEstudioVacio from "../assets/fotos/estudio-vacio.webp"
 
 /**
@@ -436,14 +435,6 @@ export const restorationSteps: ProcessStep[] = [
   { title: "Tiempo del proceso" },
 ]
 
-/**
- * Aviso sobre la restauración: es un oficio aprendido en la práctica, no un
- * servicio con credenciales oficiales ni certificación. Se puede ver el
- * trabajo hecho para hacerse una idea.
- */
-export const restorationNote =
-  "Esto no es un servicio de restauración oficial. No tengo credenciales ni certificación profesional, es un oficio que aprendí en la práctica. Aquí puedes ver trabajos ya hechos para hacerte una idea, y antes de empezar siempre te explico qué se va a hacer y por qué."
-
 export type Course = {
   slug: string
   title: string
@@ -495,14 +486,14 @@ export const courses: Course[] = [
     accent: "tierra-rosa",
     summary:
       "Un intensivo de verano centrado en pintura, color y proyecto propio, pensado para avanzar rápido en pocas semanas.",
-    image: fotoTallerDosPersonas,
+    image: fotoBocetoAcuarela,
   },
   {
     slug: "curso-de-primavera",
     title: "Curso de primavera",
     schedule: "5 días por semana, de lunes a viernes, de 10:00 a 13:00.",
     location: "Estudio Mashanta.",
-    price: "$2,600 MXN.",
+    price: "$2,000 MXN.",
     accent: "verde",
     summary:
       "La versión más intensiva del taller. Mismo horario que el curso de verano, pero de lunes a viernes, para ganar más horas de práctica y terminar con obra propia.",

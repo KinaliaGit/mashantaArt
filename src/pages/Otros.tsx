@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { courses, museumVisits, restorationNote, restorationSteps, waLink } from "../lib/data"
+import { courses, museumVisits, restorationSteps, waLink } from "../lib/data"
 import { ArtVisual } from "../components/ArtVisual"
 import { PageHeader } from "../components/PageHeader"
 import { SectionTitle } from "../components/SectionTitle"
@@ -137,12 +137,7 @@ export function Otros() {
             </ol>
           </Reveal>
 
-          <Reveal variant="rise" delay={0.1} className="mt-8 border-t border-ink pt-4">
-            <p className="label text-ink">Nota sobre este servicio</p>
-            <p className="mt-1.5 max-w-2xl text-sm text-ink-soft">{restorationNote}</p>
-          </Reveal>
-
-          <Reveal variant="rise" delay={0.14} className="mt-10">
+          <Reveal variant="rise" delay={0.1} className="mt-10">
             <a
               href={waRestauracion}
               target="_blank"
