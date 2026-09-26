@@ -38,7 +38,7 @@ export function Footer() {
         <Wordmark tone="paper" className="mx-auto w-[min(88%,880px)]" />
       </Link>
       <div className="label border-t border-white/10 px-5 py-4 text-center text-graphite-soft sm:px-8">
-        © {new Date().getFullYear()} Mashanta · Pintura, restauración y comisiones
+        © {new Date().getFullYear()} Mashanta Art · Pintura, restauración y comisiones
       </div>
     </footer>
   )
