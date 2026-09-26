@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 
-const SITE_TITLE = "Mashanta"
+const SITE_TITLE = "Mashanta Art"
 const SITE_URL = "https://mashanta-art.kinalia.com.mx"
 
 function setMeta(selector: string, attr: string, content: string) {
